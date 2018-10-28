@@ -1,0 +1,1 @@
+viki.init();
