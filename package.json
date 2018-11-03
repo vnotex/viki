@@ -1,0 +1,19 @@
+{
+  "name": "viki",
+  "version": "1.0.0",
+  "description": "Wiki page from [VNote](https://tamlok.github.io/vnote)'s notebook.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamlok/viki.git"
+  },
+  "keywords": ["markdown", "vnote", "wiki"],
+  "author": "Le Tan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tamlok/viki/issues"
+  },
+  "homepage": "https://github.com/tamlok/viki#readme"
+}

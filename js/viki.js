@@ -1,40 +1,36 @@
-var viki = (function() {
-    var workers = [];
-    var curWorkerIdx = -1;
-    var thisObj = null;
+import ConfigWorker from "./configworker.js"
 
-    var scheduleNext = function() {
-        if (curWorkerIdx >= workers.length - 1) {
-            console.log("all workers finished");
-            curWorkerIdx = -1;
-        } else {
-            ++curWorkerIdx;
-            console.log("schedule worker", curWorkerIdx);
-            workers[curWorkerIdx].run();
-        }
-    };
+class Viki {
+    constructor() {
+        this.workers = [];
+        this.curWorkerIdx = -1;
+    }
 
-    var registerWorker = function(p_worker) {
-        p_worker.register(thisObj);
-        workers.push(p_worker);
-    };
+    init() {
+        let registerWorker = (p_worker) => {
+            p_worker.register(this);
+            this.workers.push(p_worker);
+        };
 
-    var init = function() {
-        thisObj = viki;
-
+        let configWorker = new ConfigWorker();
         registerWorker(configWorker);
 
-        $(document).ready(run);
-    };
+        $(document).ready(() => {
+            this.curWorkerIdx = -1;
+            this.scheduleNext();
+        });
+    }
 
-    var run = function() {
-        curWorkerIdx = -1;
-        scheduleNext();
-    };
+    scheduleNext() {
+        if (this.curWorkerIdx >= this.workers.length - 1) {
+            console.log("all workers finished");
+            this.curWorkerIdx = -1;
+        } else {
+            ++this.curWorkerIdx;
+            console.log("schedule worker", this.curWorkerIdx);
+            this.workers[this.curWorkerIdx].run();
+        }
+    }
+}
 
-
-    return {
-        init: init,
-        scheduleNext: scheduleNext
-    };
-})();
+export default Viki
