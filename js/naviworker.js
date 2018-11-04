@@ -34,7 +34,7 @@ class NaviItem {
         return true;
     }
 
-    toLi() {
+    toLi(p_activeItem) {
         let li;
         if (this.children.length > 0) {
             // A drop down item.
@@ -51,6 +51,12 @@ class NaviItem {
             for (let i = 0; i < this.children.length; ++i) {
                 let child = this.children[i];
                 let sub = $(`<a class="dropdown-item" href="${child.target}">${child.text}</a>`);
+
+                if (p_activeItem === child) {
+                    sub.addClass('active');
+                    li.addClass('active');
+                }
+
                 div.append(sub);
             }
 
@@ -59,9 +65,27 @@ class NaviItem {
             li = $(`<li class="nav-item">
                 <a class="nav-link" href="${this.target}">${this.text}</a>
             </li>`);
+            if (p_activeItem === this) {
+                li.addClass('active');
+            }
         }
 
         return li;
+    }
+
+    // Return the item that match @target.
+    matchTarget(target) {
+        if (this.children.length > 0) {
+            for (let i = 0; i < this.children.length; ++i) {
+                if (this.children[i].target === target) {
+                    return this.children[i];
+                }
+            }
+        } else if (this.target === target) {
+            return this;
+        }
+
+        return null;
     }
 }
 
@@ -109,8 +133,19 @@ class NaviWorker extends Worker {
         if (this.viki.naviItems.length > 0) {
             let navDiv = $(`<div class="collapse navbar-collapse"></div>`);
             let navUl = $(`<ul class="navbar-nav mr-auto"></ul>`)
-            for (let i = 0; i < this.viki.naviItems.length; ++i) {
-                let navLi = this.viki.naviItems[i].toLi();
+
+            let items = this.viki.naviItems;
+            let activeItem = null;
+            for (let i = 0; i < items.length; ++i) {
+                if (!activeItem) {
+                    // Find active item according to current target.
+                    var it = items[i].matchTarget(this.viki.info.target);
+                    if (it) {
+                        activeItem = it;
+                    }
+                }
+
+                let navLi = items[i].toLi(activeItem);
                 navUl.append(navLi);
             }
 
