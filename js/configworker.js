@@ -4,16 +4,11 @@ import Worker from "./worker.js"
 class Config {
     constructor() {
         this.brand = "viki";
-        this.entry = "index.md";
     }
 
     readFromJson(p_jobj) {
         if (p_jobj.brand) {
             this.brand = p_jobj.brand;
-        }
-
-        if (p_jobj.entry) {
-            this.entry = p_jobj.entry;
         }
     }
 }
