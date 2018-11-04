@@ -1,3 +1,4 @@
+import logger from "./logger.js"
 import Worker from "./worker.js"
 
 class Config {
@@ -24,7 +25,7 @@ class ConfigWorker extends Worker {
 
     register(p_viki) {
         super.register(p_viki);
-        console.log("register ConfigWorker");
+        logger.log("register ConfigWorker");
     }
 
     run() {
@@ -32,7 +33,7 @@ class ConfigWorker extends Worker {
             let config = new Config();
             config.readFromJson(p_data);
 
-            console.log("config:", config);
+            logger.log("config:", config);
 
             this.viki.config = config;
 

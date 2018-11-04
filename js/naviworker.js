@@ -1,3 +1,4 @@
+import logger from "./logger.js"
 import Worker from "./worker.js"
 
 class NaviItem {
@@ -71,7 +72,7 @@ class NaviWorker extends Worker {
 
     register(p_viki) {
         super.register(p_viki);
-        console.log("register NaviWorker");
+        logger.log("register NaviWorker");
     }
 
     run() {
@@ -88,7 +89,7 @@ class NaviWorker extends Worker {
                 }
             }
 
-            console.log("navigation:", items);
+            logger.log("navigation:", items);
             this.viki.naviItems = items;
 
             this.renderNaviBar();

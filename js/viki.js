@@ -1,3 +1,4 @@
+import logger from "./logger.js"
 import { Config, ConfigWorker } from "./configworker.js"
 import { NaviItem, NaviWorker } from "./naviworker.js"
 
@@ -31,11 +32,11 @@ class Viki {
 
     scheduleNext() {
         if (this.curWorkerIdx >= this.workers.length - 1) {
-            console.log("all workers finished");
+            logger.log("all workers finished");
             this.curWorkerIdx = -1;
         } else {
             ++this.curWorkerIdx;
-            console.log("schedule worker", this.curWorkerIdx);
+            logger.log("schedule worker", this.curWorkerIdx);
             this.workers[this.curWorkerIdx].run();
         }
     }
