@@ -1,9 +1,13 @@
-import ConfigWorker from "./configworker.js"
+import { Config, ConfigWorker } from "./configworker.js"
+import { NaviItem, NaviWorker } from "./naviworker.js"
 
 class Viki {
     constructor() {
         this.workers = [];
         this.curWorkerIdx = -1;
+
+        this.config = new Config();
+        this.naviItems = [];
     }
 
     init() {
@@ -15,7 +19,11 @@ class Viki {
         let configWorker = new ConfigWorker();
         registerWorker(configWorker);
 
+        let naviWorker = new NaviWorker();
+        registerWorker(naviWorker);
+
         $(document).ready(() => {
+            $('body').empty();
             this.curWorkerIdx = -1;
             this.scheduleNext();
         });

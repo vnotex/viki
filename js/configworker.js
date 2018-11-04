@@ -1,5 +1,22 @@
 import Worker from "./worker.js"
 
+class Config {
+    constructor() {
+        this.brand = "viki";
+        this.entry = "index.md";
+    }
+
+    readFromJson(p_jobj) {
+        if (p_jobj.brand) {
+            this.brand = p_jobj.brand;
+        }
+
+        if (p_jobj.entry) {
+            this.entry = p_jobj.entry;
+        }
+    }
+}
+
 class ConfigWorker extends Worker {
     constructor() {
         super();
@@ -12,11 +29,16 @@ class ConfigWorker extends Worker {
 
     run() {
         $.get("config.json", (p_data) => {
-            console.log("config:", p_data);
+            let config = new Config();
+            config.readFromJson(p_data);
+
+            console.log("config:", config);
+
+            this.viki.config = config;
 
             this.viki.scheduleNext();
         });
     }
 }
 
-export default ConfigWorker
+export { Config, ConfigWorker }
