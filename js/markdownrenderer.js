@@ -6,8 +6,8 @@ class MarkdownRenderer {
         this.containerNode = p_node;
     }
 
-    render(p_md) {
-        let mdit = new MarkdownIt();
+    render(p_config, p_md) {
+        let mdit = new MarkdownIt(p_config);
         mdit.render(this.containerNode, p_md);
     }
 }

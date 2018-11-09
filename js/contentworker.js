@@ -21,7 +21,7 @@ class ContentWorker extends Worker {
 
         if (this.isMarkdown(this.viki.info.target)) {
             let mder = new MarkdownRenderer($('#' + this.viki.info.contentContainerId));
-            mder.render(this.viki.info.data);
+            mder.render(this.viki.config.markdown, this.viki.info.data);
         }
 
         this.viki.scheduleNext();

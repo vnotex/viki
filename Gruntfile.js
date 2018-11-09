@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            files: ['<%= jshint.files %>'],
+            files: ['<%= jshint.files %>', 'viki.html'],
             tasks: ['default']
         },
 
