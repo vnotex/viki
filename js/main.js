@@ -1,4 +1,4 @@
-import Viki from "./viki.js"
+import Viki from "./viki.js";
 
-let viki = new Viki()
+let viki = new Viki();
 viki.init();

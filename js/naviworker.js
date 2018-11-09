@@ -1,5 +1,5 @@
-import logger from "./logger.js"
-import Worker from "./worker.js"
+import logger from "./logger.js";
+import Worker from "./worker.js";
 
 class NaviItem {
     constructor() {
@@ -123,16 +123,22 @@ class NaviWorker extends Worker {
     }
 
     renderNaviBar() {
-        let navbar = $('<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">');
+        let navbar = $(`<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top bd-navbar"></nav>`);
 
         // Brand.
         let brand = $(`<a class="navbar-brand" href="#">${this.viki.config.brand}</a>`);
         navbar.append(brand);
 
+        // Toggle button.
+        let button = $(`<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#viki-navbarCollapse" aria-controls="viki-navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>`);
+        navbar.append(button);
+
         // Navigaton items.
         if (this.viki.naviItems.length > 0) {
-            let navDiv = $(`<div class="collapse navbar-collapse"></div>`);
-            let navUl = $(`<ul class="navbar-nav mr-auto"></ul>`)
+            let navDiv = $(`<div class="navbar-collapse collapse" id="viki-navbarCollapse"></div>`);
+            let navUl = $(`<ul class="navbar-nav mr-auto"></ul>`);
 
             let items = this.viki.naviItems;
             let activeItem = null;
@@ -157,4 +163,4 @@ class NaviWorker extends Worker {
     }
 }
 
-export { NaviItem, NaviWorker }
+export { NaviItem, NaviWorker };

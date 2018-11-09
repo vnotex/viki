@@ -1,7 +1,9 @@
-import logger from "./logger.js"
-import VikiInfo from "./vikiinfo.js"
-import { Config, ConfigWorker } from "./configworker.js"
-import { NaviItem, NaviWorker } from "./naviworker.js"
+import logger from "./logger.js";
+import VikiInfo from "./vikiinfo.js";
+import { Config, ConfigWorker } from "./configworker.js";
+import { NaviItem, NaviWorker } from "./naviworker.js";
+import FetchTargetWorker from "./fetchtargetworker.js";
+import ContentWorker from "./contentworker.js";
 
 class Viki {
     constructor() {
@@ -26,10 +28,20 @@ class Viki {
         let naviWorker = new NaviWorker();
         registerWorker(naviWorker);
 
+        let fetchTargetWorker = new FetchTargetWorker();
+        registerWorker(fetchTargetWorker);
+
+        let contentWorker = new ContentWorker();
+        registerWorker(contentWorker);
+
         $(document).ready(() => {
             if (!this.initTargetFromHash()) {
                 return;
             }
+
+            $(window).bind('hashchange', function() {
+                window.location.reload(false);
+            });
 
             logger.log("target", this.info.target,
                        "anchor", this.info.anchor);
@@ -55,19 +67,18 @@ class Viki {
             var a = document.createElement('a');
             a.href = hash;
             return window.location.hostname === a.hostname;
-        }
+        };
 
         let target = "index.md";
         let hash = window.location.hash || "";
 
         // Default hash completion.
         let newHash = '';
-        if (hash === ''
-            || hash === "#"
-            || hash === "#!") {
+        if (hash === '' ||
+            hash === "#" ||
+            hash === "#!") {
             newHash = "#!" + target;
-        } else if (hash.startsWith("#!")
-                   && hash.endsWith('/')) {
+        } else if (hash.startsWith("#!") && hash.endsWith('/')) {
             newHash = hash + target;
         }
 
@@ -103,4 +114,4 @@ class Viki {
     }
 }
 
-export default Viki
+export default Viki;

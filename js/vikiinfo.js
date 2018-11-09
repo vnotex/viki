@@ -5,7 +5,13 @@ class VikiInfo {
 
         // Anchor within target page.
         this.anchor = '';
+
+        // Data of the target file.
+        this.data = null;
+
+        this.contentContainerId = '';
+        this.tocContainerId = '';
     }
 }
 
-export default VikiInfo
+export default VikiInfo;

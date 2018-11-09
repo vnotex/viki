@@ -1,5 +1,5 @@
-import logger from "./logger.js"
-import Worker from "./worker.js"
+import logger from "./logger.js";
+import Worker from "./worker.js";
 
 class Config {
     constructor() {
@@ -37,4 +37,4 @@ class ConfigWorker extends Worker {
     }
 }
 
-export { Config, ConfigWorker }
+export { Config, ConfigWorker };

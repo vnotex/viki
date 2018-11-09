@@ -14,4 +14,4 @@ class Logger {
 
 var logger = new Logger();
 
-export default logger
+export default logger;
