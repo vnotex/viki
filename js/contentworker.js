@@ -32,7 +32,7 @@ class ContentWorker extends Worker {
         this.viki.info.contentContainerId = 'viki-content';
         this.viki.info.tocContainerId = 'viki-toc';
 
-        let mainDiv = $(`<div class="container-fluid"></div>`);
+        let mainDiv = $(`<div class="container-fluid" style="padding-top: 3rem;"></div>`);
         let containerDiv = $(`<div id="viki-content-container" class="row flex-xl-nowrap"></div>`);
         mainDiv.append(containerDiv);
 

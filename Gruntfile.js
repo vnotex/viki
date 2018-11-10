@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         },
 
         watch: {
-            files: ['<%= jshint.files %>', 'viki.html'],
+            files: ['<%= jshint.files %>', 'viki.html', 'css/*'],
             tasks: ['default']
         },
 
@@ -93,6 +93,7 @@ module.exports = function(grunt) {
             post: {
                 files: [
                     { expand: true, src: 'viki.html', dest: 'dist/'},
+                    { expand: true, src: 'css/*', dest: 'dist/'},
                 ],
             },
         },

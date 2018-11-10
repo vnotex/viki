@@ -11,7 +11,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="https://cdn.bootcss.com/highlight.js/9.13.1/styles/vs2015.min.css" rel="stylesheet">
+    <link href="css/highlightjs.css" rel="stylesheet">
+    <link href="css/viki.css" rel="stylesheet">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
@@ -19,10 +20,52 @@
     <script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <script src="https://cdn.bootcss.com/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.13.1/languages/go.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.13.1/languages/yaml.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.13.1/languages/r.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.13.1/languages/scala.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.13.1/languages/shell.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlight.js/9.13.1/languages/swift.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.5.0/highlightjs-line-numbers.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+    <script src="https://cdn.bootcss.com/flowchart/1.11.3/flowchart.min.js"></script>
+
+    <script src="http://s.plantuml.com/synchro2.js"></script>
+    <script src="http://s.plantuml.com/zopfli.raw.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_HTMLorMML" async></script>
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            processClass: "tex2jax_process|language-mathjax|lang-mathjax"
+        },
+        showProcessingMessages: false,
+        skipStartupTypeset: true,
+        TeX: {
+            Macros: {
+                bm: ["\\boldsymbol{#1}", 1]
+            },
+            equationNumbers: {
+                autoNumber: "AMS"
+            }
+        },
+        messageStyle: "none"
+    });
+    MathJax.Hub.Register.StartupHook("End", function() {
+        if (typeof MathJaxReady != "undefined") {
+            MathJaxReady();
+        }
+    });
+    </script>
 
     <!-- viki script -->
     <script src="js/viki.js"></script>
-
 </head>
 <body>
 </body>

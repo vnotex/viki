@@ -1,0 +1,160 @@
+.viki-img-package {
+    text-align: center;
+}
+
+img.viki-img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span.viki-img-caption {
+    min-width: 20%;
+    max-width: 80%;
+    display: inline-block;
+    padding: 10px;
+    margin: 0 auto;
+    border-bottom: 1px solid #c0c0c0;
+    color: #6c6c6c;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* View Image */
+.viki-view-image,.viki-view-svg {
+    transition: 0.3s;
+}
+
+.viki-modal-box {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(68, 68, 68);
+    background-color: rgba(68, 68, 68, 0.95);
+    z-index: 2000;
+}
+
+.viki-modal-content {
+    margin: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    cursor: move;
+}
+
+/* Add Animation */
+.viki-modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+span.viki-modal-close {
+    position: absolute;
+    z-index: 1000;
+    top: 15px;
+    right: 35px;
+    color: #DADADA;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+span.viki-modal-close:hover,
+span.viki-modal-close:focus {
+    color: #EEEEEE;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* View Image */
+
+pre code.viki-markdown-metadata {
+    border-left: .5rem solid #80CBC4;
+}
+
+div.viki-mermaid-diagram {
+    margin: 16px 0px 16px 0px;
+    overflow-y: hidden;
+}
+
+div.viki-flowchart-diagram {
+    padding: 0px 5px 0px 5px;
+    margin: 16px 0px 16px 0px;
+    width: fit-content;
+    overflow: hidden;
+}
+
+div.viki-plantuml-diagram {
+    padding: 5px 5px 0px 5px;
+    margin: 16px 0px 16px 0px;
+    width: fit-content;
+    overflow: hidden;
+}
+
+/* For Highlight.js Line Number */
+table.hljs-ln tr {
+    border: none;
+    background-color: transparent;
+}
+
+table.hljs-ln tr td {
+    border: none;
+    background-color: transparent;
+}
+
+table.hljs-ln tr td.hljs-ln-numbers {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    text-align: center;
+    color: #AAA;
+    border-right: 1px solid #CCC;
+    vertical-align: top;
+    padding-right: 5px;
+    white-space: nowrap;
+}
+
+table.hljs-ln tr td.hljs-ln-code {
+    padding-left: 10px;
+}
+/* For Highlight.js Line Number */
+
+/* Mathjax */
+x-eqs {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    align-items: center;
+}
+
+x-eqs > x-eqn {
+    width: 100%;
+    margin-left: 3rem;
+}
+
+x-eqs > span {
+    text-align:right;
+}
+/* Mathjax */

@@ -9,7 +9,11 @@ class Config {
             breaks: false,
             linkify: true,
             typographer: false,
-            langPrefix: 'lang-'
+            langPrefix: 'lang-',
+            imageCaption: true,
+            plantUMLServer: 'http://www.plantuml.com/plantuml',
+            plantUMLFormat: 'svg',
+            codeBlockLineNumber: false
         };
     }
 
@@ -38,6 +42,22 @@ class Config {
 
             if (md.langPrefix) {
                 this.markdown.langPrefix = md.langPrefix;
+            }
+
+            if (md.imageCaption) {
+                this.markdown.imageCaption = md.imageCaption;
+            }
+
+            if (md.plantUMLServer) {
+                this.markdown.plantUMLServer = md.plantUMLServer;
+            }
+
+            if (md.plantUMLFormat) {
+                this.markdown.plantUMLFormat = md.plantUMLFormat;
+            }
+
+            if (md.codeBlockLineNumber) {
+                this.markdown.codeBlockLineNumber = md.codeBlockLineNumber;
             }
         }
     }
