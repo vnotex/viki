@@ -1,6 +1,7 @@
 import logger from "./logger.js";
 import VikiInfo from "./vikiinfo.js";
 import { Config, ConfigWorker } from "./configworker.js";
+import PageWorker from "./pageworker.js";
 import { NaviItem, NaviWorker } from "./naviworker.js";
 import FetchTargetWorker from "./fetchtargetworker.js";
 import ContentWorker from "./contentworker.js";
@@ -24,6 +25,9 @@ class Viki {
 
         let configWorker = new ConfigWorker();
         registerWorker(configWorker);
+
+        let pageWorker = new PageWorker();
+        registerWorker(pageWorker);
 
         let naviWorker = new NaviWorker();
         registerWorker(naviWorker);
@@ -104,10 +108,9 @@ class Viki {
         // Anchor.
         let idx = target.indexOf('#');
         if (idx != -1) {
-            this.info.target = target.substring(0, idx);
-            this.info.anchor = target.substring(idx + 1);
+            this.info.setTarget(target.substring(0, idx), target.substring(idx + 1));
         } else {
-            this.info.target = target;
+            this.info.setTarget(target);
         }
 
         return true;

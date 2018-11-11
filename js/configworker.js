@@ -4,6 +4,8 @@ import Worker from "./worker.js";
 class Config {
     constructor() {
         this.brand = "viki";
+        this.title = "Viki - Wiki page from notebook of VNote";
+        this.favicon = "https://github.com/tamlok/vnote/raw/master/src/resources/icons/vnote.ico";
         this.markdown = {
             html: true,
             breaks: false,
@@ -18,45 +20,53 @@ class Config {
     }
 
     readFromJson(p_jobj) {
-        if (p_jobj.brand) {
+        if (typeof p_jobj.brand != "undefined") {
             this.brand = p_jobj.brand;
+        }
+
+        if (typeof p_jobj.title != "undefined") {
+            this.title = p_jobj.title;
+        }
+
+        if (typeof p_jobj.favicon != "undefined") {
+            this.favicon = p_jobj.favicon;
         }
 
         if (p_jobj.markdown) {
             let md = p_jobj.markdown;
-            if (md.html) {
+            if (typeof md.html != "undefined") {
                 this.markdown.html = md.html;
             }
 
-            if (md.breaks) {
+            if (typeof md.breaks != "undefined") {
                 this.markdown.breaks = md.breaks;
             }
 
-            if (md.linkify) {
+            if (typeof md.linkify != "undefined") {
                 this.markdown.linkify = md.linkify;
             }
 
-            if (md.typographer) {
+            if (typeof md.typographer != "undefined") {
                 this.markdown.typographer = md.typographer;
             }
 
-            if (md.langPrefix) {
+            if (typeof md.langPrefix != "undefined") {
                 this.markdown.langPrefix = md.langPrefix;
             }
 
-            if (md.imageCaption) {
+            if (typeof md.imageCaption != "undefined") {
                 this.markdown.imageCaption = md.imageCaption;
             }
 
-            if (md.plantUMLServer) {
+            if (typeof md.plantUMLServer != "undefined") {
                 this.markdown.plantUMLServer = md.plantUMLServer;
             }
 
-            if (md.plantUMLFormat) {
+            if (typeof md.plantUMLFormat != "undefined") {
                 this.markdown.plantUMLFormat = md.plantUMLFormat;
             }
 
-            if (md.codeBlockLineNumber) {
+            if (typeof md.codeBlockLineNumber != "undefined") {
                 this.markdown.codeBlockLineNumber = md.codeBlockLineNumber;
             }
         }

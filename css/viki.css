@@ -240,7 +240,7 @@ x-eqs > span {
 }
 /* Mathjax */
 
-.bd-toc {
+.viki-toc {
     position: -webkit-sticky;
     position: sticky;
     top: 4rem;
@@ -251,14 +251,38 @@ x-eqs > span {
     font-size: .875rem;
 }
 
-.bd-toc > ul {
+.viki-toc > ul {
     border-left: 1px solid #ddd;
 }
 
-.bd-toc ul {
+.viki-toc ul {
     list-style-type: none;
 }
 
-.bd-toc a {
+.viki-toc a {
     color: #808080;
+}
+
+@media (min-width: 768px) {
+    .viki-navbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1071;
+    }
+}
+
+.viki-navbar {
+    min-height: 4rem;
+    background-color: #00796B;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+/* Tricks for sticky header. */
+.viki-content > h1[id]::before, .viki-content > h2[id]::before, .viki-content > h3[id]::before, .viki-content > h4[id]::before, .viki-content > h5[id]::before, .viki-content > h6[id]::before {
+    display: block;
+    height: 6rem;
+    margin-top: -6rem;
+    visibility: hidden;
+    content: "";
 }

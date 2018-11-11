@@ -65,6 +65,8 @@ class MarkdownIt {
         this.plantUMLClass = 'viki-plantuml-diagram';
         this.plantUMLCodeClass = 'viki-plantuml-code';
 
+        this.inpageTocClass = 'viki-inpage-toc';
+
         this.mdit = window.markdownit({
             html: this.config.html,
             breaks: this.config.breaks,
@@ -177,7 +179,7 @@ class MarkdownIt {
 
         let needToc = -1 != p_md.search(/(\n|^)\[toc\]/i);
         if (needToc) {
-            html = html.replace(/<p>\[TOC\]<\/p>/ig, '<div class="viki-toc"></div>');
+            html = html.replace(/<p>\[TOC\]<\/p>/ig, '<div class="' + this.inpageTocClass + '"></div>');
         }
 
         p_containerNode.html(html);
@@ -220,11 +222,12 @@ class MarkdownIt {
         let removeToc = this.toc.length == 0;
 
         // Add it to html.
-        let eles = p_node.find('.viki-toc');
+        let eles = p_node.find('.' + this.inpageTocClass);
         if (removeToc) {
             eles.remove();
         } else {
             eles.html(tocTree);
+            utils.rewriteAnchorInToc(eles);
         }
     }
 

@@ -90,6 +90,65 @@ class Utils {
         front = '<ul>' + front + '</ul>';
         return front;
     }
+
+    rewriteAnchorInToc(p_tocNode) {
+        p_tocNode.find('a').click(function(p_e) {
+            p_e.preventDefault();
+
+            let href = p_e.target.getAttribute('href');
+            let idx = href.lastIndexOf('#');
+            if (idx != -1) {
+                href = href.substring(idx);
+                if (href) {
+                    let header = $(href);
+                    if (header.length > 0) {
+                        header[0].scrollIntoView();
+                    }
+                }
+            }
+        });
+    }
+
+    isRelativeUrl(p_url) {
+        return p_url.indexOf('://') === -1;
+    }
+
+    isRelativePath(p_path) {
+        if (typeof p_path == "undefined" ||
+            p_path.startsWith('/')) {
+            return false;
+        }
+
+        return true;
+    }
+
+    cleanPath(p_path) {
+        if (p_path.indexOf('/') === -1) {
+            return p_path;
+        }
+
+        let absolute = p_path.startsWith('/');
+
+        // Split it.
+        let newParts = [];
+        let parts = p_path.split('/');
+        for (let i = 0; i < parts.length; ++i) {
+            if (!parts[i] || parts[i] === '.') {
+                continue;
+            }
+
+            if (parts[i] === '..') {
+                if (newParts.length > 0) {
+                    newParts.pop();
+                    continue;
+                }
+            }
+
+            newParts.push(parts[i]);
+        }
+
+        return (absolute ? '/' : '') + newParts.join('/');
+    }
 }
 
 export default Utils;

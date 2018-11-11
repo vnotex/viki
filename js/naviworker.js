@@ -1,5 +1,6 @@
 import logger from "./logger.js";
 import Worker from "./worker.js";
+import LinkRewriter from "./linkrewriter.js";
 
 class NaviItem {
     constructor() {
@@ -132,7 +133,7 @@ class NaviWorker extends Worker {
     }
 
     renderNaviBar() {
-        let navbar = $(`<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top bd-navbar"></nav>`);
+        let navbar = $(`<nav class="navbar navbar-expand-md navbar-dark flex-row viki-navbar"></nav>`);
 
         // Brand.
         let brand = $(`<a class="navbar-brand" href="#">${this.viki.config.brand}</a>`);
@@ -169,6 +170,9 @@ class NaviWorker extends Worker {
             navDiv.append(navUl);
             navbar.append(navDiv);
         }
+
+        let linkRewriter = new LinkRewriter();
+        linkRewriter.rewriteLinks(navbar, this.viki.info.target, '');
 
         $('body').append(navbar);
     }
