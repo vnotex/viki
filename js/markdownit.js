@@ -199,6 +199,8 @@ class MarkdownIt {
 
         this.renderPlantUML(p_containerNode, this.config.langPrefix + 'puml');
 
+        this.makeImageFluid(p_containerNode);
+
         this.addClassToCodeBlock(p_containerNode);
 
         if (this.config.codeBlockLineNumber) {
@@ -552,6 +554,18 @@ class MarkdownIt {
                               ["Typeset", MathJax.Hub, eles, postProcessMathJax]);
         } catch (err) {
             console.log("err", err);
+        }
+    }
+
+    makeImageFluid(p_node) {
+        let imgs = p_node.find('img');
+        for (let i = 0; i < imgs.length; ++i) {
+            let img = imgs[i];
+            if (img.id === 'image-view') {
+                continue;
+            }
+
+            img.classList.add('img-fluid');
         }
     }
 }

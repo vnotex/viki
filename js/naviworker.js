@@ -5,6 +5,7 @@ class NaviItem {
     constructor() {
         this.text = "";
         this.target = "";
+        this.toc = true;
 
         // Only 2 levels.
         this.children = [];
@@ -13,6 +14,10 @@ class NaviItem {
     readFromJson(p_jobj) {
         this.text = p_jobj.text;
         this.target = p_jobj.target;
+
+        if (p_jobj.toc != null) {
+            this.toc = p_jobj.toc;
+        }
 
         if (!this.target) {
             if (!p_jobj.children || p_jobj.children.length == 0) {
@@ -25,6 +30,10 @@ class NaviItem {
                 child.target = p_jobj.children[i].target;
                 if (!child.target) {
                     return false;
+                }
+
+                if (p_jobj.children[i].toc != null) {
+                    child.toc = p_jobj.children[i].toc;
                 }
 
                 this.children.push(child);
@@ -148,6 +157,8 @@ class NaviWorker extends Worker {
                     var it = items[i].matchTarget(this.viki.info.target);
                     if (it) {
                         activeItem = it;
+
+                        this.viki.info.toc = it.toc;
                     }
                 }
 
