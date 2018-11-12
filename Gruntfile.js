@@ -8,7 +8,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'tmp/viki.transpiled.min.js': ['tmp/viki.transpiled.js']
                 }
             }
         },
@@ -21,6 +21,12 @@ module.exports = function(grunt) {
             dist: {
                 // the files to concatenate
                 src: ['tmp/libs/**/*.js', 'tmp/viki.transpiled.js'],
+                // the location of the resulting JS file
+                dest: 'dist/js/<%= pkg.name %>.js'
+            },
+            release: {
+                // the files to concatenate
+                src: ['tmp/libs/**/*.js', 'tmp/viki.transpiled.min.js'],
                 // the location of the resulting JS file
                 dest: 'dist/js/<%= pkg.name %>.js'
             }
@@ -115,6 +121,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
 
     // the default task can be run just by typing "grunt" on the command line
-    grunt.registerTask('default', ['jshint', 'copy:pre', 'browserify', 'concat', 'copy:post', 'clean:tmp']);
+    grunt.registerTask('default', ['jshint', 'copy:pre', 'browserify', 'concat:dist', 'copy:post', 'clean:tmp']);
+    grunt.registerTask('release', ['jshint', 'copy:pre', 'browserify', 'uglify', 'concat:release', 'copy:post', 'clean:tmp']);
     grunt.registerTask('watcher', ['watch']);
 };

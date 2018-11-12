@@ -136,7 +136,12 @@ class NaviWorker extends Worker {
         let navbar = $(`<nav class="navbar navbar-expand-md navbar-dark flex-row viki-navbar"></nav>`);
 
         // Brand.
-        let brand = $(`<a class="navbar-brand" href="#">${this.viki.config.brand}</a>`);
+        let brandHtml = this.viki.config.brand;
+        if (this.viki.config.brandIcon) {
+            brandHtml = `<img class="d-block" width="36" height="36" src="${this.viki.config.brandIcon}"/>`;
+        }
+
+        let brand = $(`<a class="navbar-brand" href="#">${brandHtml}</a>`);
         navbar.append(brand);
 
         // Toggle button.

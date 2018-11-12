@@ -4,6 +4,7 @@ import Worker from "./worker.js";
 class Config {
     constructor() {
         this.brand = "viki";
+        this.brandIcon = "";
         this.title = "Viki - Wiki page from notebook of VNote";
         this.favicon = "https://github.com/tamlok/vnote/raw/master/src/resources/icons/vnote.ico";
         this.markdown = {
@@ -22,6 +23,10 @@ class Config {
     readFromJson(p_jobj) {
         if (typeof p_jobj.brand != "undefined") {
             this.brand = p_jobj.brand;
+        }
+
+        if (typeof p_jobj.brandIcon != "undefined") {
+            this.brandIcon = p_jobj.brandIcon;
         }
 
         if (typeof p_jobj.title != "undefined") {
