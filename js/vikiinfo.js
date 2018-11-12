@@ -12,8 +12,8 @@ class VikiInfo {
         // Whether enable toc.
         this.toc = true;
 
-        // Whether enable navigation panel.
-        this.navi = false;
+        // Navigation file for this target.
+        this.naviFile = '';
 
         // Data of the target file.
         this.data = null;

@@ -19,8 +19,7 @@ class FetchTargetWorker extends Worker {
         }
 
         $.get(info.target, (p_data) => {
-            logger.log("FetchTargetWorker: data fetched", p_data.length);
-
+            logger.log("FetchTargetWorker: data fetched");
             this.viki.info.data = p_data;
 
             this.viki.scheduleNext();

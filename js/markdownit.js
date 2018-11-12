@@ -175,6 +175,11 @@ class MarkdownIt {
         this.toc = [];
         this.frontMatterText = null;
 
+        if (!p_md) {
+            p_containerNode.empty();
+            return;
+        }
+
         let html = this.mdit.render(p_md);
 
         let needToc = -1 != p_md.search(/(\n|^)\[toc\]/i);

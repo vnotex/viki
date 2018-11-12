@@ -3,6 +3,7 @@ import Worker from "./worker.js";
 import MarkdownRenderer from "./markdownrenderer.js";
 import TocRenderer from "./tocrenderer.js";
 import LinkRewriter from "./linkrewriter.js";
+import NavigationRenderer from "./navigationrenderer.js";
 
 // Render data from this.viki.info.data.
 // - Navigation Panel for notebook's note;
@@ -46,6 +47,13 @@ class ContentWorker extends Worker {
             }
         }
 
+        // Render the navigation tree.
+        if (info.naviFile) {
+            let container = $('#' + info.naviContainerId);
+            let navier = new NavigationRenderer(container);
+            navier.render(info.naviFile, info.target);
+        }
+
         this.viki.scheduleNext();
     }
 
@@ -57,14 +65,14 @@ class ContentWorker extends Worker {
             info.tocContainerId = 'viki-toc';
         }
 
-        if (info.navi) {
+        if (info.naviFile) {
             info.naviContainerId = 'viki-navi';
         }
 
         let mainDiv = $(`<div class="container-fluid"></div>`);
 
         let containerDivClass = 'row flex-xl-nowrap';
-        if (!info.navi) {
+        if (!info.naviFile) {
             containerDivClass += ' justify-content-md-center';
         }
 
@@ -76,18 +84,21 @@ class ContentWorker extends Worker {
         let tocDivClass = null;
 
         if (info.toc) {
-            if (info.navi) {
+            if (info.naviFile) {
                 // Three panels.
-                // TODO.
+                naviDivClass = "col-12 col-md-3 col-lg-2 viki-sidebar";
+                contentDivClass = "col-12 col-md-9 col-lg-8 py-md-3 pl-md-5 viki-content";
+                tocDivClass = "d-none d-lg-block col-lg-2 viki-toc";
             } else {
                 // Two panels.
                 contentDivClass = "col-12 col-md-9 col-lg-8 col-xl-8 py-md-3 pl-md-5 viki-content";
                 tocDivClass = "d-none d-md-block col-md-3 col-lg-3 col-xl-2 viki-toc";
             }
         } else {
-            if (info.navi) {
+            if (info.naviFile) {
                 // Two panels.
-                // TODO.
+                naviDivClass = "col-12 col-md-3 viki-sidebar";
+                contentDivClass = "col-12 col-md-9 py-md-3 pl-md-5 viki-content";
             } else {
                 // Single panels.
                 contentDivClass = "col-12 col-md-9 py-md-3 pl-md-5 viki-content";
@@ -99,7 +110,7 @@ class ContentWorker extends Worker {
         let tocDiv = null;
 
         if (naviDivClass) {
-
+            naviDiv = $(`<div id="${info.naviContainerId}" class="${naviDivClass}"></div>`);
         }
 
         if (contentDivClass) {

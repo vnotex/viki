@@ -263,6 +263,12 @@ x-eqs > span {
     color: #808080;
 }
 
+.viki-navbar {
+    min-height: 4rem;
+    background-color: #00796B;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
 @media (min-width: 768px) {
     .viki-navbar {
         position: -webkit-sticky;
@@ -272,12 +278,6 @@ x-eqs > span {
     }
 }
 
-.viki-navbar {
-    min-height: 4rem;
-    background-color: #00796B;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
-}
-
 /* Tricks for sticky header. */
 .viki-content > h1[id]::before, .viki-content > h2[id]::before, .viki-content > h3[id]::before, .viki-content > h4[id]::before, .viki-content > h5[id]::before, .viki-content > h6[id]::before {
     display: block;
@@ -285,4 +285,26 @@ x-eqs > span {
     margin-top: -6rem;
     visibility: hidden;
     content: "";
+}
+
+.viki-sidebar {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+@media (min-width: 768px) {
+    .viki-sidebar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 4rem;
+        z-index: 1000;
+        height: calc(100vh - 4rem);
+        border-right: 1px solid rgba(0,0,0,.1);
+    }
+}
+
+@media (min-width: 1200px) {
+    .viki-sidebar {
+        -ms-flex: 0 1 320px;
+        flex: 0 1 320px;
+    }
 }

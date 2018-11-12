@@ -4,9 +4,17 @@ import LinkRewriter from "./linkrewriter.js";
 
 class NaviItem {
     constructor() {
+        // Text to display.
         this.text = "";
+
+        // Target of this item.
         this.target = "";
+
+        // Whether display toc for this item.
         this.toc = true;
+
+        // Whether display navigation tree for this item.
+        this.navi = false;
 
         // Only 2 levels.
         this.children = [];
@@ -18,6 +26,10 @@ class NaviItem {
 
         if (p_jobj.toc != null) {
             this.toc = p_jobj.toc;
+        }
+
+        if (p_jobj.navi != null) {
+            this.navi = p_jobj.navi;
         }
 
         if (!this.target) {
@@ -35,6 +47,10 @@ class NaviItem {
 
                 if (p_jobj.children[i].toc != null) {
                     child.toc = p_jobj.children[i].toc;
+                }
+
+                if (p_jobj.children[i].navi != null) {
+                    child.navi = p_jobj.children[i].navi;
                 }
 
                 this.children.push(child);
@@ -164,7 +180,11 @@ class NaviWorker extends Worker {
                     if (it) {
                         activeItem = it;
 
+                        // Update info according to hit target.
                         this.viki.info.toc = it.toc;
+                        if (it.navi) {
+                            this.viki.info.naviFile = it.target;
+                        }
                     }
                 }
 
