@@ -3,10 +3,10 @@ import Worker from "./worker.js";
 
 class Config {
     constructor() {
-        this.brand = "viki";
+        this.brand = "Viki";
         this.brandIcon = "";
-        this.title = "Viki - Wiki page from notebook of VNote";
-        this.favicon = "https://github.com/tamlok/vnote/raw/master/src/resources/icons/vnote.ico";
+        this.title = "Viki - A simple Wiki page in Markdown from notebook of VNote";
+        this.favicon = "https://github.com/tamlok/viki/raw/master/resources/viki.ico";
         this.markdown = {
             html: true,
             breaks: false,
