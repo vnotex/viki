@@ -109,6 +109,44 @@ class NaviItem {
     }
 }
 
+class ActionItem {
+    constructor(p_text = '', p_icon = '', p_target = '') {
+        this.text = p_text;
+        this.icon = p_icon;
+        this.target = p_target;
+    }
+
+    readFromJson(p_jobj) {
+        if (p_jobj.text != null) {
+            this.text = p_jobj.text;
+        }
+
+        if (p_jobj.icon != null) {
+            this.icon = p_jobj.icon;
+        }
+
+        if (p_jobj.target != null) {
+            this.target = p_jobj.target;
+        }
+
+        return true;
+    }
+
+    toLi() {
+        let li = $(`<li class="nav-item"></li>`);
+        let a = $(`<a class="nav-link p-2" href="${this.target}" target="_blank" rel="noopener" aria-label="${this.text}"></a>`);
+        if (this.icon) {
+            let img = $(`<img class="navbar-nav-icon" src="${this.icon}" title="${this.text}"/>`);
+            a.append(img);
+        } else {
+            a.text(this.text);
+        }
+
+        li.append(a);
+        return li;
+    }
+}
+
 class NaviWorker extends Worker {
     constructor() {
         super();
@@ -121,6 +159,7 @@ class NaviWorker extends Worker {
 
     run() {
         $.get("navigation.json", (p_data) => {
+            // Navigations.
             let items = [];
             if (p_data.navigation) {
                 for (let i = 0; i < p_data.navigation.length; ++i) {
@@ -133,19 +172,39 @@ class NaviWorker extends Worker {
                 }
             }
 
-            logger.log("navigation:", items);
             this.viki.naviItems = items;
-
             let activeItem = this.routeTarget();
-
             this.renderNaviBar(activeItem);
+
+            // Actions.
+            let actions = [];
+            if (p_data.actions) {
+                for (let i = 0; i < p_data.actions.length; ++i) {
+                    let ac = new ActionItem();
+                    if (!ac.readFromJson(p_data.actions[i])) {
+                        continue;
+                    }
+
+                    actions.push(ac);
+                }
+            }
+
+            /* ATTENTION: As an additional aggrement to the license, removing or hiding
+               the following action is not allowed.
+             */
+            actions.push(new ActionItem('Viki',
+                                        'https://github.com/tamlok/viki/raw/master/resources/viki_white.png',
+                                        'https://tamlok.github.io/viki/'));
+
+
+            this.renderActionBar(actions);
 
             this.viki.scheduleNext();
         });
     }
 
     renderNaviBar(p_activeItem) {
-        let navbar = $(`<nav class="navbar navbar-expand-md navbar-dark flex-row viki-navbar"></nav>`);
+        let navbar = $(`<nav id="viki-navbar", class="navbar navbar-expand-md navbar-dark flex-row viki-navbar"></nav>`);
 
         // Brand.
         let brandHtml = this.viki.config.brand;
@@ -249,6 +308,17 @@ class NaviWorker extends Worker {
         }
 
         return activeItem;
+    }
+
+    renderActionBar(p_actionItems) {
+        let ul = $(`<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex"></ul>`);
+
+        for (let i = 0; i < p_actionItems.length; ++i) {
+            let li = p_actionItems[i].toLi();
+            ul.append(li);
+        }
+
+        $("#viki-navbar").append(ul);
     }
 }
 
