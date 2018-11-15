@@ -7,6 +7,7 @@ class Config {
         this.brandIcon = "";
         this.title = "Viki - A simple Wiki page in Markdown from notebook of VNote";
         this.favicon = "https://github.com/tamlok/viki/raw/master/resources/viki.ico";
+        this.footer = "";
         this.markdown = {
             html: true,
             breaks: false,
@@ -35,6 +36,10 @@ class Config {
 
         if (typeof p_jobj.favicon != "undefined") {
             this.favicon = p_jobj.favicon;
+        }
+
+        if (p_jobj.footer != null) {
+            this.footer = p_jobj.footer;
         }
 
         if (p_jobj.markdown) {
@@ -89,7 +94,7 @@ class ConfigWorker extends Worker {
     }
 
     run() {
-        $.get("config.json", (p_data) => {
+        $.get("viki.json", (p_data) => {
             let config = new Config();
             config.readFromJson(p_data);
 

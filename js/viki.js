@@ -5,6 +5,7 @@ import PageWorker from "./pageworker.js";
 import { NaviItem, NaviWorker } from "./naviworker.js";
 import FetchTargetWorker from "./fetchtargetworker.js";
 import ContentWorker from "./contentworker.js";
+import FooterWorker from "./footerworker.js";
 
 class Viki {
     constructor() {
@@ -39,6 +40,9 @@ class Viki {
 
         let contentWorker = new ContentWorker();
         registerWorker(contentWorker);
+
+        let footerWorker = new FooterWorker();
+        registerWorker(footerWorker);
 
         $(document).ready(() => {
             if (!this.initTargetFromHash()) {

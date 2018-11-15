@@ -283,17 +283,6 @@ x-eqs > span {
     }
 }
 
-/* Tricks for sticky header. */
-@media (min-width: 768px) {
-    .viki-content > h1[id]::before, .viki-content > h2[id]::before, .viki-content > h3[id]::before, .viki-content > h4[id]::before, .viki-content > h5[id]::before, .viki-content > h6[id]::before {
-        display: block;
-        height: 6rem;
-        margin-top: -6rem;
-        visibility: hidden;
-        content: "";
-    }
-}
-
 .viki-content > h1[id], .viki-content > h2[id], .viki-content > h3[id], .viki-content > h4[id], .viki-content > h5[id], .viki-content > h6[id] {
     pointer-events: none;
 }
@@ -308,6 +297,17 @@ x-eqs > span {
 
 .viki-content {
     margin-top: 1rem;
+}
+
+/* Tricks for sticky header. */
+@media (min-width: 768px) {
+    .viki-content > h1[id]::before, .viki-content > h2[id]::before, .viki-content > h3[id]::before, .viki-content > h4[id]::before, .viki-content > h5[id]::before, .viki-content > h6[id]::before {
+        display: block;
+        height: 6rem;
+        margin-top: -6rem;
+        visibility: hidden;
+        content: "";
+    }
 }
 
 .viki-sidebar {
@@ -376,4 +376,32 @@ x-eqs > span {
     background-image: url('file.svg') !important;
     background-size: cover !important;
     opacity: 0.6;
+}
+
+.viki-footer {
+    font-size: 85%;
+    text-align: center;
+    background-color: #eeeeee;
+}
+
+@media (min-width: 576px) {
+    .viki-footer {
+        text-align: left;
+    }
+}
+
+.viki-footer p {
+    margin-bottom: 0;
+}
+
+.viki-footer a {
+    font-weight: 500;
+    color: #495057;
+}
+
+.viki-footer-row {
+}
+
+.viki-footer-viki {
+    opacity: 0.8;
 }

@@ -54,7 +54,7 @@ class ContentWorker extends Worker {
             info.naviContainerId = 'viki-navi';
         }
 
-        let mainDiv = $(`<div class="container-fluid"></div>`);
+        let mainDiv = $(`<div id="viki-main-container" class="container-fluid"></div>`);
 
         let containerDivClass = 'row flex-xl-nowrap';
         if (!info.naviFile) {
