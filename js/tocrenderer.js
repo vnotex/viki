@@ -12,6 +12,8 @@ class TocRenderer {
         this.containerNode.empty();
         this.toc = [];
 
+        let utils = new Utils();
+
         // Fetch the outline.
         let headers = p_contentNode.find('h1, h2, h3, h4, h5, h6');
         for (let i = 0; i < headers.length; ++i) {
@@ -20,7 +22,7 @@ class TocRenderer {
             this.toc.push({
                 level: parseInt(header.tagName.substr(1)),
                 anchor: header.id,
-                title: header.textContent
+                title: utils.escapeHtml(header.textContent)
             });
         }
 
@@ -28,7 +30,6 @@ class TocRenderer {
             return;
         }
 
-        let utils = new Utils();
         let tocTree = utils.tocToTree(this.toc);
         this.containerNode.html(tocTree);
         utils.rewriteAnchorInToc(this.containerNode);

@@ -4,6 +4,7 @@ import MarkdownRenderer from "./markdownrenderer.js";
 import TocRenderer from "./tocrenderer.js";
 import LinkRewriter from "./linkrewriter.js";
 import NavigationRenderer from "./navigationrenderer.js";
+import Utils from "./utils.js";
 
 // Render data from this.viki.info.data.
 // - Navigation Panel for notebook's note;
@@ -22,36 +23,20 @@ class ContentWorker extends Worker {
     run() {
         this.renderSkelecton();
 
-        let linkRewriter = new LinkRewriter();
+        this.renderContentAndToc();
 
         let info = this.viki.info;
-        if (this.isMarkdown(info.target)) {
-            let container = $('#' + info.contentContainerId);
-            let mder = new MarkdownRenderer(container);
-            mder.render(this.viki.config.markdown, info.data);
-            linkRewriter.rewriteLinks(container, info.target, info.baseUrl);
-        }
-
-        if (info.toc) {
-            let container = $('#' + info.tocContainerId);
-            let tocer = new TocRenderer(container);
-            tocer.render($('#' + info.contentContainerId));
-            linkRewriter.rewriteLinks(container, info.target, info.baseUrl);
-        }
-
-        // Scroll to anchor.
-        if (info.anchor) {
-            let header = $('#' + info.contentContainerId + ' #' + info.anchor);
-            if (header.length > 0) {
-                header[0].scrollIntoView();
-            }
-        }
-
         // Render the navigation tree.
-        if (info.naviFile) {
+        if (info.naviContainerId) {
             let container = $('#' + info.naviContainerId);
-            let navier = new NavigationRenderer(container);
-            navier.render(info.naviFile, info.target);
+            let navier = new NavigationRenderer(container, this);
+
+            if (info.naviIndex && info.naviFile === info.target) {
+                navier.render(info.naviFile, info.naviIndex, true);
+            } else {
+                // Otherwise, no need to let navier load target.
+                navier.render(info.naviFile, info.target, false);
+            }
         }
 
         this.viki.scheduleNext();
@@ -138,6 +123,51 @@ class ContentWorker extends Worker {
 
     isMarkdown(p_name) {
         return p_name.endsWith('.md');
+    }
+
+    renderFileInternal(p_file) {
+        // Fetch p_file.
+        $.get(p_file, (p_data) => {
+            // Update the info.
+            let info = this.viki.info;
+            info.setTarget(p_file);
+            info.data = p_data;
+
+            let utils = new Utils();
+            utils.updateHashSilently('#!' + p_file);
+
+            this.renderContentAndToc();
+        });
+    }
+
+    renderContentAndToc() {
+        let info = this.viki.info;
+        let linkRewriter = new LinkRewriter();
+        if (info.contentContainerId) {
+            if (this.isMarkdown(info.target)) {
+                let container = $('#' + info.contentContainerId);
+                let mder = new MarkdownRenderer(container);
+                mder.render(this.viki.config.markdown, info.data);
+                linkRewriter.rewriteLinks(container, info.target, info.baseUrl);
+            }
+        }
+
+        if (info.tocContainerId) {
+            let container = $('#' + info.tocContainerId);
+            let tocer = new TocRenderer(container);
+            tocer.render($('#' + info.contentContainerId));
+            linkRewriter.rewriteLinks(container, info.target, info.baseUrl);
+        }
+
+        $(window).scrollTop(0);
+
+        // Scroll to anchor.
+        if (info.anchor) {
+            let header = $('#' + info.contentContainerId + ' #' + info.anchor);
+            if (header.length > 0) {
+                header[0].scrollIntoView();
+            }
+        }
     }
 }
 

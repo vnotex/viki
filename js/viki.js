@@ -18,6 +18,8 @@ class Viki {
     }
 
     init() {
+        window.viki_silent_hash = false;
+
         let registerWorker = (p_worker) => {
             p_worker.register(this);
             this.workers.push(p_worker);
@@ -44,6 +46,11 @@ class Viki {
             }
 
             $(window).bind('hashchange', function() {
+                if (window.viki_silent_hash) {
+                    window.viki_silent_hash = false;
+                    return;
+                }
+
                 window.location.reload(false);
             });
 

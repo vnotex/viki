@@ -284,12 +284,30 @@ x-eqs > span {
 }
 
 /* Tricks for sticky header. */
-.viki-content > h1[id]::before, .viki-content > h2[id]::before, .viki-content > h3[id]::before, .viki-content > h4[id]::before, .viki-content > h5[id]::before, .viki-content > h6[id]::before {
-    display: block;
-    height: 6rem;
-    margin-top: -6rem;
-    visibility: hidden;
-    content: "";
+@media (min-width: 768px) {
+    .viki-content > h1[id]::before, .viki-content > h2[id]::before, .viki-content > h3[id]::before, .viki-content > h4[id]::before, .viki-content > h5[id]::before, .viki-content > h6[id]::before {
+        display: block;
+        height: 6rem;
+        margin-top: -6rem;
+        visibility: hidden;
+        content: "";
+    }
+}
+
+.viki-content > h1[id], .viki-content > h2[id], .viki-content > h3[id], .viki-content > h4[id], .viki-content > h5[id], .viki-content > h6[id] {
+    pointer-events: none;
+}
+
+.viki-content > h1[id] > a, .viki-content > h2[id] > a, .viki-content > h3[id] > a, .viki-content > h4[id] > a, .viki-content > h5[id] > a, .viki-content > h6[id] > a {
+    pointer-events: auto;
+}
+
+.viki-content > h1[id] > div, .viki-content > h2[id] > div, .viki-content > h3[id] > div, .viki-content > h4[id] > div, .viki-content > h5[id] > div, .viki-content > h6[id] > div {
+    pointer-events: auto;
+}
+
+.viki-content {
+    margin-top: 1rem;
 }
 
 .viki-sidebar {
@@ -312,4 +330,50 @@ x-eqs > span {
         -ms-flex: 0 1 320px;
         flex: 0 1 320px;
     }
+}
+
+.viki-search {
+    position: relative;
+    padding: 1rem 15px;
+    margin-right: -15px;
+    margin-left: -15px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.algolia-autocomplete {
+    display: block!important;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.viki-search-docs-toggle {
+    line-height: 1;
+    color: #212529;
+}
+
+.viki-links {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media (min-width: 768px) {
+    .viki-links {
+        max-height: calc(100vh - 9rem);
+        overflow-y: auto;
+        display: block!important;
+    }
+}
+
+.viki-jstree-folder-icon {
+    background-image: url('folder.svg') !important;
+    background-size: cover !important;
+    opacity: 0.6;
+}
+
+.viki-jstree-file-icon {
+    background-image: url('file.svg') !important;
+    background-size: cover !important;
+    opacity: 0.6;
 }

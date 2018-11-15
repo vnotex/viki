@@ -92,17 +92,20 @@ class Utils {
     }
 
     rewriteAnchorInToc(p_tocNode) {
-        p_tocNode.find('a').click(function(p_e) {
+        p_tocNode.find('a').click((p_e) => {
             p_e.preventDefault();
 
             let href = p_e.target.getAttribute('href');
             let idx = href.lastIndexOf('#');
             if (idx != -1) {
-                href = href.substring(idx);
-                if (href) {
-                    let header = $(href);
+                let anchor = href.substring(idx);
+                if (anchor) {
+                    let header = $(anchor);
                     if (header.length > 0) {
                         header[0].scrollIntoView();
+
+                        // Change the hash.
+                        this.updateHashSilently(href);
                     }
                 }
             }
@@ -148,6 +151,55 @@ class Utils {
         }
 
         return (absolute ? '/' : '') + newParts.join('/');
+    }
+
+    baseOfPath(p_path) {
+        let idx = p_path.lastIndexOf('/');
+        return p_path.substring(0, idx + 1);
+    }
+
+    fileNameOfPath(p_path) {
+        let idx = p_path.lastIndexOf('/');
+        return p_path.substring(idx + 1);
+    }
+
+    // Escape @p_text to Html.
+    escapeHtml(p_text) {
+        var map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+
+        return p_text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    // Update the hash of the url without re-loading.
+    updateHashSilently(p_hash) {
+        window.viki_silent_hash = true;
+        window.location.hash = p_hash;
+    }
+
+    // Whether @p_a and @p_b is equal.
+    pathEqual(p_a, p_b) {
+        let a = this.cleanPath(p_a.toLowerCase());
+        let b = this.cleanPath(p_b.toLowerCase());
+
+        return a === b;
+    }
+
+    // Whether @p_b is sub path of @p_a.
+    isSubPath(p_a, p_b) {
+        if (!p_a) {
+            return false;
+        }
+
+        let a = this.cleanPath(p_a.toLowerCase());
+        let b = this.cleanPath(p_b.toLowerCase());
+
+        return b.startsWith(a);
     }
 }
 

@@ -1,6 +1,7 @@
 import logger from "./logger.js";
 import Worker from "./worker.js";
 import LinkRewriter from "./linkrewriter.js";
+import Utils from "./utils.js";
 
 class NaviItem {
     constructor() {
@@ -16,7 +17,11 @@ class NaviItem {
         // Whether display navigation tree for this item.
         this.navi = false;
 
+        // If @navi is true, this hold the start page of that navigation item.
+        this.naviIndex = "";
+
         // Only 2 levels.
+        // If not empty, only the text filed of this item is valid.
         this.children = [];
     }
 
@@ -30,6 +35,10 @@ class NaviItem {
 
         if (p_jobj.navi != null) {
             this.navi = p_jobj.navi;
+        }
+
+        if (this.navi && p_jobj.naviIndex != null) {
+            this.naviIndex = p_jobj.naviIndex;
         }
 
         if (!this.target) {
@@ -98,21 +107,6 @@ class NaviItem {
 
         return li;
     }
-
-    // Return the item that match @target.
-    matchTarget(target) {
-        if (this.children.length > 0) {
-            for (let i = 0; i < this.children.length; ++i) {
-                if (this.children[i].target === target) {
-                    return this.children[i];
-                }
-            }
-        } else if (this.target === target) {
-            return this;
-        }
-
-        return null;
-    }
 }
 
 class NaviWorker extends Worker {
@@ -142,13 +136,15 @@ class NaviWorker extends Worker {
             logger.log("navigation:", items);
             this.viki.naviItems = items;
 
-            this.renderNaviBar();
+            let activeItem = this.routeTarget();
+
+            this.renderNaviBar(activeItem);
 
             this.viki.scheduleNext();
         });
     }
 
-    renderNaviBar() {
+    renderNaviBar(p_activeItem) {
         let navbar = $(`<nav class="navbar navbar-expand-md navbar-dark flex-row viki-navbar"></nav>`);
 
         // Brand.
@@ -172,23 +168,8 @@ class NaviWorker extends Worker {
             let navUl = $(`<ul class="navbar-nav mr-auto"></ul>`);
 
             let items = this.viki.naviItems;
-            let activeItem = null;
             for (let i = 0; i < items.length; ++i) {
-                if (!activeItem) {
-                    // Find active item according to current target.
-                    var it = items[i].matchTarget(this.viki.info.target);
-                    if (it) {
-                        activeItem = it;
-
-                        // Update info according to hit target.
-                        this.viki.info.toc = it.toc;
-                        if (it.navi) {
-                            this.viki.info.naviFile = it.target;
-                        }
-                    }
-                }
-
-                let navLi = items[i].toLi(activeItem);
+                let navLi = items[i].toLi(p_activeItem);
                 navUl.append(navLi);
             }
 
@@ -200,6 +181,74 @@ class NaviWorker extends Worker {
         linkRewriter.rewriteLinks(navbar, this.viki.info.target, '');
 
         $('body').append(navbar);
+    }
+
+    // Route current access target through navigation items.
+    routeTarget() {
+        let items = this.viki.naviItems;
+        let target = this.viki.info.target.toLowerCase();
+
+        let utils = new Utils();
+
+        let matchTarget = function(p_item, p_target) {
+            if (utils.pathEqual(p_item.target, p_target)) {
+                return true;
+            }
+
+            return false;
+        };
+
+        let activeItem = null;
+
+        // First match non-navi items.
+        let naviItems = [];
+        for (let i = 0; i < items.length && !activeItem; ++i) {
+            let item = items[i];
+            if (item.navi) {
+                naviItems.push(item);
+                continue;
+            }
+
+            if (item.children.length > 0) {
+                // Match the child item.
+                for (let j = 0; j < item.children.length; ++j) {
+                    let child = item.children[j];
+                    if (child.navi) {
+                        naviItems.push(child);
+                        continue;
+                    }
+
+                    if (matchTarget(child, target)) {
+                        activeItem = child;
+                        break;
+                    }
+                }
+            } else if (matchTarget(item, target)) {
+                activeItem = item;
+                break;
+            }
+        }
+
+        // Check navi items.
+        for (let i = 0; i < naviItems.length && !activeItem; ++i) {
+            let base = utils.baseOfPath(naviItems[i].target);
+            if (utils.isSubPath(base, target)) {
+                activeItem = naviItems[i];
+                break;
+            }
+        }
+
+        // Update info according to hit target.
+        if (activeItem) {
+            let info = this.viki.info;
+            info.toc = activeItem.toc;
+            if (activeItem.navi) {
+                info.naviFile = activeItem.target;
+                info.naviIndex = info.baseUrl + activeItem.naviIndex;
+            }
+        }
+
+        return activeItem;
     }
 }
 

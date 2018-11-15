@@ -1,3 +1,5 @@
+import Utils from "./utils.js";
+
 class VikiInfo {
     constructor() {
         // Target page specified by user.
@@ -15,6 +17,10 @@ class VikiInfo {
         // Navigation file for this target.
         this.naviFile = '';
 
+        // Index page of navigation file.
+        // Base URL prepended.
+        this.naviIndex = '';
+
         // Data of the target file.
         this.data = null;
 
@@ -27,8 +33,8 @@ class VikiInfo {
         this.target = p_target;
         this.anchor = p_anchor;
 
-        let idx = p_target.lastIndexOf('/');
-        this.baseUrl = p_target.substring(0, idx + 1);
+        let utils = new Utils();
+        this.baseUrl = utils.baseOfPath(p_target);
     }
 }
 
