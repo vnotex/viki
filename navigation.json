@@ -10,9 +10,9 @@
     "actions":
     [
         {
-            "text": "Viki",
-            "icon": "css/viki_white.svg",
-            "target": "https://tamlok.github.io/viki/"
+            "text": "GitHub",
+            "icon": "css/github.svg",
+            "target": "https://github.com/tamlok/viki"
         }
     ]
 }
