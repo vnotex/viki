@@ -4,10 +4,14 @@ import Worker from "./worker.js";
 class Config {
     constructor() {
         this.brand = "Viki";
-        this.brandIcon = "";
+        this.brandIcon = "css/viki_white.svg";
         this.title = "Viki - A simple Wiki page in Markdown from notebook of VNote";
         this.favicon = "https://github.com/tamlok/viki/raw/master/resources/viki.ico";
         this.footer = "";
+        // Whether show suffix in navigation panel.
+        this.showSuffix = false;
+        this.loadBeforeSearch = true;
+        this.fuzzySearch = false;
         this.markdown = {
             html: true,
             breaks: false,
@@ -42,6 +46,18 @@ class Config {
             this.footer = p_jobj.footer;
         }
 
+        if (p_jobj.show_suffix != null) {
+            this.showSuffix = p_jobj.show_suffix;
+        }
+
+        if (p_jobj.load_before_search != null) {
+            this.loadBeforeSearch = p_jobj.load_before_search;
+        }
+
+        if (p_jobj.fuzzy_search != null) {
+            this.fuzzySearch = p_jobj.fuzzy_search;
+        }
+
         if (p_jobj.markdown) {
             let md = p_jobj.markdown;
             if (typeof md.html != "undefined") {
@@ -60,24 +76,24 @@ class Config {
                 this.markdown.typographer = md.typographer;
             }
 
-            if (typeof md.langPrefix != "undefined") {
-                this.markdown.langPrefix = md.langPrefix;
+            if (typeof md.lang_prefix != "undefined") {
+                this.markdown.langPrefix = md.lang_prefix;
             }
 
-            if (typeof md.imageCaption != "undefined") {
-                this.markdown.imageCaption = md.imageCaption;
+            if (typeof md.image_caption != "undefined") {
+                this.markdown.imageCaption = md.image_caption;
             }
 
-            if (typeof md.plantUMLServer != "undefined") {
-                this.markdown.plantUMLServer = md.plantUMLServer;
+            if (typeof md.plantuml_server != "undefined") {
+                this.markdown.plantUMLServer = md.plantuml_server;
             }
 
-            if (typeof md.plantUMLFormat != "undefined") {
-                this.markdown.plantUMLFormat = md.plantUMLFormat;
+            if (typeof md.plantuml_format != "undefined") {
+                this.markdown.plantUMLFormat = md.plantuml_format;
             }
 
-            if (typeof md.codeBlockLineNumber != "undefined") {
-                this.markdown.codeBlockLineNumber = md.codeBlockLineNumber;
+            if (typeof md.code_block_line_number != "undefined") {
+                this.markdown.codeBlockLineNumber = md.code_block_line_number;
             }
         }
     }

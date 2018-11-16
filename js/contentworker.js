@@ -29,7 +29,11 @@ class ContentWorker extends Worker {
         // Render the navigation tree.
         if (info.naviContainerId) {
             let container = $('#' + info.naviContainerId);
-            let navier = new NavigationRenderer(container, this);
+            let navier = new NavigationRenderer(container, this, {
+                showSuffix: this.viki.config.showSuffix,
+                loadBeforeSearch: this.viki.config.loadBeforeSearch,
+                fuzzySearch: this.viki.config.fuzzySearch
+            });
 
             if (info.naviIndex && info.naviFile === info.target) {
                 navier.render(info.naviFile, info.naviIndex, true);

@@ -201,6 +201,16 @@ class Utils {
 
         return b.startsWith(a);
     }
+
+    // The base name without suffix.
+    baseName(p_file) {
+        let idx = p_file.lastIndexOf('.');
+        if (idx == -1) {
+            return p_file;
+        }
+
+        return p_file.substring(0, idx);
+    }
 }
 
 export default Utils;

@@ -398,7 +398,7 @@ x-eqs > span {
 .viki-footer {
     font-size: 85%;
     text-align: center;
-    background-color: #eeeeee;
+    background-color: #EEEEEE;
 }
 
 @media (min-width: 576px) {
@@ -421,4 +421,9 @@ x-eqs > span {
 
 .viki-footer-viki {
     opacity: 0.8;
+}
+
+.form-control:focus {
+  border-color: #00897B;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 137, 123, 0.6);
 }

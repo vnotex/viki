@@ -1,7 +1,8 @@
 import Utils from "./utils.js";
+import logger from "./logger.js";
 
 class NavigationRenderer {
-    constructor(p_node, p_contentWorker) {
+    constructor(p_node, p_contentWorker, p_config) {
         this.containerNode = p_node;
 
         this.fileTree = null;
@@ -16,6 +17,11 @@ class NavigationRenderer {
         this.naviFile = '';
 
         this.contentWorker = p_contentWorker;
+
+        // showSuffix: whether show suffix.
+        // loadBeforeSearch: whether load all nodes before a search.
+        // fuzzySearch: whether do a fuzzy search.
+        this.config = p_config;
     }
 
     // @p_openTarget: whether open target after tree is ready. If false, will
@@ -42,6 +48,9 @@ class NavigationRenderer {
         this.naviFile = utils.fileNameOfPath(p_naviFile);
 
         this.fileTree = tree;
+
+        let showSuffix = this.config.showSuffix;
+        let fuzzySearch = this.config.fuzzySearch;
 
         tree.on('activate_node.jstree', (p_e, p_data) => {
             let node = p_data.node;
@@ -90,6 +99,8 @@ class NavigationRenderer {
                         let nodeFromNaviFile = function(p_opts, p_jobj) {
                             let basePath = p_opts.path + '/';
 
+                            let utils = new Utils();
+
                             let children = [];
                             // Subfolders.
                             for (let i = 0; i < p_jobj.sub_directories.length; ++i) {
@@ -99,12 +110,15 @@ class NavigationRenderer {
                                     text: folder.name,
                                     icon: 'viki-jstree-folder-icon',
                                     a_attr: {
-                                        href: '#!' + basePath + folder.name
+                                        href: '#!' + basePath + folder.name,
+                                        title: folder.name
                                     },
                                     // Make jstree to load its children dynamically when user open it.
                                     children: true,
+
                                     // Viki specific attrs.
                                     v_type: 'folder',
+                                    v_name: folder.name,
                                     // Path of this item without ending /.
                                     v_path: basePath + folder.name
                                 };
@@ -116,14 +130,18 @@ class NavigationRenderer {
                             for (let i = 0; i < p_jobj.files.length; ++i) {
                                 let file = p_jobj.files[i];
 
+                                let showText = showSuffix ? file.name : utils.baseName(file.name);
                                 let fileItem = {
-                                    text: file.name,
+                                    text: showText,
                                     icon: 'viki-jstree-file-icon',
                                     a_attr: {
-                                        href: '#!' + basePath + file.name
+                                        href: '#!' + basePath + file.name,
+                                        title: showText
                                     },
+
                                     // Viki specific attrs.
                                     v_type: 'file',
+                                    v_name: file.name,
                                     v_path: basePath + file.name
                                 };
 
@@ -145,16 +163,68 @@ class NavigationRenderer {
                         return JSON.stringify(data);
                     }
                 }
+            },
+            "plugins" : ["search"],
+            "search" : {
+                "fuzzy": fuzzySearch
             }
         });
     }
 
     renderSearchForm(p_node) {
-        let form = $(`<form class="viki-search d-flex align-items-center">
-            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" data-siteurl="https://getbootstrap.com" data-docs-version="4.1" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;"><div class="ds-dataset-1"></div></span></span>
+        let form = $(`<form class="viki-search d-flex align-items-center" onsubmit="return false;">
+            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+            <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+            <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;">
+            </pre>
+            <span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;">
+            <div class="ds-dataset-1">
+            </div>
+            </span>
+            </span>
             <button class="btn btn-link viki-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#viki-docs-nav" aria-controls="viki-docs-nav" aria-expanded="true" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
             </button>
         </form>`);
+
+        let loadBeforeSearch = this.config.loadBeforeSearch;
+        let to = false;
+        let lastSearchText = '';
+        form.find('#search-input').keyup(function(p_e) {
+            if (to) {
+                clearTimeout(to);
+            }
+
+            if (p_e.keyCode === 27 ||
+                p_e.keyCode === 219 && p_e.ctrlKey) {
+                // Esc to clear the search.
+                $('#search-input').val('');
+                lastSearchText = '';
+                $('#viki-file-tree').jstree(true).clear_search();
+                return;
+            }
+
+            to = setTimeout(function() {
+                let text = $('#search-input').val();
+                if (text === lastSearchText) {
+                    return;
+                }
+
+                lastSearchText = text;
+                if (text.length > 0) {
+                    if (loadBeforeSearch) {
+                        $('#viki-file-tree').jstree(true).load_all(null, function() {
+                            logger.log('search', text);
+                            $('#viki-file-tree').jstree(true).search(text);
+                        });
+                    } else {
+                        logger.log('search', text);
+                        $('#viki-file-tree').jstree(true).search(text);
+                    }
+                } else {
+                    $('#viki-file-tree').jstree(true).clear_search();
+                }
+            }, 500);
+        });
 
         this.containerNode.append(form);
     }
@@ -165,7 +235,7 @@ class NavigationRenderer {
         for (let i = 0; i < p_startNode.children.length; ++i) {
             let child = p_startNode.children[i];
             let childNode = tree.get_node(child);
-            if (childNode.text === p_pathNodes[p_idx]) {
+            if (childNode.original.v_name === p_pathNodes[p_idx]) {
                 hitNode = childNode;
                 break;
             }

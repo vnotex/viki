@@ -37,8 +37,8 @@ class NaviItem {
             this.navi = p_jobj.navi;
         }
 
-        if (this.navi && p_jobj.naviIndex != null) {
-            this.naviIndex = p_jobj.naviIndex;
+        if (this.navi && p_jobj.navi_index != null) {
+            this.naviIndex = p_jobj.navi_index;
         }
 
         if (!this.target) {
@@ -189,14 +189,6 @@ class NaviWorker extends Worker {
                 }
             }
 
-            /* ATTENTION: As an additional aggrement to the license, removing or hiding
-               the following action is not allowed.
-             */
-            actions.push(new ActionItem('Viki',
-                                        'https://github.com/tamlok/viki/raw/master/resources/viki_white.png',
-                                        'https://tamlok.github.io/viki/'));
-
-
             this.renderActionBar(actions);
 
             this.viki.scheduleNext();
@@ -311,6 +303,10 @@ class NaviWorker extends Worker {
     }
 
     renderActionBar(p_actionItems) {
+        if (p_actionItems.length == 0) {
+            return;
+        }
+
         let ul = $(`<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex"></ul>`);
 
         for (let i = 0; i < p_actionItems.length; ++i) {
