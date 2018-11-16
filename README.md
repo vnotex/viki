@@ -11,7 +11,7 @@ For more information, please visit [tamlok.github.io/viki](https://tamlok.github
 
 ## Credits
 - [MDWiki](http://dynalon.github.io/mdwiki/#!index.md)  
-The idea of Viki comes from MDWiki. Viki also reference the implementation of MDWiki a lot.
+The idea of Viki comes from MDWiki. Viki also references to the implementation of MDWiki a lot.
 - [jQuery](http://www.jquery.org/)
 - [Boostrap](http://www.getbootstrap.com/)
 - [markdown-it](https://github.com/markdown-it/markdown-it)
