@@ -11,7 +11,7 @@
     [
         {
             "text": "Viki",
-            "icon": "/css/viki_white.svg",
+            "icon": "css/viki_white.svg",
             "target": "https://tamlok.github.io/viki/"
         }
     ]
