@@ -1,0 +1,18 @@
+{
+    "navigation":
+    [
+        {
+            "text": "Home",
+            "target": "index.md",
+            "toc": false
+        }
+    ],
+    "actions":
+    [
+        {
+            "text": "Viki",
+            "icon": "/css/viki_white.svg",
+            "target": "https://tamlok.github.io/viki/"
+        }
+    ]
+}
