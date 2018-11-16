@@ -88,9 +88,14 @@ class Viki {
         let hash = window.location.hash || "";
 
         // Default hash completion.
+        if (hash === '') {
+            // Empty.
+            this.info.setTarget(target);
+            return true;
+        }
+
         let newHash = '';
-        if (hash === '' ||
-            hash === "#" ||
+        if (hash === "#" ||
             hash === "#!") {
             newHash = "#!" + target;
         } else if (hash.startsWith("#!") && hash.endsWith('/')) {
