@@ -21,7 +21,9 @@
         },
         {
             "text": "Documentation",
-            "navi": true
+            "target": "docs/_vnote.json",
+            "navi": true,
+            "navi_index": "Users/Welcome.md"
         },
         {
             "text": "Examples",
