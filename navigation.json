@@ -12,7 +12,8 @@
         },
         {
             "text": "Downloads",
-            "target": "downloads.md"
+            "target": "downloads.md",
+            "toc": false
         },
         {
             "text": "Markdown",
