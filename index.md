@@ -19,5 +19,33 @@ Viki is free and open source. It is available as [GitHub Project](https://github
 - Easy to turn your **Markdown** files into an elegant website. Combined with VNote, it is crazy easy to turn your notebooks into a blog.
 - No conversion of Markdown needed.
 - Built via jQuery and Boostrap with responsive layout.
+- Rich elements, such as **PlantUML**, **Flowchart.js**, **Mermaid**, and **MathJax**.
 
-## Simple to use
+## How to use
+For example, you have a folder named `notes` which contains your Markdown files:
+
+```
+notes/
+  |-- v.md
+  |-- i.md
+  |-- k.md
+  |-- work/
+        |-- i.md
+```
+
+Download files of Viki, which may look like this:
+
+```
+css/
+js/
+viki.html
+index.md
+viki.json
+navigation.json
+```
+
+Rename `viki.html` to `index.html` and copy all these files to `notes`. Copy `notes` to your web space and now you could visit your notes something like `your.web.space/#!v.md`.
+
+A more thorough guide could be found in [Get Started](get_started.md).
+
+For users using VNote, please go to [Viki and VNote](docs/users/Viki%20and%20VNote.md) for details.

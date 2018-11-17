@@ -5,6 +5,26 @@
             "text": "Home",
             "target": "index.md",
             "toc": false
+        },
+        {
+            "text": "Get Started",
+            "target": "get_started.md"
+        },
+        {
+            "text": "Downloads",
+            "target": "downloads.md"
+        },
+        {
+            "text": "Markdown",
+            "target": "markdown.md"
+        },
+        {
+            "text": "Documentation",
+            "navi": true
+        },
+        {
+            "text": "Examples",
+            "target": "examples.md"
         }
     ],
     "actions":
