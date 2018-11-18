@@ -48,4 +48,4 @@ Rename `viki.html` to `index.html` and copy all these files to `notes`. Copy `no
 
 A more thorough guide could be found in [Get Started](get_started.md).
 
-For users using VNote, please go to [Viki and VNote](docs/users/Viki%20and%20VNote.md) for details.
+For users using VNote, please go to [Viki and VNote](docs/Users/Viki%20and%20VNote.md) for details.

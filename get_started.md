@@ -1,8 +1,8 @@
-# Get Started
+# Get started
 ## Prepare space to serve Viki
 First of all, you need to find a place to host your site. Any service that can host static content can make it work.
 
-We will show you some examples below.
+Below are some examples.
 
 ### Github
 [GitHub Pages](https://pages.github.com/) is a good choice to hold websites for you and your projects.
@@ -23,7 +23,7 @@ There are two simple choices:
 
 ::: alert-warning
 
-`SimpleHTTPServer` in python does not work well with Chinese path.
+`SimpleHTTPServer` in python does not work well with path containing Chinese.
 
 :::
 
@@ -38,7 +38,7 @@ Copy all these files to the root of your site. Let's assume that the host of you
 
 If you want to visit another page, just append `#!` and the relative path of that page after `http://localhost:8080/viki.html`. For example, `http://localhost:8080/viki.html#!abc.md` to visit file `abc.md` at the root; `http://localhost:8080/viki.html#!main/def.md` to visit file `main/def.md`.
 
-If you rename `viki.html` to `index.html`, then we could omit the `viki.html` in the URL, such as `http://localhost:8080/` will show you content of `index.md`.
+If you rename `viki.html` to `index.html`, then you could omit the `viki.html` in the URL, such as `http://localhost:8080/` will show you content of `index.md`.
 
 `css/` and `js/` hold necessary resources of Viki. `navigation.json` is the file to setup the navigation bar of your site. `viki.json` is the configuration file of Viki. For more details, please visit [Documentation](docs/_vnote.json).
 
@@ -46,4 +46,4 @@ If you rename `viki.html` to `index.html`, then we could omit the `viki.html` in
 Now you are ready to construct the cotnent of your site by adding more `*.md` files. You may need to add an entry to the `navigation.json` file if you want to show a page in the navigation bar.
 
 ## Notebook of VNote
-Viki could recognize the index file of VNote's notebook. Hence you could construct a notebook within your site and Viki will show the notes automatically. For more details, please visit [Viki and VNote](docs/users/Viki%20and%20VNote.md).
+Viki could recognize the index file of VNote's notebook. Hence you could construct a notebook within your site and Viki will show the notes automatically. For more details, please visit [Viki and VNote](docs/Users/Viki%20and%20VNote.md).
