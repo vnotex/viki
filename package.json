@@ -1,7 +1,7 @@
 {
   "name": "viki",
-  "version": "0.1.0",
-  "description": "Wiki page from [VNote](https://tamlok.github.io/vnote)'s notebook.",
+  "version": "1.0.0",
+  "description": "A simple Wiki page in Markdown from notebook of VNote.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
