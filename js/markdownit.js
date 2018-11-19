@@ -97,6 +97,7 @@ class MarkdownIt {
             anchorClass: 'viki-anchor',
             addHeadingID: true,
             addHeadingAnchor: true,
+            anchorIcon: '#',
             slugify: (p_md, p_s) => {
                 return 'toc_' + this.tocCounter++;
             },
