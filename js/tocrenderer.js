@@ -19,16 +19,10 @@ class TocRenderer {
         for (let i = 0; i < headers.length; ++i) {
             let header = headers[i];
 
-            let text = header.textContent;
-            let lastChild = header.lastChild;
-            if (lastChild && lastChild.tagName === 'A' && lastChild.textContent === '#') {
-                text = text.substring(0, text.length - 1);
-            }
-
             this.toc.push({
                 level: parseInt(header.tagName.substr(1)),
                 anchor: header.id,
-                title: utils.escapeHtml(text)
+                title: utils.escapeHtml(header.textContent)
             });
         }
 

@@ -42,13 +42,15 @@ function makeRule(md, options) {
         if (options.addHeadingID) {
           // No need to add id in anchor.
           anchorToken.content = '<a class="' + options.anchorClass + '" ' +
-                                'href="#' + anchorName + '"' +
-                                '>' + options.anchorIcon + '</a>';
+                                'href="#' + anchorName + '" ' +
+                                'data-anchor-icon="' + options.anchorIcon + '" ' +
+                                '></a>';
         } else {
           anchorToken.content = '<a id="' + anchorName + '" ' +
                                 'class="' + options.anchorClass + '" ' +
-                                'href="#' + anchorName + '"' +
-                                '>' + options.anchorIcon + '</a>';
+                                'href="#' + anchorName + '" ' +
+                                'data-anchor-icon="' + options.anchorIcon + '" ' +
+                                '></a>';
         }
 
         headingInlineToken.children.push(anchorToken);

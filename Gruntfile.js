@@ -98,7 +98,9 @@ module.exports = function(grunt) {
             },
             post: {
                 files: [
-                    { expand: true, src: 'viki.html', dest: 'dist/'},
+                    { expand: true, src: 'viki.html', dest: 'dist/', rename: function(dest, src) {
+                        return dest + 'index.html';
+                    }},
                     { expand: true, src: 'js/custom.js', dest: 'dist/'},
                     { expand: true, src: 'css/*', dest: 'dist/'},
                 ],
