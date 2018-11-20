@@ -443,3 +443,20 @@ x-eqs > span {
     text-decoration: none;
     opacity: 1;
 }
+
+.viki-anchor::after {
+    content: attr(data-anchor-icon);
+}
+
+@media print {
+    #viki-navi, #viki-toc {
+        display: none !important;
+    }
+
+    #viki-content {
+        -ms-flex: 0 0 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        padding: 3rem 1.5rem !important;
+    }
+}

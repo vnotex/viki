@@ -34,11 +34,11 @@ Download files of Viki from [GitHub Releases](https://github.com/tamlok/viki/rel
 
 Copy all these files to the root of your site. Let's assume that the host of your site is `http://localhost:8080`.
 
-`viki.html` is the main entry of Viki. You could visit your site via `http://localhost:8080/viki.html`. By default, Viki will try to fetch the `index.md` and show the content.
+`index.html` is the main entry of Viki. You could visit your site via `http://localhost:8080/index.html`. By default, Viki will try to fetch the `index.md` and show the content.
 
-If you want to visit another page, just append `#!` and the relative path of that page after `http://localhost:8080/viki.html`. For example, `http://localhost:8080/viki.html#!abc.md` to visit file `abc.md` at the root; `http://localhost:8080/viki.html#!main/def.md` to visit file `main/def.md`.
+If you want to visit another page, just append `#!` and the relative path of that page after `http://localhost:8080/index.html`. For example, `http://localhost:8080/index.html#!abc.md` to visit file `abc.md` at the root; `http://localhost:8080/index.html#!main/def.md` to visit file `main/def.md`.
 
-If you rename `viki.html` to `index.html`, then you could omit the `viki.html` in the URL, such as `http://localhost:8080/` will show you content of `index.md`.
+Generally you could omit the `index.html` in the URL, such as `http://localhost:8080/` will show you content of `index.md`.
 
 `css/` and `js/` hold necessary resources of Viki. `navigation.json` is the file to setup the navigation bar of your site. `viki.json` is the configuration file of Viki. For more details, please visit [Documentation](docs/_vnote.json).
 

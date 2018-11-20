@@ -11,7 +11,7 @@ Viki is free and open source. It is available as [GitHub Project](https://github
 :::
 
 ::: alert-info
-[VNote](https://tamlok.github.io/vnote) is a Vim-inspired note-taking application that knows programmers and Markdown better.
+[VNote](https://tamlok.github.io/vnote) is a note-taking application that knows programmers and Markdown better.
 :::
 
 ## Features
@@ -38,13 +38,13 @@ Download files of Viki, which may look like this:
 ```
 css/
 js/
-viki.html
+index.html
 index.md
 viki.json
 navigation.json
 ```
 
-Rename `viki.html` to `index.html` and copy all these files to `notes`. Copy `notes` to your web space and now you could visit your notes something like `your.web.space/#!v.md`.
+Copy all these files to `notes`. Copy `notes` to your web space and now you could visit your notes something like `your.web.space/#!v.md`.
 
 A more thorough guide could be found in [Get Started](get_started.md).
 
