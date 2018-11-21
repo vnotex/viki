@@ -1,6 +1,6 @@
 {
   "name": "viki",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple Wiki page in Markdown from notebook of VNote.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
