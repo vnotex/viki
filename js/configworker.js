@@ -4,7 +4,7 @@ import Worker from "./worker.js";
 class Config {
     constructor() {
         this.brand = "Viki";
-        this.brandIcon = "css/viki_white.svg";
+        this.brandIcon = "";
         this.title = "Viki - A simple Wiki page in Markdown from notebook of VNote";
         this.favicon = "https://github.com/tamlok/viki/raw/master/resources/viki.ico";
         this.footer = "";
@@ -30,8 +30,8 @@ class Config {
             this.brand = p_jobj.brand;
         }
 
-        if (typeof p_jobj.brandIcon != "undefined") {
-            this.brandIcon = p_jobj.brandIcon;
+        if (typeof p_jobj.brand_icon != "undefined") {
+            this.brandIcon = p_jobj.brand_icon;
         }
 
         if (typeof p_jobj.title != "undefined") {
