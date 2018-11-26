@@ -8,7 +8,11 @@ class Logger {
             return;
         }
 
-        console.log.apply(this, args);
+        try {
+            console.log.apply(this, args);
+        } catch(err) {
+            console.log(args);
+        }
     }
 }
 
