@@ -1,6 +1,6 @@
 class Logger {
     constructor() {
-        this.enableDebug = true;
+        this.enableDebug = false;
     }
 
     log(...args) {
