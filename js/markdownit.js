@@ -59,6 +59,9 @@ class MarkdownIt {
         this.flowchartIndex = 0;
         this.flowchartClass = 'viki-flowchart-diagram';
 
+        this.wavedromIndex = 0;
+        this.wavedromClass = 'viki-wavedrom-diagram';
+
         this.imageHelper = new ImageViewHelper();
 
         this.plantUMLIndex = 0;
@@ -79,6 +82,7 @@ class MarkdownIt {
                            p_lang === 'mermaid' ||
                            p_lang === 'flowchart' ||
                            p_lang === 'flow' ||
+                           p_lang === 'wavedrom' ||
                            p_lang === 'puml';
                 };
 
@@ -204,6 +208,8 @@ class MarkdownIt {
 
         this.renderFlowchart(p_containerNode,
                              [this.config.langPrefix + 'flowchart', this.config.langPrefix + 'flow']);
+
+        this.renderWavedrom(p_containerNode, this.config.langPrefix + 'wavedrom');
 
         this.renderPlantUML(p_containerNode, this.config.langPrefix + 'puml');
 
@@ -442,6 +448,53 @@ class MarkdownIt {
 
             if (matched) {
                 renderFlowchartOne(code);
+            }
+        }
+    }
+
+    // @p_class: the class name of the wavedrom code block.
+    renderWavedrom(p_node, p_class) {
+        // Render @code as Wavedrom graph.
+        // Returns true if succeeded.
+        let renderWavedromOne = (code) => {
+            // Create a script element.
+            let script = document.createElement('script');
+            script.setAttribute('type', 'WaveDrom');
+            script.textContent = code.textContent;
+            script.setAttribute('id', 'WaveDrom_JSON_' + this.wavedromIndex);
+
+            let preNode = code.parentNode;
+            preNode.parentNode.replaceChild(script, preNode);
+
+            // Create a div element.
+            let div = document.createElement('div');
+            div.setAttribute('id', 'WaveDrom_Display_' + this.wavedromIndex);
+            div.classList.add(this.wavedromClass);
+            script.insertAdjacentElement('afterend', div);
+
+            try {
+                WaveDrom.RenderWaveForm(this.wavedromIndex,
+                                        WaveDrom.eva(script.getAttribute('id')),
+                                        'WaveDrom_Display_');
+            } catch (err) {
+                console.log("err:", err);
+                this.wavedromIndex++;
+                return false;
+            }
+
+            script.parentNode.removeChild(script);
+
+            // Must increase it here.
+            this.wavedromIndex++;
+            return true;
+        };
+
+        let codes = p_node.find('pre code');
+        this.wavedromIndex = 0;
+        for (let i = 0; i < codes.length; ++i) {
+            let code = codes[i];
+            if (code.classList.contains(p_class)) {
+                renderWavedromOne(code);
             }
         }
     }
