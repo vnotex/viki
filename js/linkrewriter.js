@@ -56,7 +56,7 @@ class LinkRewriter {
                 return;
             }
 
-            p_img.src = p_base + src;
+            p_img.src = utils.cleanPath(p_base + src);
         };
 
         // Link.

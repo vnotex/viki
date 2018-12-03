@@ -76,18 +76,18 @@ class ContentWorker extends Worker {
             if (info.naviFile) {
                 // Three panels.
                 naviDivClass = "col-12 col-md-3 col-lg-2 viki-sidebar";
-                contentDivClass = "col-12 col-md-9 col-lg-8 py-md-3 pl-md-5 viki-content";
-                tocDivClass = "d-none d-lg-block col-lg-2 viki-toc";
+                contentDivClass = "col-12 col-md-9 col-lg-7 py-md-3 pl-md-5 viki-content";
+                tocDivClass = "d-none d-lg-block col-lg-3 viki-toc";
             } else {
                 // Two panels.
-                contentDivClass = "col-12 col-md-9 col-lg-8 col-xl-8 py-md-3 pl-md-5 viki-content";
-                tocDivClass = "d-none d-md-block col-md-3 col-lg-3 col-xl-2 viki-toc";
+                contentDivClass = "col-12 col-md-8 col-lg-8 col-xl-8 py-md-3 pl-md-5 viki-content";
+                tocDivClass = "d-none d-md-block col-md-4 col-lg-3 col-xl-2 viki-toc";
             }
         } else {
             if (info.naviFile) {
                 // Two panels.
-                naviDivClass = "col-12 col-md-3 viki-sidebar";
-                contentDivClass = "col-12 col-md-9 py-md-3 pl-md-5 viki-content";
+                naviDivClass = "col-12 col-md-3 col-xl-2 viki-sidebar";
+                contentDivClass = "col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 viki-content";
             } else {
                 // Single panels.
                 contentDivClass = "col-12 col-md-9 py-md-3 pl-md-5 viki-content";
