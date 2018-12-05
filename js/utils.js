@@ -45,7 +45,8 @@ class Utils {
         };
 
         let itemToHtml = function(p_item) {
-            return '<a href="#' + p_item.anchor + '">' + p_item.title + '</a>';
+            return '<a href="#' + p_item.anchor + '" title="' + p_item.title + '">' +
+                   p_item.title + '</a>';
         };
 
         let baseLevel = baseLevelOfToc(p_toc);

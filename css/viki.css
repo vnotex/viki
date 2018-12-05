@@ -253,10 +253,11 @@ x-eqs > span {
     position: sticky;
     top: 4rem;
     height: calc(100vh - 4rem);
-    overflow-y: auto;
+    overflow: auto;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     font-size: .875rem;
+    white-space: nowrap;
 }
 
 .viki-toc > ul {
@@ -265,6 +266,10 @@ x-eqs > span {
 
 .viki-toc ul {
     list-style-type: none;
+}
+
+.viki-toc ul ul {
+    padding-left: 1.5rem;
 }
 
 .viki-toc a {
