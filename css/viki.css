@@ -146,6 +146,13 @@ div.viki-flowchart-diagram {
     overflow: hidden;
 }
 
+div.viki-wavedrom-diagram {
+    padding: 0px 5px 0px 5px;
+    margin: 16px 0px 16px 0px;
+    width: fit-content;
+    overflow: hidden;
+}
+
 div.viki-plantuml-diagram {
     padding: 5px 5px 0px 5px;
     margin: 16px 0px 16px 0px;
@@ -155,6 +162,7 @@ div.viki-plantuml-diagram {
 
 table {
    padding: 0;
+   margin: 1rem 0.5rem;
    border-collapse: collapse;
 }
 
