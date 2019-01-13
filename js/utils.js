@@ -154,6 +154,7 @@ class Utils {
         return (absolute ? '/' : '') + newParts.join('/');
     }
 
+    // For root path, will return an empty string.
     baseOfPath(p_path) {
         let idx = p_path.lastIndexOf('/');
         return p_path.substring(0, idx + 1);
@@ -193,7 +194,9 @@ class Utils {
 
     // Whether @p_b is sub path of @p_a.
     isSubPath(p_a, p_b) {
-        if (!p_a) {
+        if (p_a === '') {
+            return true;
+        } else if (!p_a) {
             return false;
         }
 
