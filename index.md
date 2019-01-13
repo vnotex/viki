@@ -1,5 +1,3 @@
-![](resources/viki.svg =256x)
-
 # Viki
 
 A simple Wiki page in Markdown from notebook of [VNote](https://tamlok.github.io/vnote).
