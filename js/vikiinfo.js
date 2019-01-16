@@ -11,6 +11,9 @@ class VikiInfo {
         // Base url.
         this.baseUrl = '';
 
+        // Host + path.
+        this.hostPath = '';
+
         // Whether enable toc.
         this.toc = true;
 
@@ -30,6 +33,8 @@ class VikiInfo {
     }
 
     setTarget(p_target, p_anchor = '') {
+        this.hostPath = window.location.origin + window.location.pathname;
+
         this.target = p_target;
         this.anchor = p_anchor;
 

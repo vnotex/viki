@@ -36,10 +36,10 @@ class ContentWorker extends Worker {
             });
 
             if (info.naviIndex && info.naviFile === info.target) {
-                navier.render(info.naviFile, info.naviIndex, true);
+                navier.render(info.hostPath, info.naviFile, info.naviIndex, true);
             } else {
                 // Otherwise, no need to let navier load target.
-                navier.render(info.naviFile, info.target, false);
+                navier.render(info.hostPath, info.naviFile, info.target, false);
             }
         }
 

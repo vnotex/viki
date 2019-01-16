@@ -26,7 +26,7 @@ class NavigationRenderer {
 
     // @p_openTarget: whether open target after tree is ready. If false, will
     // only expand to the corresponding node.
-    render(p_naviFile, p_target, p_openTarget) {
+    render(p_hostPath, p_naviFile, p_target, p_openTarget) {
         this.containerNode.empty();
 
         // The search form.
@@ -75,11 +75,14 @@ class NavigationRenderer {
                 "data": {
                     "dataType": "json",
                     "url": (p_node) => {
+                        let path = '';
                         if (p_node.id === '#') {
-                            return this.naviBase + this.naviFile;
+                            path = this.naviBase + this.naviFile;
+                        } else {
+                            path = p_node.original.v_path + '/' + this.naviFile;
                         }
 
-                        return p_node.original.v_path + '/' + this.naviFile;
+                        return p_hostPath + path;
                     },
                     "data": (p_node) => {
                         let nodePath = '';
@@ -97,7 +100,8 @@ class NavigationRenderer {
                     },
                     "dataFilter": function(p_data, p_type) {
                         let nodeFromNaviFile = function(p_opts, p_jobj) {
-                            let basePath = p_opts.path + '/';
+                            let basePath = p_opts.path.length > 0 ? p_opts.path + '/'
+                                                                  : p_opts.path;
 
                             let utils = new Utils();
 
