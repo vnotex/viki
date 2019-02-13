@@ -2,10 +2,10 @@ import Utils from "./utils.js";
 
 class VikiInfo {
     constructor() {
-        // Target page specified by user.
+        // Target page specified by user (encoded).
         this.target = '';
 
-        // Anchor within target page.
+        // Anchor within target page (encoded).
         this.anchor = '';
 
         // Base url.

@@ -119,8 +119,7 @@ class Viki {
             target = "index.md";
         }
 
-        target = decodeURIComponent(target);
-
+        // Do not decode URI here.
         // Anchor.
         let idx = target.indexOf('#');
         if (idx != -1) {

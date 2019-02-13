@@ -124,7 +124,7 @@ class NavigationRenderer {
                                     v_type: 'folder',
                                     v_name: folder.name,
                                     // Path of this item without ending /.
-                                    v_path: basePath + folder.name
+                                    v_path: basePath + encodeURIComponent(folder.name)
                                 };
 
                                 children.push(folderItem);
@@ -146,7 +146,7 @@ class NavigationRenderer {
                                     // Viki specific attrs.
                                     v_type: 'file',
                                     v_name: file.name,
-                                    v_path: basePath + file.name
+                                    v_path: basePath + encodeURIComponent(file.name)
                                 };
 
                                 children.push(fileItem);

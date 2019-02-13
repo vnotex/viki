@@ -237,7 +237,7 @@ class NaviWorker extends Worker {
     // Route current access target through navigation items.
     routeTarget() {
         let items = this.viki.naviItems;
-        let target = this.viki.info.target.toLowerCase();
+        let target = decodeURIComponent(this.viki.info.target).toLowerCase();
 
         let utils = new Utils();
 
