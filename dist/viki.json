@@ -9,7 +9,7 @@
     "markdown":
     {
         "html": true,
-        "breaks": false,
+        "breaks": true,
         "linkify": false,
         "typographer": false,
         "lang_prefix": "lang-",
