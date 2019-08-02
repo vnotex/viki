@@ -215,6 +215,15 @@ class Utils {
 
         return p_file.substring(0, idx);
     }
+
+    suffix(p_file) {
+        let idx = p_file.lastIndexOf('.');
+        if (idx == -1) {
+            return '';
+        }
+
+        return p_file.substring(idx + 1);
+    }
 }
 
 export default Utils;

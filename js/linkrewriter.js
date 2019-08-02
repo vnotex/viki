@@ -37,7 +37,13 @@ class LinkRewriter {
                 newHref = p_base + href;
             }
 
-            p_a.href = '#!' + utils.cleanPath(newHref);
+            // Only let markdown file go through our router.
+            let suffix = utils.suffix(newHref);
+            if (/^(?:md|markdown)$/i.test(suffix)) {
+                p_a.href = '#!' + utils.cleanPath(newHref);
+            } else {
+                p_a.href = utils.cleanPath(newHref);
+            }
         };
 
         let rewriteIMG = function(p_img, p_base) {
