@@ -704,6 +704,3187 @@ Module.A=function(b){function c(){for(var b=0;3>b;b++)e.push(0)}var d=b.length+1
 function tb(b){function c(){var c=0;ob=E;Module._main&&(gb(ib),c=Module.A(b),Module.noExitRuntime||gb(jb));if(Module.postRun)for("function"==typeof Module.postRun&&(Module.postRun=[Module.postRun]);0<Module.postRun.length;)Module.postRun.pop()();return c}b=b||Module.arguments;if(0<mb)return Module.c("run() called, but dependencies remain, so not running"),0;if(Module.preRun){"function"==typeof Module.preRun&&(Module.preRun=[Module.preRun]);var d=Module.preRun;Module.preRun=[];for(var e=d.length-1;0<=
 e;e--)d[e]();if(0<mb)return 0}return Module.setStatus?(Module.setStatus("Running..."),setTimeout(function(){setTimeout(function(){Module.setStatus("")},1);c()},1),0):c()}Module.run=Module.O=tb;if(Module.preInit)for("function"==typeof Module.preInit&&(Module.preInit=[Module.preInit]);0<Module.preInit.length;)Module.preInit.pop()();gb(hb);var sb=E;Module.noInitialRun&&(sb=G);sb&&tb();function wd(b,c){c=c||{};this.input=b;this.F="number"===typeof c.iterations?c.iterations:15}wd.prototype.B=function(){var b=this.input,c,d,e=R(8),f;try{Sa(od,a,["number","array","number","number"],[e,b,b.length,this.F]),c=L[e>>2],d=L[e+4>>2],f=new Uint8Array(J.subarray(c,c+d))}finally{0!=(e|0)&&(b=e|0,c=L[b>>2],0!=(c|0)&&(Z(c),L[b>>2]=0),Z(e))}return f};ha("Zopfli.RawDeflate",wd);ha("Zopfli.RawDeflate.prototype.compress",wd.prototype.B);}).call(this);
 ;
-/*! viki 2019-02-14 */
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";
 
-!function o(a,l,s){function c(t,e){if(!l[t]){if(!a[t]){var n="function"==typeof require&&require;if(!e&&n)return n(t,!0);if(u)return u(t,!0);var i=new Error("Cannot find module '"+t+"'");throw i.code="MODULE_NOT_FOUND",i}var r=l[t]={exports:{}};a[t][0].call(r.exports,function(e){return c(a[t][1][e]||e)},r,r.exports,o,a,l,s)}return l[t].exports}for(var u="function"==typeof require&&require,e=0;e<s.length;e++)c(s[e]);return c}({1:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.ConfigWorker=n.Config=void 0;var i=o(e("./logger.js")),r=o(e("./worker.js"));function o(e){return e&&e.__esModule?e:{default:e}}function a(e){return(a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function l(e,t){return!t||"object"!==a(t)&&"function"!=typeof t?function(e){if(void 0!==e)return e;throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}(e):t}function s(e,t,n){return(s="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var i=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=c(e)););return e}(e,t);if(i){var r=Object.getOwnPropertyDescriptor(i,t);return r.get?r.get.call(n):r.value}})(e,t,n||e)}function c(e){return(c=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function u(e,t){return(u=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function f(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function d(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}function v(e,t,n){return t&&d(e.prototype,t),n&&d(e,n),e}var h=function(){function e(){f(this,e),this.brand="Viki",this.brandIcon="",this.title="Viki - A simple Wiki page in Markdown from notebook of VNote",this.favicon="https://github.com/tamlok/viki/raw/master/resources/viki.ico",this.footer="",this.showSuffix=!1,this.loadBeforeSearch=!0,this.fuzzySearch=!1,this.markdown={html:!0,breaks:!1,linkify:!0,typographer:!1,langPrefix:"lang-",imageCaption:!0,plantUMLServer:"http://www.plantuml.com/plantuml",plantUMLFormat:"svg",codeBlockLineNumber:!1}}return v(e,[{key:"readFromJson",value:function(e){if(void 0!==e.brand&&(this.brand=e.brand),void 0!==e.brand_icon&&(this.brandIcon=e.brand_icon),void 0!==e.title&&(this.title=e.title),void 0!==e.favicon&&(this.favicon=e.favicon),null!=e.footer&&(this.footer=e.footer),null!=e.show_suffix&&(this.showSuffix=e.show_suffix),null!=e.load_before_search&&(this.loadBeforeSearch=e.load_before_search),null!=e.fuzzy_search&&(this.fuzzySearch=e.fuzzy_search),e.markdown){var t=e.markdown;void 0!==t.html&&(this.markdown.html=t.html),void 0!==t.breaks&&(this.markdown.breaks=t.breaks),void 0!==t.linkify&&(this.markdown.linkify=t.linkify),void 0!==t.typographer&&(this.markdown.typographer=t.typographer),void 0!==t.lang_prefix&&(this.markdown.langPrefix=t.lang_prefix),void 0!==t.image_caption&&(this.markdown.imageCaption=t.image_caption),void 0!==t.plantuml_server&&(this.markdown.plantUMLServer=t.plantuml_server),void 0!==t.plantuml_format&&(this.markdown.plantUMLFormat=t.plantuml_format),void 0!==t.code_block_line_number&&(this.markdown.codeBlockLineNumber=t.code_block_line_number)}}}]),e}();n.Config=h;var p=function(e){function t(){return f(this,t),l(this,c(t).call(this))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&u(e,t)}(t,r.default),v(t,[{key:"register",value:function(e){s(c(t.prototype),"register",this).call(this,e),i.default.log("register ConfigWorker")}},{key:"run",value:function(){var n=this;$.get("viki.json",function(e){var t=new h;t.readFromJson(e),i.default.log("config:",t),n.viki.config=t,n.viki.scheduleNext()})}}]),t}();n.ConfigWorker=p},{"./logger.js":8,"./worker.js":20}],2:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var o=i(e("./logger.js")),a=i(e("./worker.js")),l=i(e("./markdownrenderer.js")),s=i(e("./tocrenderer.js")),c=i(e("./linkrewriter.js")),u=i(e("./navigationrenderer.js")),f=i(e("./utils.js"));function i(e){return e&&e.__esModule?e:{default:e}}function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function d(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}function v(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?function(e){if(void 0!==e)return e;throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}(e):t}function h(e,t,n){return(h="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var i=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=p(e)););return e}(e,t);if(i){var r=Object.getOwnPropertyDescriptor(i,t);return r.get?r.get.call(n):r.value}})(e,t,n||e)}function p(e){return(p=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function g(e,t){return(g=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var m=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),v(this,p(t).call(this))}var n,i,r;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&g(e,t)}(t,a.default),n=t,(i=[{key:"register",value:function(e){h(p(t.prototype),"register",this).call(this,e),o.default.log("register ContentWorker")}},{key:"run",value:function(){this.renderSkelecton(),this.renderContentAndToc();var e=this.viki.info;if(e.naviContainerId){var t=$("#"+e.naviContainerId),n=new u.default(t,this,{showSuffix:this.viki.config.showSuffix,loadBeforeSearch:this.viki.config.loadBeforeSearch,fuzzySearch:this.viki.config.fuzzySearch});e.naviIndex&&e.naviFile===e.target?n.render(e.hostPath,e.naviFile,e.naviIndex,!0):n.render(e.hostPath,e.naviFile,e.target,!1)}this.viki.scheduleNext()}},{key:"renderSkelecton",value:function(){var e=this.viki.info;e.contentContainerId="viki-content",e.toc&&(e.tocContainerId="viki-toc"),e.naviFile&&(e.naviContainerId="viki-navi");var t=$('<div id="viki-main-container" class="container-fluid"></div>'),n="row flex-xl-nowrap";e.naviFile||(n+=" justify-content-md-center");var i=$('<div id="viki-content-container" class="'.concat(n,'"></div>'));t.append(i);var r=null,o=null,a=null;e.toc?a=e.naviFile?(r="col-12 col-md-3 col-lg-2 viki-sidebar",o="col-12 col-md-9 col-lg-8 py-md-3 pl-md-5 viki-content","d-none d-lg-block col-lg-2 viki-toc"):(o="col-12 col-md-8 col-lg-8 col-xl-8 py-md-3 pl-md-5 viki-content","d-none d-md-block col-md-4 col-lg-3 col-xl-2 viki-toc"):o=e.naviFile?(r="col-12 col-md-3 col-xl-2 viki-sidebar","col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 viki-content"):"col-12 col-md-9 py-md-3 pl-md-5 viki-content";var l=null,s=null,c=null;r&&(l=$('<div id="'.concat(e.naviContainerId,'" class="').concat(r,'"></div>'))),o&&(s=$('<main id="'.concat(e.contentContainerId,'" class="').concat(o,'" role="main"></main>'))),a&&(c=$('<div id="'.concat(e.tocContainerId,'" class="').concat(a,'"></div>'))),l&&i.append(l),s&&i.append(s),c&&i.append(c),$("body").append(t)}},{key:"isMarkdown",value:function(e){return e.endsWith(".md")}},{key:"renderFileInternal",value:function(n){var i=this;$.get(n,function(e){var t=i.viki.info;t.setTarget(n),t.data=e,(new f.default).updateHashSilently("#!"+n),i.renderContentAndToc()})}},{key:"renderContentAndToc",value:function(){var e=this.viki.info,t=new c.default;if(e.contentContainerId&&this.isMarkdown(e.target)){var n=$("#"+e.contentContainerId);new l.default(n).render(this.viki.config.markdown,e.data),t.rewriteLinks(n,e.target,e.baseUrl)}if(e.tocContainerId){var i=$("#"+e.tocContainerId);new s.default(i).render($("#"+e.contentContainerId)),t.rewriteLinks(i,e.target,e.baseUrl)}if($(window).scrollTop(0),e.anchor){var r=$("#"+e.contentContainerId+" #"+e.anchor);0<r.length&&r[0].scrollIntoView()}}}])&&d(n.prototype,i),r&&d(n,r),t}();n.default=m},{"./linkrewriter.js":7,"./logger.js":8,"./markdownrenderer.js":11,"./navigationrenderer.js":12,"./tocrenderer.js":16,"./utils.js":17,"./worker.js":20}],3:[function(e,t,n){},{}],4:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var o=i(e("./logger.js")),a=i(e("./worker.js"));function i(e){return e&&e.__esModule?e:{default:e}}function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function l(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}function s(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?function(e){if(void 0!==e)return e;throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}(e):t}function c(e,t,n){return(c="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var i=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=u(e)););return e}(e,t);if(i){var r=Object.getOwnPropertyDescriptor(i,t);return r.get?r.get.call(n):r.value}})(e,t,n||e)}function u(e){return(u=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var d=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),s(this,u(t).call(this))}var n,i,r;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(t,a.default),n=t,(i=[{key:"register",value:function(e){c(u(t.prototype),"register",this).call(this,e),o.default.log("register FetchTargetWorker")}},{key:"run",value:function(){var t=this,e=this.viki.info;e.target?$.get(e.target,function(e){o.default.log("FetchTargetWorker: data fetched"),t.viki.info.data=e,t.viki.scheduleNext()}):o.default.log("FetchTargetWorker: no target to fetch")}}])&&l(n.prototype,i),r&&l(n,r),t}();n.default=d},{"./logger.js":8,"./worker.js":20}],5:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var o=i(e("./logger.js")),a=i(e("./worker.js"));function i(e){return e&&e.__esModule?e:{default:e}}function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function l(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}function s(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?function(e){if(void 0!==e)return e;throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}(e):t}function c(e,t,n){return(c="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var i=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=u(e)););return e}(e,t);if(i){var r=Object.getOwnPropertyDescriptor(i,t);return r.get?r.get.call(n):r.value}})(e,t,n||e)}function u(e){return(u=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var d=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),s(this,u(t).call(this))}var n,i,r;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(t,a.default),n=t,(i=[{key:"register",value:function(e){c(u(t.prototype),"register",this).call(this,e),o.default.log("register FooterWorker")}},{key:"run",value:function(){if(!this.viki.info.naviFile&&!this.viki.info.toc){var e=$('<footer class="viki-footer text-muted"></footer>'),t=$('<div class="container-fluid p-3 p-md-5"></div>');if(this.viki.config.footer){var n=$('<p class="viki-footer-row">'.concat(this.viki.config.footer,"</p>"));t.append(n)}var i=$('<p class="viki-footer-row viki-footer-viki">'.concat('Generated by <em><a href="https://tamlok.github.io/viki/">Viki</a></em>.',"</p>"));t.append(i),e.append(t),$("body").append(e),this.viki.scheduleNext()}}}])&&l(n.prototype,i),r&&l(n,r),t}();n.default=d},{"./logger.js":8,"./worker.js":20}],6:[function(e,t,n){"use strict";function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.imageViewDiv=null,this.viewBoxImageMouseDown=!1,this.viewBoxImageOffsetToMouse=[0,0]}var t,n,i;return t=e,(n=[{key:"setupImageView",value:function(e){e.find("#image-view-div").remove();for(var t=e.find("img"),n=0;n<t.length;++n)this.setupIMGToView(t[n]);this.imageViewDiv=$('<div id="image-view-div" class="viki-modal-box">\n            <span id="image-view-close" class="viki-modal-close">&times;</span>\n            <img id="image-view" class="viki-modal-content">\n        </div>'),e.append(this.imageViewDiv),this.initImageViewBox(),this.closeImageViewBox()}},{key:"initImageViewBox",value:function(){var i=this,d=function(e,t,n){"absolute"!=e.style.position&&(e.style.position="absolute",e.style.zIndex=parseInt(i.imageViewDiv.find("#image-view-close")[0].style.zIndex)-1),e.style.left=t+"px",e.style.top=n+"px"};this.imageViewDiv.click(function(e){e=e||window.event;var t=i.imageViewDiv.find("#image-view")[0];e.target.id!=t.id&&i.closeImageViewBox(),e.preventDefault()}),this.imageViewDiv[0].onwheel=function(e){if(!!!(e=e||window.event).ctrlKey){var t=e.target;if(t&&"image-view"==t.id){var n=t.getBoundingClientRect(),i=e.clientX-n.left,r=e.clientY-n.top,o=t.getAttribute("oriWidth"),a=t.getAttribute("oriWidth");o||(o=n.width,a=n.height,t.setAttribute("oriWidth",o),t.setAttribute("oriHeight",a));var l=Math.floor(o/4),s=e.wheelDelta||-e.detail,c=Math.max(-1,Math.min(1,s)),u=n.width+(c<0?-l:l);if(u<200)e.preventDefault();else{var f=u/n.width;t.style.width=u+"px",d(t,e.clientX-i*f,e.clientY-r*f),e.preventDefault()}}}};var e=this.imageViewDiv.find("#image-view")[0];e.onmousedown=function(e){var t=(e=e||window.event).target;i.viewBoxImageMouseDown=!0,i.viewBoxImageOffsetToMouse=[t.offsetLeft-e.clientX,t.offsetTop-e.clientY],e.preventDefault()},e.onmouseup=function(e){e=e||window.event,i.viewBoxImageMouseDown=!1,e.preventDefault()},e.onmousemove=function(e){var t=(e=e||window.event).target;i.viewBoxImageMouseDown&&d(t,e.clientX+i.viewBoxImageOffsetToMouse[0],e.clientY+i.viewBoxImageOffsetToMouse[1]),e.preventDefault()},this.imageViewDiv.find("#image-view-close")[0].onclick=function(){i.closeImageViewBox()}}},{key:"setupIMGToView",value:function(e){var t=this;e&&"img"==e.nodeName.toLowerCase()&&(e.classList.add("viki-view-image"),e.ondblclick=function(e){t.viewImage(e.target.src)})}},{key:"closeImageViewBox",value:function(){this.imageViewDiv&&this.imageViewDiv.hide()}},{key:"viewImage",value:function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:"transparent";this.viewBoxImageMouseDown=!1,this.imageViewDiv.show();var n=this.imageViewDiv.find("#image-view")[0];n.src=e,n.style.backgroundColor=t,n.style.width="",n.style.position="",n.style.zIndex=""}},{key:"isViewingImage",value:function(){return this.imageViewDiv&&"block"==this.imageViewDiv[0].style.display}},{key:"viewSVG",value:function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:"transparent",n="data:image/svg+xml;utf8,"+e.outerHTML.replace(/#/g,"%23").replace(/[\r\n]/g,"");this.viewImage(n,t)}},{key:"setupSVGToView",value:function(e){var t=1<arguments.length&&void 0!==arguments[1]&&arguments[1];if(e&&"svg"==e.nodeName.toLowerCase()){e.classList.add("viki-view-svg"),e.ondblclick=function(e,t){var n=(t=t||window.event).target.nodeName.toLowerCase();if("text"!=n&&"tspan"!=n){for(var i=t.target;i&&"svg"!=i.nodeName.toLowerCase();)i=i.parentNode;if(i)if(e){var r=window.getComputedStyle(i.parentNode,null);this.viewSVG(i,r.backgroundColor)}else this.viewSVG(i);t.preventDefault()}}.bind(this,t)}}}])&&r(t.prototype,n),i&&r(t,i),e}();n.default=i},{}],7:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;i(e("./logger.js"));var d=i(e("./utils.js"));function i(e){return e&&e.__esModule?e:{default:e}}function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var o=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)}var t,n,i;return t=e,(n=[{key:"rewriteLinks",value:function(e,t,n){for(var o=new d.default,i=function(e,t,n){var i=e.getAttribute("href");if(i&&!(0<=i.lastIndexOf("#!")))if(!i.startsWith("#")||i.startsWith("#!")){if(o.isRelativeUrl(i)){var r=i;o.isRelativePath(i)&&(r=n+i),e.href="#!"+o.cleanPath(r)}}else{if("#"===i)return;e.href="#!"+t+i}},r=e.find("a"),a=0;a<r.length;++a)i(r[a],t,n);for(var l,s,c,u=e.find("img"),f=0;f<u.length;++f)l=u[f],s=n,void 0,(c=l.getAttribute("src"))&&o.isRelativeUrl(c)&&o.isRelativePath(c)&&(l.src=o.cleanPath(s+c))}}])&&r(t.prototype,n),i&&r(t,i),e}();n.default=o},{"./logger.js":8,"./utils.js":17}],8:[function(e,t,n){"use strict";function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var i=new(function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.enableDebug=!1}var t,n,i;return t=e,(n=[{key:"log",value:function(){if(this.enableDebug){for(var e=arguments.length,t=new Array(e),n=0;n<e;n++)t[n]=arguments[n];try{console.log.apply(this,t)}catch(e){console.log(t)}}}}])&&r(t.prototype,n),i&&r(t,i),e}());n.default=i},{}],9:[function(e,t,n){"use strict";var i;(new(((i=e("./viki.js"))&&i.__esModule?i:{default:i}).default)).init()},{"./viki.js":18}],10:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;i(e("./logger.js"));var a=i(e("./utils.js")),r=i(e("./imageviewhelper.js")),c=i(e("./plantumlhelper.js"));function i(e){return e&&e.__esModule?e:{default:e}}function o(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var l=function(){for(var e=MathJax.Hub.getAllJax(),t=0;t<e.length;++t){var n=e[t].SourceElement().parentNode;if("code"==n.tagName.toLowerCase()){var i=n.parentNode,r=document.createElement("p");r.innerHTML=n.innerHTML,i.parentNode.replaceChild(r,i)}}},s=function(){function t(e){var i=this;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),this.config=e,this.tocCounter=0,this.toc=[],this.frontMatterText=null,this.frontMatterClass="viki-markdown-metadata",this.mermaidParseError=!1,this.mermaidIndex=0,this.mermaidClass="viki-mermaid-diagram",this.flowchartIndex=0,this.flowchartClass="viki-flowchart-diagram",this.wavedromIndex=0,this.wavedromClass="viki-wavedrom-diagram",this.imageHelper=new r.default,this.plantUMLIndex=0,this.plantUMLClass="viki-plantuml-diagram",this.plantUMLCodeClass="viki-plantuml-code",this.inpageTocClass="viki-inpage-toc",this.mdit=window.markdownit({html:this.config.html,breaks:this.config.breaks,linkify:this.config.linkify,typographer:this.config.typographer,langPrefix:this.config.langPrefix,highlight:function(e,t){var n;return t&&("mathjax"!==(n=t)&&"mermaid"!==n&&"flowchart"!==n&&"flow"!==n&&"wavedrom"!==n&&"puml"!==n)?hljs.getLanguage(t)?hljs.highlight(t,e,!0).value:hljs.highlightAuto(e).value:""}}),this.mdit.use(window.markdownitHeadingAnchor,{anchorClass:"viki-anchor",addHeadingID:!0,addHeadingAnchor:!0,anchorIcon:"#",slugify:function(e,t){return"toc_"+i.tocCounter++},headingHook:function(e,t,n){i.toc.push({level:parseInt(e.tag.substr(1)),anchor:n,title:i.mdit.utils.escapeHtml(t.content)})}}),this.validateLinkOri=this.mdit.validateLink,this.mdit.validateLink=function(e){var t=e.trim().toLowerCase();return!!/^file:/.test(t)||i.validateLinkOri(e)},this.mdit.use(window.markdownitTaskLists),this.mdit.use(window.markdownitSub),this.mdit.use(window.markdownitSup),this.mdit.use(window.markdownitFrontMatter,function(e){i.frontMatterText=e}),this.mdit.use(window.markdownitEmoji),this.mdit.renderer.rules.emoji=function(e,t){return'<span class="emoji emoji_'.concat(e[t].markup,'">').concat(e[t].content,"</span>")},this.mdit.use(window.markdownitFootnote),this.mdit.use(window["markdown-it-imsize.js"]),this.mdit.use(texmath,{delimiters:["dollars","raw"]}),this.mdit.use(window.markdownitContainer,"alert",{validate:function(e){return e.trim().match(/^alert-\S+$/)},render:function(e,t){var n=e[t].info.trim().match(/^(alert-\S+)$/);return 1!==e[t].nesting?"</div>\n":'<div class="alert '+n[1]+'" role="alert">'}}),mermaid.mermaidAPI.initialize({startOnLoad:!1}),mermaid.mermaidAPI.parseError=function(e,t){console.log("mermaid parse err",e),i.mermaidParseError=!0,$("#"+i.mermaidClass+"-"+i.mermaidIndex).parent().remove()}}var e,n,i;return e=t,(n=[{key:"render",value:function(e,t){if(this.tocCounter=0,this.toc=[],this.frontMatterText=null,t){var n=this.mdit.render(t),i=-1!=t.search(/(\n|^)\[toc\]/i);i&&(n=n.replace(/<p>\[TOC\]<\/p>/gi,'<div class="'+this.inpageTocClass+'"></div>')),e.html(n),this.handleToc(e,i),this.config.imageCaption&&this.insertImageCaption(e),this.imageHelper.setupImageView(e),this.handleFrontMatter(e),this.renderMermaid(e,this.config.langPrefix+"mermaid"),this.renderFlowchart(e,[this.config.langPrefix+"flowchart",this.config.langPrefix+"flow"]),this.renderWavedrom(e,this.config.langPrefix+"wavedrom"),this.renderPlantUML(e,this.config.langPrefix+"puml"),this.makeImageFluid(e),this.addClassToCodeBlock(e),this.config.codeBlockLineNumber&&this.renderCodeBlockLineNumber(e),this.renderMathJax(e)}else e.empty()}},{key:"handleToc",value:function(e,t){if(t){var n=new a.default,i=n.tocToTree(this.toc),r=0==this.toc.length,o=e.find("."+this.inpageTocClass);r?o.remove():(o.html(i),n.rewriteAnchorInToc(o))}}},{key:"insertImageCaption",value:function(e){for(var t,n,i,r=e.find("img"),o=0;o<r.length;++o){var a=r[o],l=(i=n=void 0,i=-1,1==(n=(t=a).parentNode).children.length&&""==n.textContent?i=0:function(e){for(var t=e.nextSibling;t;){if(8!=t.nodeType){if(1==t.nodeType&&"BR"==t.tagName)break;return!1}t=t.nextSibling}for(t=e.previousSibling;t;){if(8!=t.nodeType){if(1==t.nodeType){if("BR"==t.tagName)break}else if(3==t.nodeType&&"\n"==t.nodeValue){var n=t.previousSibling;if(n&&"BR"==n.tagName)break}return!1}t=t.previousSibling}return!0}(t)&&(i=1),i);if(-1!=l){if(1==l){var s=document.createElement("div");a.insertAdjacentElement("afterend",s),s.appendChild(a)}if(a.parentNode.classList.add("viki-img-package"),a.classList.add("viki-img-center"),""!=a.alt){var c=document.createElement("span");c.classList.add("viki-img-caption"),c.textContent=a.alt,a.insertAdjacentElement("afterend",c)}}}}},{key:"handleFrontMatter",value:function(e){if(this.frontMatterText&&0!=this.frontMatterText.length){var t=$("<pre></pre>"),n=$("<code class=".concat(this.frontMatterClass,"></code>"));n.html(hljs.highlight("yaml",this.frontMatterText,!0).value),t.append(n),e.prepend(t)}}},{key:"renderMermaid",value:function(e,t){for(var r=this,n=function(e){r.mermaidParseError=!1,r.mermaidIndex++;var t=null;try{t=mermaid.mermaidAPI.render(r.mermaidClass+"-"+r.mermaidIndex,e.textContent,function(){})}catch(e){return console.log("err:",e),!1}if(r.mermaidParseError||!t)return!1;var n=document.createElement("div");n.classList.add(r.mermaidClass),n.innerHTML=t;var i=e.parentNode;return i.parentNode.replaceChild(n,i),!0},i=e.find("pre code"),o=this.mermaidIndex=0;o<i.length;++o){var a=i[o];a.classList.contains(t)&&n(a)}}},{key:"renderFlowchart",value:function(e,t){for(var o=this,n=function(e){o.flowchartIndex++;var t=null;try{t=flowchart.parse(e.textContent)}catch(e){return console.log("err",e),!1}if(!t)return!1;var n=document.createElement("div");n.id=o.flowchartClass+"-"+o.flowchartIndex,n.classList.add(o.flowchartClass);var i=e.parentNode,r=i.parentNode;r.replaceChild(n,i);try{t.drawSVG(n.id),o.imageHelper.setupSVGToView(n.children[0],!0)}catch(e){return console.log("err",e),r.replaceChild(i,n),!1}return!0},i=e.find("pre code"),r=this.flowchartIndex=0;r<i.length;++r){for(var a=i[r],l=!1,s=0;s<t.length;++s)if(a.classList.contains(t[s])){l=!0;break}l&&n(a)}}},{key:"renderWavedrom",value:function(e,t){for(var r=this,n=function(e){var t=document.createElement("script");t.setAttribute("type","WaveDrom"),t.textContent=e.textContent,t.setAttribute("id","WaveDrom_JSON_"+r.wavedromIndex);var n=e.parentNode;n.parentNode.replaceChild(t,n);var i=document.createElement("div");i.setAttribute("id","WaveDrom_Display_"+r.wavedromIndex),i.classList.add(r.wavedromClass),t.insertAdjacentElement("afterend",i);try{WaveDrom.RenderWaveForm(r.wavedromIndex,WaveDrom.eva(t.getAttribute("id")),"WaveDrom_Display_")}catch(e){return console.log("err:",e),r.wavedromIndex++,!1}return t.parentNode.removeChild(t),r.wavedromIndex++,!0},i=e.find("pre code"),o=this.wavedromIndex=0;o<i.length;++o){var a=i[o];a.classList.contains(t)&&n(a)}}},{key:"renderPlantUML",value:function(e,t){for(var s=this,n=function(e,t,n,i,r){var o=document.getElementsByClassName(s.plantUMLCodeClass+"-"+e)[0];if(o&&0<i.length){var a=null;"svg"==n?((a=document.createElement("div")).classList.add(s.plantUMLClass),a.innerHTML=i,r&&s.imageHelper.setupSVGToView(a.children[0],!0)):((a=document.createElement("img")).src="data:image/"+n+";base64, "+i,r&&s.imageHelper.setupIMGToView(a));var l=o.parentNode;l.parentNode.replaceChild(a,l)}},i=function(e,t,i){t.classList.add(s.plantUMLCodeClass+"-"+s.plantUMLIndex);var n={index:s.plantUMLIndex,setupView:!0};e.renderPlantUMLOnline(s.config.plantUMLServer,s.config.plantUMLFormat,t.textContent,function(e,t,n){i(e.index,0,t,n,e.setupView)},n),s.plantUMLIndex++},r=new c.default,o=e.find("pre code"),a=this.plantUMLIndex=0;a<o.length;++a){var l=o[a];l.classList.contains(t)&&i(r,l,n)}}},{key:"addClassToCodeBlock",value:function(e){for(var t=e.find("pre code"),n=0;n<t.length;++n){var i=t[n];if(i.classList.add("hljs"),i.classList.contains("lang-mathjax")||i.classList.contains("language-mathjax")){var r=i.parentElement;r.classList.add("lang-mathjax"),r.classList.add("language-mathjax"),r.classList.add("tex-to-render")}}}},{key:"renderCodeBlockLineNumber",value:function(e){for(var t=e.find("pre code"),n=0;n<t.length;++n){var i=t[n];i.parentElement.classList.contains("lang-mathjax")||hljs.lineNumbersBlock(i)}for(var r=e.find("code table"),o=0;o<r.length;++o){var a=r[o];if(a.classList.contains("hljs-ln")){var l=a.rows.length;a.deleteRow(l-1)}}}},{key:"renderMathJax",value:function(e){var t=e.find(".tex-to-render"),n=t.length;if(0!=n){for(var i=[],r=0;r<n;++r)i.push(t[r]);try{MathJax.Hub.Queue(function(){MathJax.InputJax.TeX.resetEquationNumbers&&MathJax.InputJax.TeX.resetEquationNumbers()},["Typeset",MathJax.Hub,i,l])}catch(e){console.log("err",e)}}}},{key:"makeImageFluid",value:function(e){for(var t=e.find("img"),n=0;n<t.length;++n){var i=t[n];"image-view"!==i.id&&i.classList.add("img-fluid")}}}])&&o(e.prototype,n),i&&o(e,i),t}();n.default=s},{"./imageviewhelper.js":6,"./logger.js":8,"./plantumlhelper.js":15,"./utils.js":17}],11:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;i(e("./logger.js"));var r=i(e("./markdownit.js"));function i(e){return e&&e.__esModule?e:{default:e}}function o(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var a=function(){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),this.containerNode=e}var e,n,i;return e=t,(n=[{key:"render",value:function(e,t){new r.default(e).render(this.containerNode,t)}}])&&o(e.prototype,n),i&&o(e,i),t}();n.default=a},{"./logger.js":8,"./markdownit.js":10}],12:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var v=i(e("./utils.js")),o=i(e("./logger.js"));function i(e){return e&&e.__esModule?e:{default:e}}function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var a=function(){function i(e,t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,i),this.containerNode=e,this.fileTree=null,this.target="",this.naviBase="",this.naviFile="",this.contentWorker=t,this.config=n}var e,t,n;return e=i,(t=[{key:"render",value:function(n,e,t,i){var r=this;this.containerNode.empty(),this.renderSearchForm();var o=$('<nav class="viki-links collapse show" id="viki-docs-nav"></nav>'),a=$('<div id="viki-file-tree"></div>');if(o.append(a),this.containerNode.append(o),e){this.target=t;var l=new v.default;this.naviBase=l.baseOfPath(e),this.naviFile=l.fileNameOfPath(e),this.fileTree=a;var d=this.config.showSuffix,s=this.config.fuzzySearch;a.on("activate_node.jstree",function(e,t){var n=t.node;"file"===n.original.v_type&&t.event&&r.contentWorker.renderFileInternal(n.original.v_path)}).on("ready.jstree",function(e,t){r.target&&(i&&r.contentWorker.renderFileInternal(r.target),r.expandToNodeByPath(r.target))}).jstree({core:{themes:{dots:!1},multiple:!1,data:{dataType:"json",url:function(e){var t="";return t="#"===e.id?r.naviBase+r.naviFile:e.original.v_path+"/"+r.naviFile,n+t},data:function(e){var t="";return"#"===e.id?(t=r.naviBase).endsWith("/")&&(t=t.substring(0,t.length-1)):t=e.original.v_path,{id:e.id,path:t}},dataFilter:function(e,t){for(var n=this.url.substring(this.url.indexOf("?")+1).split("&"),i={},r=0;r<n.length;++r){var o=n[r].split("=");i[decodeURIComponent(o[0])]=decodeURIComponent(o[1])}var a=function(e,t){for(var n=0<e.path.length?e.path+"/":e.path,i=new v.default,r=[],o=0;o<t.sub_directories.length;++o){var a=t.sub_directories[o],l={text:a.name,icon:"viki-jstree-folder-icon",a_attr:{href:"#!"+n+a.name,title:a.name},children:!0,v_type:"folder",v_name:a.name,v_path:n+encodeURIComponent(a.name)};r.push(l)}for(var s=0;s<t.files.length;++s){var c=t.files[s],u=d?c.name:i.baseName(c.name),f={text:u,icon:"viki-jstree-file-icon",a_attr:{href:"#!"+n+c.name,title:u},v_type:"file",v_name:c.name,v_path:n+encodeURIComponent(c.name)};r.push(f)}return r}(i,JSON.parse(e));return JSON.stringify(a)}}},plugins:["search"],search:{fuzzy:s}})}}},{key:"renderSearchForm",value:function(e){var t=$('<form class="viki-search d-flex align-items-center" onsubmit="return false;">\n            <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">\n            <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">\n            <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;">\n            </pre>\n            <span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;">\n            <div class="ds-dataset-1">\n            </div>\n            </span>\n            </span>\n            <button class="btn btn-link viki-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#viki-docs-nav" aria-controls="viki-docs-nav" aria-expanded="true" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>\n            </button>\n        </form>'),n=this.config.loadBeforeSearch,i=!1,r="";t.find("#search-input").keyup(function(e){if(i&&clearTimeout(i),27===e.keyCode||219===e.keyCode&&e.ctrlKey)return $("#search-input").val(""),r="",void $("#viki-file-tree").jstree(!0).clear_search();i=setTimeout(function(){var e=$("#search-input").val();e!==r&&(0<(r=e).length?n?$("#viki-file-tree").jstree(!0).load_all(null,function(){o.default.log("search",e),$("#viki-file-tree").jstree(!0).search(e)}):(o.default.log("search",e),$("#viki-file-tree").jstree(!0).search(e)):$("#viki-file-tree").jstree(!0).clear_search())},500)}),this.containerNode.append(t)}},{key:"expandToNode",value:function(e,t,n){for(var i=this,r=this.fileTree.jstree(!0),o=null,a=0;a<e.children.length;++a){var l=e.children[a],s=r.get_node(l);if(s.original.v_name===t[n]){o=s;break}}o&&(n===t.length-1?r.select_node(o):r.open_node(o,function(e){i.expandToNode(e,t,n+1)},!1))}},{key:"expandToNodeByPath",value:function(e){var t=this.fileTree.jstree(!0);t.deselect_all();var n=new v.default,i=n.cleanPath(this.naviBase),r=n.cleanPath(e);if(r.startsWith(i)&&(r=r.substring(i.length+1))){var o=r.split("/");this.expandToNode(t.get_node("#"),o,0)}}}])&&r(e.prototype,t),n&&r(e,n),i}();n.default=a},{"./logger.js":8,"./utils.js":17}],13:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.NaviWorker=n.NaviItem=void 0;var i=o(e("./logger.js")),r=o(e("./worker.js")),u=o(e("./linkrewriter.js")),v=o(e("./utils.js"));function o(e){return e&&e.__esModule?e:{default:e}}function a(e){return(a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function l(e,t){return!t||"object"!==a(t)&&"function"!=typeof t?function(e){if(void 0!==e)return e;throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}(e):t}function s(e,t,n){return(s="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var i=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=c(e)););return e}(e,t);if(i){var r=Object.getOwnPropertyDescriptor(i,t);return r.get?r.get.call(n):r.value}})(e,t,n||e)}function c(e){return(c=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function d(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function h(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}function p(e,t,n){return t&&h(e.prototype,t),n&&h(e,n),e}var g=function(){function i(){d(this,i),this.text="",this.target="",this.toc=!0,this.navi=!1,this.naviIndex="",this.children=[]}return p(i,[{key:"readFromJson",value:function(e){if(this.text=e.text,this.target=e.target,null!=e.toc&&(this.toc=e.toc),null!=e.navi&&(this.navi=e.navi),this.navi&&null!=e.navi_index&&(this.naviIndex=e.navi_index),!this.target){if(!e.children||0==e.children.length)return!1;for(var t=0;t<e.children.length;++t){var n=new i;if(n.text=e.children[t].text,n.target=e.children[t].target,!n.target)return!1;null!=e.children[t].toc&&(n.toc=e.children[t].toc),null!=e.children[t].navi&&(n.navi=e.children[t].navi),this.children.push(n)}}return!0}},{key:"toLi",value:function(e){var t;if(0<this.children.length){t=$('<li class="nav-item dropdown"></li>');var n=$('<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.concat(this.text,"</a>"));t.append(n);for(var i=$('<div class="dropdown-menu"></div>'),r=0;r<this.children.length;++r){var o=this.children[r],a=$('<a class="dropdown-item" href="'.concat(o.target,'">').concat(o.text,"</a>"));e===o&&(a.addClass("active"),t.addClass("active")),i.append(a)}t.append(i)}else t=$('<li class="nav-item">\n                <a class="nav-link" href="'.concat(this.target,'">').concat(this.text,"</a>\n            </li>")),e===this&&t.addClass("active");return t}}]),i}();n.NaviItem=g;var m=function(){function i(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:"",t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:"",n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:"";d(this,i),this.text=e,this.icon=t,this.target=n}return p(i,[{key:"readFromJson",value:function(e){return null!=e.text&&(this.text=e.text),null!=e.icon&&(this.icon=e.icon),null!=e.target&&(this.target=e.target),!0}},{key:"toLi",value:function(){var e=$('<li class="nav-item"></li>'),t=$('<a class="nav-link p-2" href="'.concat(this.target,'" target="_blank" rel="noopener" aria-label="').concat(this.text,'"></a>'));if(this.icon){var n=$('<img class="navbar-nav-icon" src="'.concat(this.icon,'" title="').concat(this.text,'"/>'));t.append(n)}else t.text(this.text);return e.append(t),e}}]),i}(),w=function(e){function t(){return d(this,t),l(this,c(t).call(this))}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(t,r.default),p(t,[{key:"register",value:function(e){s(c(t.prototype),"register",this).call(this,e),i.default.log("register NaviWorker")}},{key:"run",value:function(){var s=this;$.get("navigation.json",function(e){var t=[];if(e.navigation)for(var n=0;n<e.navigation.length;++n){var i=new g;i.readFromJson(e.navigation[n])&&t.push(i)}s.viki.naviItems=t;var r=s.routeTarget();s.renderNaviBar(r);var o=[];if(e.actions)for(var a=0;a<e.actions.length;++a){var l=new m;l.readFromJson(e.actions[a])&&o.push(l)}s.renderActionBar(o),s.viki.scheduleNext()})}},{key:"renderNaviBar",value:function(e){var t=$('<nav id="viki-navbar", class="navbar navbar-expand-md navbar-dark flex-row viki-navbar"></nav>'),n=this.viki.config.brand;this.viki.config.brandIcon&&(n='<img class="d-block navbar-brand-icon" width="36" height="36" src="'.concat(this.viki.config.brandIcon,'"/>'));var i=$('<a class="navbar-brand" href="#">'.concat(n,"</a>"));t.append(i);var r=$('<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#viki-navbarCollapse" aria-controls="viki-navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">\n            <span class="navbar-toggler-icon"></span>\n        </button>');if(t.append(r),0<this.viki.naviItems.length){for(var o=$('<div class="navbar-collapse collapse" id="viki-navbarCollapse"></div>'),a=$('<ul class="navbar-nav mr-auto"></ul>'),l=this.viki.naviItems,s=0;s<l.length;++s){var c=l[s].toLi(e);a.append(c)}o.append(a),t.append(o)}(new u.default).rewriteLinks(t,this.viki.info.target,""),$("body").append(t)}},{key:"routeTarget",value:function(){for(var e=this.viki.naviItems,t=decodeURIComponent(this.viki.info.target).toLowerCase(),n=new v.default,i=function(e,t){return!!n.pathEqual(e.target,t)},r=null,o=[],a=0;a<e.length&&!r;++a){var l=e[a];if(l.navi)o.push(l);else if(0<l.children.length)for(var s=0;s<l.children.length;++s){var c=l.children[s];if(c.navi)o.push(c);else if(i(c,t)){r=c;break}}else if(i(l,t)){r=l;break}}for(var u=0;u<o.length&&!r;++u){var f=n.baseOfPath(o[u].target);if(n.isSubPath(f,t)){r=o[u];break}}if(r){var d=this.viki.info;d.toc=r.toc,r.navi&&(d.naviFile=r.target,d.naviIndex=d.baseUrl+r.naviIndex)}return r}},{key:"renderActionBar",value:function(e){if(0!=e.length){for(var t=$('<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex"></ul>'),n=0;n<e.length;++n){var i=e[n].toLi();t.append(i)}$("#viki-navbar").append(t)}}}]),t}();n.NaviWorker=w},{"./linkrewriter.js":7,"./logger.js":8,"./utils.js":17,"./worker.js":20}],14:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var o=i(e("./logger.js")),a=i(e("./worker.js"));function i(e){return e&&e.__esModule?e:{default:e}}function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function l(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}function s(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?function(e){if(void 0!==e)return e;throw new ReferenceError("this hasn't been initialised - super() hasn't been called")}(e):t}function c(e,t,n){return(c="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var i=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=u(e)););return e}(e,t);if(i){var r=Object.getOwnPropertyDescriptor(i,t);return r.get?r.get.call(n):r.value}})(e,t,n||e)}function u(e){return(u=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}var d=function(e){function t(){return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),s(this,u(t).call(this))}var n,i,r;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(t,a.default),n=t,(i=[{key:"register",value:function(e){c(u(t.prototype),"register",this).call(this,e),o.default.log("register PageWorker")}},{key:"run",value:function(){document.title=this.viki.config.title,this.viki.config.favicon?$("#favicon").attr("href",this.viki.config.favicon):$("#favicon").remove(),this.viki.scheduleNext()}}])&&l(n.prototype,i),r&&l(n,r),t}();n.default=d},{"./logger.js":8,"./worker.js":20}],15:[function(e,t,n){"use strict";function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)}var t,n,i;return t=e,(n=[{key:"renderPlantUMLOnline",value:function(e,i,t,r,o){var n=function(e,t,n){var i=new XMLHttpRequest;i.open("GET",e),i.responseType=t,i.onload=function(){n(i.response)},i.send(null)},a=function(e,t,n){for(var i=unescape(encodeURIComponent(n)),r=[],o=0;o<i.length;o++)r.push(i.charCodeAt(o));var a=new Zopfli.RawDeflate(r).compress();return e+"/"+t+"/"+encode64_(a)}(e,i,t);"png"==i?n(a,"blob",function(e){var t=e,n=new FileReader;n.onload=function(){var e=n.result,t=e.substring(e.indexOf(",")+1);r(o,i,t)},n.readAsDataURL(t)}):"svg"==i&&n(a,"text",function(e){r(o,i,e)})}}])&&r(t.prototype,n),i&&r(t,i),e}();n.default=i},{}],16:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;i(e("./logger.js"));var a=i(e("./utils.js"));function i(e){return e&&e.__esModule?e:{default:e}}function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var o=function(){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),this.containerNode=e,this.toc=[]}var e,n,i;return e=t,(n=[{key:"render",value:function(e){this.containerNode.empty(),this.toc=[];for(var t=new a.default,n=e.find("h1, h2, h3, h4, h5, h6"),i=0;i<n.length;++i){var r=n[i];this.toc.push({level:parseInt(r.tagName.substr(1)),anchor:r.id,title:t.escapeHtml(r.textContent)})}if(0!==this.toc.length){var o=t.tocToTree(this.toc);this.containerNode.html(o),t.rewriteAnchorInToc(this.containerNode)}}}])&&r(e.prototype,n),i&&r(e,i),t}();n.default=o},{"./logger.js":8,"./utils.js":17}],17:[function(e,t,n){"use strict";function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)}var t,n,i;return t=e,(n=[{key:"tocToTree",value:function(e){var t=function(e){return'<a href="#'+e.anchor+'" title="'+e.title+'">'+e.title+"</a>"},n=function(e){var t=-1;for(var n in e)-1==t?t=e[n].level:t>e[n].level&&(t=e[n].level);return-1==t&&(t=1),t}(e),i=function(e,t){var n=t-1,i=[];for(var r in e){for(var o=e[r];o.level>n+1;){var a={level:n+=1,anchor:"",title:"[EMPTY]"};i.push(a)}i.push(o),n=o.level}return i}(e,n),r="<li>",o=["</li>"],a=n;for(var l in i){var s=i[l];if(s.level==a)r+="</li>",r+="<li>",r+=t(s);else if(s.level>a)r+="<ul>",o.push("</ul>"),r+="<li>",r+=t(s),o.push("</li>"),a=s.level;else{for(;s.level<a;){var c=o.pop();r+=c,"</ul>"==c&&a--}r+="</li>",r+="<li>",r+=t(s)}}for(;0<o.length;)r+=o.pop();return r="<ul>"+(r=r.replace("<li></li>",""))+"</ul>"}},{key:"rewriteAnchorInToc",value:function(e){var o=this;e.find("a").click(function(e){e.preventDefault();var t=e.target.getAttribute("href"),n=t.lastIndexOf("#");if(-1!=n){var i=t.substring(n);if(i){var r=$(i);0<r.length&&(r[0].scrollIntoView(),o.updateHashSilently(t))}}})}},{key:"isRelativeUrl",value:function(e){return-1===e.indexOf("://")}},{key:"isRelativePath",value:function(e){return void 0!==e&&!e.startsWith("/")}},{key:"cleanPath",value:function(e){if(-1===e.indexOf("/"))return e;for(var t=e.startsWith("/"),n=[],i=e.split("/"),r=0;r<i.length;++r)i[r]&&"."!==i[r]&&(".."===i[r]&&0<n.length?n.pop():n.push(i[r]));return(t?"/":"")+n.join("/")}},{key:"baseOfPath",value:function(e){var t=e.lastIndexOf("/");return e.substring(0,t+1)}},{key:"fileNameOfPath",value:function(e){var t=e.lastIndexOf("/");return e.substring(t+1)}},{key:"escapeHtml",value:function(e){var t={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"};return e.replace(/[&<>"']/g,function(e){return t[e]})}},{key:"updateHashSilently",value:function(e){window.viki_silent_hash=!0,window.location.hash=e}},{key:"pathEqual",value:function(e,t){return this.cleanPath(e.toLowerCase())===this.cleanPath(t.toLowerCase())}},{key:"isSubPath",value:function(e,t){if(""===e)return!0;if(!e)return!1;var n=this.cleanPath(e.toLowerCase());return this.cleanPath(t.toLowerCase()).startsWith(n)}},{key:"baseName",value:function(e){var t=e.lastIndexOf(".");return-1==t?e:e.substring(0,t)}}])&&r(t.prototype,n),i&&r(t,i),e}();n.default=i},{}],18:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var r=i(e("./logger.js")),o=i(e("./vikiinfo.js")),a=e("./configworker.js"),l=i(e("./pageworker.js")),s=e("./naviworker.js"),c=i(e("./fetchtargetworker.js")),u=i(e("./contentworker.js")),f=i(e("./footerworker.js"));function i(e){return e&&e.__esModule?e:{default:e}}function d(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var v=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.workers=[],this.curWorkerIdx=-1,this.config=new a.Config,this.naviItems=[],this.info=new o.default}var t,n,i;return t=e,(n=[{key:"init",value:function(){var t=this;window.viki_silent_hash=!1;var e=function(e){e.register(t),t.workers.push(e)};e(new a.ConfigWorker),e(new l.default),e(new s.NaviWorker),e(new c.default),e(new u.default),e(new f.default),$(document).ready(function(){t.initTargetFromHash()&&($(window).bind("hashchange",function(){window.viki_silent_hash?window.viki_silent_hash=!1:window.location.reload(!1)}),r.default.log("target",t.info.target,"anchor",t.info.anchor),t.curWorkerIdx=-1,t.scheduleNext())})}},{key:"scheduleNext",value:function(){this.curWorkerIdx>=this.workers.length-1?(r.default.log("all workers finished"),this.curWorkerIdx=-1):(++this.curWorkerIdx,r.default.log("schedule worker",this.curWorkerIdx),this.workers[this.curWorkerIdx].run())}},{key:"initTargetFromHash",value:function(){var e="index.md",t=window.location.hash||"";if(""===t)return this.info.setTarget(e),!0;var n,i,r="";if("#"===t||"#!"===t?r="#!"+e:t.startsWith("#!")&&t.endsWith("/")&&(r=t+e),r)return window.location.hash=r,window.location.reload(!1),!1;t.startsWith("#!")?e=t.substring(2):t.startsWith("#")&&(e=t.substring(1)),n=e,(i=document.createElement("a")).href=n,window.location.hostname!==i.hostname&&(e="index.md");var o=e.indexOf("#");return-1!=o?this.info.setTarget(e.substring(0,o),e.substring(o+1)):this.info.setTarget(e),!0}}])&&d(t.prototype,n),i&&d(t,i),e}();n.default=v},{"./configworker.js":1,"./contentworker.js":2,"./fetchtargetworker.js":4,"./footerworker.js":5,"./logger.js":8,"./naviworker.js":13,"./pageworker.js":14,"./vikiinfo.js":19}],19:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var i,r=(i=e("./utils.js"))&&i.__esModule?i:{default:i};function o(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var a=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.target="",this.anchor="",this.baseUrl="",this.hostPath="",this.toc=!0,this.naviFile="",this.naviIndex="",this.data=null,this.naviContainerId="",this.contentContainerId="",this.tocContainerId=""}var t,n,i;return t=e,(n=[{key:"setTarget",value:function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:"";this.hostPath=window.location.origin+window.location.pathname,this.target=e,this.anchor=t;var n=new r.default;this.baseUrl=n.baseOfPath(e)}}])&&o(t.prototype,n),i&&o(t,i),e}();n.default=a},{"./utils.js":17}],20:[function(e,t,n){"use strict";function r(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.viki=null}var t,n,i;return t=e,(n=[{key:"register",value:function(e){this.viki=e}},{key:"run",value:function(){}}])&&r(t.prototype,n),i&&r(t,i),e}();n.default=i},{}]},{},[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ConfigWorker = exports.Config = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _worker = _interopRequireDefault(require("./worker.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Config =
+/*#__PURE__*/
+function () {
+  function Config() {
+    _classCallCheck(this, Config);
+
+    this.brand = "Viki";
+    this.brandIcon = "";
+    this.title = "Viki - A simple Wiki page in Markdown from notebook of VNote";
+    this.favicon = "https://github.com/tamlok/viki/raw/master/resources/viki.ico";
+    this.footer = ""; // Whether show suffix in navigation panel.
+
+    this.showSuffix = false;
+    this.loadBeforeSearch = true;
+    this.fuzzySearch = false;
+    this.markdown = {
+      html: true,
+      breaks: false,
+      linkify: true,
+      typographer: false,
+      langPrefix: 'lang-',
+      imageCaption: true,
+      plantUMLServer: 'http://www.plantuml.com/plantuml',
+      plantUMLFormat: 'svg',
+      codeBlockLineNumber: false
+    };
+  }
+
+  _createClass(Config, [{
+    key: "readFromJson",
+    value: function readFromJson(p_jobj) {
+      if (typeof p_jobj.brand != "undefined") {
+        this.brand = p_jobj.brand;
+      }
+
+      if (typeof p_jobj.brand_icon != "undefined") {
+        this.brandIcon = p_jobj.brand_icon;
+      }
+
+      if (typeof p_jobj.title != "undefined") {
+        this.title = p_jobj.title;
+      }
+
+      if (typeof p_jobj.favicon != "undefined") {
+        this.favicon = p_jobj.favicon;
+      }
+
+      if (p_jobj.footer != null) {
+        this.footer = p_jobj.footer;
+      }
+
+      if (p_jobj.show_suffix != null) {
+        this.showSuffix = p_jobj.show_suffix;
+      }
+
+      if (p_jobj.load_before_search != null) {
+        this.loadBeforeSearch = p_jobj.load_before_search;
+      }
+
+      if (p_jobj.fuzzy_search != null) {
+        this.fuzzySearch = p_jobj.fuzzy_search;
+      }
+
+      if (p_jobj.markdown) {
+        var md = p_jobj.markdown;
+
+        if (typeof md.html != "undefined") {
+          this.markdown.html = md.html;
+        }
+
+        if (typeof md.breaks != "undefined") {
+          this.markdown.breaks = md.breaks;
+        }
+
+        if (typeof md.linkify != "undefined") {
+          this.markdown.linkify = md.linkify;
+        }
+
+        if (typeof md.typographer != "undefined") {
+          this.markdown.typographer = md.typographer;
+        }
+
+        if (typeof md.lang_prefix != "undefined") {
+          this.markdown.langPrefix = md.lang_prefix;
+        }
+
+        if (typeof md.image_caption != "undefined") {
+          this.markdown.imageCaption = md.image_caption;
+        }
+
+        if (typeof md.plantuml_server != "undefined") {
+          this.markdown.plantUMLServer = md.plantuml_server;
+        }
+
+        if (typeof md.plantuml_format != "undefined") {
+          this.markdown.plantUMLFormat = md.plantuml_format;
+        }
+
+        if (typeof md.code_block_line_number != "undefined") {
+          this.markdown.codeBlockLineNumber = md.code_block_line_number;
+        }
+      }
+    }
+  }]);
+
+  return Config;
+}();
+
+exports.Config = Config;
+
+var ConfigWorker =
+/*#__PURE__*/
+function (_Worker) {
+  _inherits(ConfigWorker, _Worker);
+
+  function ConfigWorker() {
+    _classCallCheck(this, ConfigWorker);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ConfigWorker).call(this));
+  }
+
+  _createClass(ConfigWorker, [{
+    key: "register",
+    value: function register(p_viki) {
+      _get(_getPrototypeOf(ConfigWorker.prototype), "register", this).call(this, p_viki);
+
+      _logger.default.log("register ConfigWorker");
+    }
+  }, {
+    key: "run",
+    value: function run() {
+      var _this = this;
+
+      $.get("viki.json", function (p_data) {
+        var config = new Config();
+        config.readFromJson(p_data);
+
+        _logger.default.log("config:", config);
+
+        _this.viki.config = config;
+
+        _this.viki.scheduleNext();
+      });
+    }
+  }]);
+
+  return ConfigWorker;
+}(_worker.default);
+
+exports.ConfigWorker = ConfigWorker;
+
+},{"./logger.js":8,"./worker.js":20}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _worker = _interopRequireDefault(require("./worker.js"));
+
+var _markdownrenderer = _interopRequireDefault(require("./markdownrenderer.js"));
+
+var _tocrenderer = _interopRequireDefault(require("./tocrenderer.js"));
+
+var _linkrewriter = _interopRequireDefault(require("./linkrewriter.js"));
+
+var _navigationrenderer = _interopRequireDefault(require("./navigationrenderer.js"));
+
+var _utils = _interopRequireDefault(require("./utils.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+// Render data from this.viki.info.data.
+// - Navigation Panel for notebook's note;
+// - Content;
+// - Outline;
+var ContentWorker =
+/*#__PURE__*/
+function (_Worker) {
+  _inherits(ContentWorker, _Worker);
+
+  function ContentWorker() {
+    _classCallCheck(this, ContentWorker);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ContentWorker).call(this));
+  }
+
+  _createClass(ContentWorker, [{
+    key: "register",
+    value: function register(p_viki) {
+      _get(_getPrototypeOf(ContentWorker.prototype), "register", this).call(this, p_viki);
+
+      _logger.default.log("register ContentWorker");
+    }
+  }, {
+    key: "run",
+    value: function run() {
+      this.renderSkelecton();
+      this.renderContentAndToc();
+      var info = this.viki.info; // Render the navigation tree.
+
+      if (info.naviContainerId) {
+        var container = $('#' + info.naviContainerId);
+        var navier = new _navigationrenderer.default(container, this, {
+          showSuffix: this.viki.config.showSuffix,
+          loadBeforeSearch: this.viki.config.loadBeforeSearch,
+          fuzzySearch: this.viki.config.fuzzySearch
+        });
+
+        if (info.naviIndex && info.naviFile === info.target) {
+          navier.render(info.hostPath, info.naviFile, info.naviIndex, true);
+        } else {
+          // Otherwise, no need to let navier load target.
+          navier.render(info.hostPath, info.naviFile, info.target, false);
+        }
+      }
+
+      this.viki.scheduleNext();
+    } // Render the container to hold contents.
+
+  }, {
+    key: "renderSkelecton",
+    value: function renderSkelecton() {
+      var info = this.viki.info;
+      info.contentContainerId = 'viki-content';
+
+      if (info.toc) {
+        info.tocContainerId = 'viki-toc';
+      }
+
+      if (info.naviFile) {
+        info.naviContainerId = 'viki-navi';
+      }
+
+      var mainDiv = $("<div id=\"viki-main-container\" class=\"container-fluid\"></div>");
+      var containerDivClass = 'row flex-xl-nowrap';
+
+      if (!info.naviFile) {
+        containerDivClass += ' justify-content-md-center';
+      }
+
+      var containerDiv = $("<div id=\"viki-content-container\" class=\"".concat(containerDivClass, "\"></div>"));
+      mainDiv.append(containerDiv);
+      var naviDivClass = null;
+      var contentDivClass = null;
+      var tocDivClass = null;
+
+      if (info.toc) {
+        if (info.naviFile) {
+          // Three panels.
+          naviDivClass = "col-12 col-md-3 col-lg-2 viki-sidebar";
+          contentDivClass = "col-12 col-md-9 col-lg-8 py-md-3 pl-md-5 viki-content";
+          tocDivClass = "d-none d-lg-block col-lg-2 viki-toc";
+        } else {
+          // Two panels.
+          contentDivClass = "col-12 col-md-8 col-lg-8 col-xl-8 py-md-3 pl-md-5 viki-content";
+          tocDivClass = "d-none d-md-block col-md-4 col-lg-3 col-xl-2 viki-toc";
+        }
+      } else {
+        if (info.naviFile) {
+          // Two panels.
+          naviDivClass = "col-12 col-md-3 col-xl-2 viki-sidebar";
+          contentDivClass = "col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 viki-content";
+        } else {
+          // Single panels.
+          contentDivClass = "col-12 col-md-9 py-md-3 pl-md-5 viki-content";
+        }
+      }
+
+      var naviDiv = null;
+      var contentDiv = null;
+      var tocDiv = null;
+
+      if (naviDivClass) {
+        naviDiv = $("<div id=\"".concat(info.naviContainerId, "\" class=\"").concat(naviDivClass, "\"></div>"));
+      }
+
+      if (contentDivClass) {
+        contentDiv = $("<main id=\"".concat(info.contentContainerId, "\" class=\"").concat(contentDivClass, "\" role=\"main\"></main>"));
+      }
+
+      if (tocDivClass) {
+        tocDiv = $("<div id=\"".concat(info.tocContainerId, "\" class=\"").concat(tocDivClass, "\"></div>"));
+      }
+
+      if (naviDiv) {
+        containerDiv.append(naviDiv);
+      }
+
+      if (contentDiv) {
+        containerDiv.append(contentDiv);
+      }
+
+      if (tocDiv) {
+        containerDiv.append(tocDiv);
+      }
+
+      $('body').append(mainDiv);
+    }
+  }, {
+    key: "isMarkdown",
+    value: function isMarkdown(p_name) {
+      return p_name.endsWith('.md');
+    }
+  }, {
+    key: "renderFileInternal",
+    value: function renderFileInternal(p_file) {
+      var _this = this;
+
+      // Fetch p_file.
+      $.get(p_file, function (p_data) {
+        // Update the info.
+        var info = _this.viki.info;
+        info.setTarget(p_file);
+        info.data = p_data;
+        var utils = new _utils.default();
+        utils.updateHashSilently('#!' + p_file);
+
+        _this.renderContentAndToc();
+      });
+    }
+  }, {
+    key: "renderContentAndToc",
+    value: function renderContentAndToc() {
+      var info = this.viki.info;
+      var linkRewriter = new _linkrewriter.default();
+
+      if (info.contentContainerId) {
+        if (this.isMarkdown(info.target)) {
+          var container = $('#' + info.contentContainerId);
+          var mder = new _markdownrenderer.default(container);
+          mder.render(this.viki.config.markdown, info.data);
+          linkRewriter.rewriteLinks(container, info.target, info.baseUrl);
+        }
+      }
+
+      if (info.tocContainerId) {
+        var _container = $('#' + info.tocContainerId);
+
+        var tocer = new _tocrenderer.default(_container);
+        tocer.render($('#' + info.contentContainerId));
+        linkRewriter.rewriteLinks(_container, info.target, info.baseUrl);
+      }
+
+      $(window).scrollTop(0); // Scroll to anchor.
+
+      if (info.anchor) {
+        var header = $('#' + info.contentContainerId + ' #' + info.anchor);
+
+        if (header.length > 0) {
+          header[0].scrollIntoView();
+        }
+      }
+    }
+  }]);
+
+  return ContentWorker;
+}(_worker.default);
+
+var _default = ContentWorker;
+exports.default = _default;
+
+},{"./linkrewriter.js":7,"./logger.js":8,"./markdownrenderer.js":11,"./navigationrenderer.js":12,"./tocrenderer.js":16,"./utils.js":17,"./worker.js":20}],3:[function(require,module,exports){
+"use strict";
+
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _worker = _interopRequireDefault(require("./worker.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var FetchTargetWorker =
+/*#__PURE__*/
+function (_Worker) {
+  _inherits(FetchTargetWorker, _Worker);
+
+  function FetchTargetWorker() {
+    _classCallCheck(this, FetchTargetWorker);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FetchTargetWorker).call(this));
+  }
+
+  _createClass(FetchTargetWorker, [{
+    key: "register",
+    value: function register(p_viki) {
+      _get(_getPrototypeOf(FetchTargetWorker.prototype), "register", this).call(this, p_viki);
+
+      _logger.default.log("register FetchTargetWorker");
+    }
+  }, {
+    key: "run",
+    value: function run() {
+      var _this = this;
+
+      var info = this.viki.info;
+
+      if (!info.target) {
+        _logger.default.log("FetchTargetWorker: no target to fetch");
+
+        return;
+      }
+
+      $.get(info.target, function (p_data) {
+        _logger.default.log("FetchTargetWorker: data fetched");
+
+        _this.viki.info.data = p_data;
+
+        _this.viki.scheduleNext();
+      });
+    }
+  }]);
+
+  return FetchTargetWorker;
+}(_worker.default);
+
+var _default = FetchTargetWorker;
+exports.default = _default;
+
+},{"./logger.js":8,"./worker.js":20}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _worker = _interopRequireDefault(require("./worker.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var FooterWorker =
+/*#__PURE__*/
+function (_Worker) {
+  _inherits(FooterWorker, _Worker);
+
+  function FooterWorker() {
+    _classCallCheck(this, FooterWorker);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FooterWorker).call(this));
+  }
+
+  _createClass(FooterWorker, [{
+    key: "register",
+    value: function register(p_viki) {
+      _get(_getPrototypeOf(FooterWorker.prototype), "register", this).call(this, p_viki);
+
+      _logger.default.log("register FooterWorker");
+    }
+  }, {
+    key: "run",
+    value: function run() {
+      if (this.viki.info.naviFile || this.viki.info.toc) {
+        return;
+      }
+
+      var footer = $("<footer class=\"viki-footer text-muted\"></footer>");
+      var container = $("<div class=\"container-fluid p-3 p-md-5\"></div>");
+
+      if (this.viki.config.footer) {
+        var rowP = $("<p class=\"viki-footer-row\">".concat(this.viki.config.footer, "</p>"));
+        container.append(rowP);
+      }
+      /* ATTENTION: As an additional aggrement to the license, removing or hiding
+         the following footer is not allowed.
+       */
+
+
+      var vikiFooter = "Generated by <em><a href=\"https://tamlok.github.io/viki/\">Viki</a></em>.";
+      var vikiP = $("<p class=\"viki-footer-row viki-footer-viki\">".concat(vikiFooter, "</p>"));
+      container.append(vikiP);
+      footer.append(container);
+      $("body").append(footer);
+      this.viki.scheduleNext();
+    }
+  }]);
+
+  return FooterWorker;
+}(_worker.default);
+
+var _default = FooterWorker;
+exports.default = _default;
+
+},{"./logger.js":8,"./worker.js":20}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ImageViewHelper =
+/*#__PURE__*/
+function () {
+  function ImageViewHelper() {
+    _classCallCheck(this, ImageViewHelper);
+
+    this.imageViewDiv = null;
+    this.viewBoxImageMouseDown = false;
+    this.viewBoxImageOffsetToMouse = [0, 0];
+  } // Construct a div to view image. Hook all the images.
+
+
+  _createClass(ImageViewHelper, [{
+    key: "setupImageView",
+    value: function setupImageView(p_node) {
+      p_node.find('#image-view-div').remove();
+      var imgs = p_node.find('img');
+
+      for (var i = 0; i < imgs.length; ++i) {
+        this.setupIMGToView(imgs[i]);
+      }
+
+      this.imageViewDiv = $("<div id=\"image-view-div\" class=\"viki-modal-box\">\n            <span id=\"image-view-close\" class=\"viki-modal-close\">&times;</span>\n            <img id=\"image-view\" class=\"viki-modal-content\">\n        </div>");
+      p_node.append(this.imageViewDiv);
+      this.initImageViewBox();
+      this.closeImageViewBox();
+    }
+  }, {
+    key: "initImageViewBox",
+    value: function initImageViewBox() {
+      var _this = this;
+
+      // Left and top in pixel.
+      var moveImage = function moveImage(img, left, top) {
+        if (img.style.position != 'absolute') {
+          img.style.position = 'absolute';
+          img.style.zIndex = parseInt(_this.imageViewDiv.find('#image-view-close')[0].style.zIndex) - 1;
+        }
+
+        img.style.left = left + 'px';
+        img.style.top = top + 'px';
+      }; // View box.
+
+
+      this.imageViewDiv.click(function (e) {
+        e = e || window.event;
+
+        var boxImage = _this.imageViewDiv.find('#image-view')[0];
+
+        if (e.target.id != boxImage.id) {
+          // Click outside the image to close the box.
+          _this.closeImageViewBox();
+        }
+
+        e.preventDefault();
+      });
+
+      this.imageViewDiv[0].onwheel = function (e) {
+        e = e || window.event;
+        var ctrl = !!e.ctrlKey;
+
+        if (ctrl) {
+          return;
+        }
+
+        var target = e.target;
+
+        if (!target || target.id != 'image-view') {
+          return;
+        }
+
+        var rect = target.getBoundingClientRect();
+        var centerX = e.clientX - rect.left;
+        var centerY = e.clientY - rect.top;
+        var oriWidth = target.getAttribute('oriWidth');
+        var oriHeight = target.getAttribute('oriWidth');
+
+        if (!oriWidth) {
+          oriWidth = rect.width;
+          oriHeight = rect.height;
+          target.setAttribute('oriWidth', oriWidth);
+          target.setAttribute('oriHeight', oriHeight);
+        }
+
+        var step = Math.floor(oriWidth / 4);
+        var value = e.wheelDelta || -e.detail; // delta >= 0 is up, which will trigger zoom in.
+
+        var delta = Math.max(-1, Math.min(1, value));
+        var newWidth = rect.width + (delta < 0 ? -step : step);
+
+        if (newWidth < 200) {
+          e.preventDefault();
+          return;
+        }
+
+        var factor = newWidth / rect.width;
+        target.style.width = newWidth + 'px'; // Adjust the image around the center point.
+
+        moveImage(target, e.clientX - centerX * factor, e.clientY - centerY * factor);
+        e.preventDefault();
+      }; // Content image.
+
+
+      var boxImage = this.imageViewDiv.find('#image-view')[0];
+
+      boxImage.onmousedown = function (e) {
+        e = e || window.event;
+        var target = e.target;
+        _this.viewBoxImageMouseDown = true;
+        _this.viewBoxImageOffsetToMouse = [target.offsetLeft - e.clientX, target.offsetTop - e.clientY];
+        e.preventDefault();
+      };
+
+      boxImage.onmouseup = function (e) {
+        e = e || window.event;
+        _this.viewBoxImageMouseDown = false;
+        e.preventDefault();
+      };
+
+      boxImage.onmousemove = function (e) {
+        e = e || window.event;
+        var target = e.target;
+
+        if (_this.viewBoxImageMouseDown) {
+          moveImage(target, e.clientX + _this.viewBoxImageOffsetToMouse[0], e.clientY + _this.viewBoxImageOffsetToMouse[1]);
+        }
+
+        e.preventDefault();
+      }; // Close button.
+
+
+      this.imageViewDiv.find('#image-view-close')[0].onclick = function () {
+        _this.closeImageViewBox();
+      };
+    }
+  }, {
+    key: "setupIMGToView",
+    value: function setupIMGToView(p_domNode) {
+      var _this2 = this;
+
+      if (!p_domNode || p_domNode.nodeName.toLowerCase() != 'img') {
+        return;
+      }
+
+      p_domNode.classList.add('viki-view-image');
+
+      p_domNode.ondblclick = function (p_e) {
+        _this2.viewImage(p_e.target.src);
+      };
+    }
+  }, {
+    key: "closeImageViewBox",
+    value: function closeImageViewBox() {
+      if (this.imageViewDiv) {
+        this.imageViewDiv.hide();
+      }
+    }
+  }, {
+    key: "viewImage",
+    value: function viewImage(p_imgSrc) {
+      var p_background = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'transparent';
+      this.viewBoxImageMouseDown = false;
+      this.imageViewDiv.show();
+      var boxImage = this.imageViewDiv.find('#image-view')[0];
+      boxImage.src = p_imgSrc;
+      boxImage.style.backgroundColor = p_background; // Restore image-view.
+
+      boxImage.style.width = '';
+      boxImage.style.position = '';
+      boxImage.style.zIndex = '';
+    }
+  }, {
+    key: "isViewingImage",
+    value: function isViewingImage() {
+      return this.imageViewDiv && this.imageViewDiv[0].style.display == 'block';
+    }
+  }, {
+    key: "viewSVG",
+    value: function viewSVG(svgNode) {
+      var background = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'transparent';
+      var svg = svgNode.outerHTML.replace(/#/g, '%23').replace(/[\r\n]/g, '');
+      var src = 'data:image/svg+xml;utf8,' + svg;
+      this.viewImage(src, background);
+    }
+  }, {
+    key: "setupSVGToView",
+    value: function setupSVGToView(node) {
+      var forceBackground = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      if (!node || node.nodeName.toLowerCase() != 'svg') {
+        return;
+      }
+
+      var onSVGDoubleClick = function onSVGDoubleClick(forceBackground, e) {
+        e = e || window.event;
+        var name = e.target.nodeName.toLowerCase();
+
+        if (name != 'text' && name != 'tspan') {
+          var svgNode = e.target;
+
+          while (svgNode && svgNode.nodeName.toLowerCase() != 'svg') {
+            svgNode = svgNode.parentNode;
+          }
+
+          if (svgNode) {
+            if (forceBackground) {
+              // Use <svg>'s parent's background color.
+              var style = window.getComputedStyle(svgNode.parentNode, null);
+              this.viewSVG(svgNode, style.backgroundColor);
+            } else {
+              this.viewSVG(svgNode);
+            }
+          }
+
+          e.preventDefault();
+        }
+      };
+
+      node.classList.add('viki-view-svg');
+      node.ondblclick = onSVGDoubleClick.bind(this, forceBackground);
+    }
+  }]);
+
+  return ImageViewHelper;
+}();
+
+var _default = ImageViewHelper;
+exports.default = _default;
+
+},{}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _utils = _interopRequireDefault(require("./utils.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var LinkRewriter =
+/*#__PURE__*/
+function () {
+  function LinkRewriter() {
+    _classCallCheck(this, LinkRewriter);
+  } // Rewrite the link url of links and images.
+  // @p_target: current viewing page.
+  // @p_baseUrl: base url of @p_target.
+
+
+  _createClass(LinkRewriter, [{
+    key: "rewriteLinks",
+    value: function rewriteLinks(p_node, p_target, p_baseUrl) {
+      var utils = new _utils.default();
+
+      var rewriteA = function rewriteA(p_a, p_target, p_base) {
+        var href = p_a.getAttribute('href');
+
+        if (!href || href.lastIndexOf('#!') >= 0) {
+          return;
+        }
+
+        if (href.startsWith('#') && !href.startsWith('#!')) {
+          // In page anchor, such as `#toc_1`.
+          if (href === '#') {
+            return;
+          }
+
+          p_a.href = '#!' + p_target + href;
+          return;
+        }
+
+        if (!utils.isRelativeUrl(href)) {
+          // Absolute url.
+          return;
+        }
+
+        var newHref = href;
+
+        if (utils.isRelativePath(href)) {
+          newHref = p_base + href;
+        } // Only let markdown file go through our router.
+
+
+        var suffix = utils.suffix(newHref);
+
+        if (/^(?:md|markdown)$/i.test(suffix)) {
+          p_a.href = '#!' + utils.cleanPath(newHref);
+        } else {
+          p_a.href = utils.cleanPath(newHref);
+        }
+      };
+
+      var rewriteIMG = function rewriteIMG(p_img, p_base) {
+        var src = p_img.getAttribute('src');
+
+        if (!src) {
+          return;
+        }
+
+        if (!utils.isRelativeUrl(src)) {
+          // Absolute url.
+          return;
+        }
+
+        if (!utils.isRelativePath(src)) {
+          // Absolute path.
+          return;
+        }
+
+        p_img.src = utils.cleanPath(p_base + src);
+      }; // Link.
+
+
+      var links = p_node.find('a');
+
+      for (var i = 0; i < links.length; ++i) {
+        rewriteA(links[i], p_target, p_baseUrl);
+      } // Image.
+
+
+      var imgs = p_node.find('img');
+
+      for (var _i = 0; _i < imgs.length; ++_i) {
+        rewriteIMG(imgs[_i], p_baseUrl);
+      }
+    }
+  }]);
+
+  return LinkRewriter;
+}();
+
+var _default = LinkRewriter;
+exports.default = _default;
+
+},{"./logger.js":8,"./utils.js":17}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Logger =
+/*#__PURE__*/
+function () {
+  function Logger() {
+    _classCallCheck(this, Logger);
+
+    this.enableDebug = false;
+  }
+
+  _createClass(Logger, [{
+    key: "log",
+    value: function log() {
+      if (!this.enableDebug) {
+        return;
+      }
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      try {
+        console.log.apply(this, args);
+      } catch (err) {
+        console.log(args);
+      }
+    }
+  }]);
+
+  return Logger;
+}();
+
+var logger = new Logger();
+var _default = logger;
+exports.default = _default;
+
+},{}],9:[function(require,module,exports){
+"use strict";
+
+var _viki = _interopRequireDefault(require("./viki.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var viki = new _viki.default();
+viki.init();
+
+},{"./viki.js":18}],10:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _utils = _interopRequireDefault(require("./utils.js"));
+
+var _imageviewhelper = _interopRequireDefault(require("./imageviewhelper.js"));
+
+var _plantumlhelper = _interopRequireDefault(require("./plantumlhelper.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// Will be called after MathJax rendering finished.
+// Make <pre><code>math</code></pre> to <p>math</p>
+var postProcessMathJax = function postProcessMathJax() {
+  var all = MathJax.Hub.getAllJax();
+
+  for (var i = 0; i < all.length; ++i) {
+    var node = all[i].SourceElement().parentNode;
+
+    if (node.tagName.toLowerCase() == 'code') {
+      var pre = node.parentNode;
+      var p = document.createElement('p');
+      p.innerHTML = node.innerHTML;
+      pre.parentNode.replaceChild(p, pre);
+    }
+  }
+};
+
+var MathJaxReady = function MathJaxReady() {
+  var texToRender = $('.tex-to-render');
+  var nrTex = texToRender.length;
+
+  if (nrTex == 0) {
+    return;
+  }
+
+  var eles = [];
+
+  for (var i = 0; i < nrTex; ++i) {
+    eles.push(texToRender[i]);
+  }
+
+  try {
+    MathJax.Hub.Queue(function () {
+      if (MathJax.InputJax.TeX.resetEquationNumbers) {
+        MathJax.InputJax.TeX.resetEquationNumbers();
+      }
+    }, ["Typeset", MathJax.Hub, eles, postProcessMathJax]);
+  } catch (err) {
+    console.log("err", err);
+  }
+};
+
+var MarkdownIt =
+/*#__PURE__*/
+function () {
+  function MarkdownIt(p_config) {
+    var _this = this;
+
+    _classCallCheck(this, MarkdownIt);
+
+    this.config = p_config;
+    this.tocCounter = 0;
+    this.toc = [];
+    this.frontMatterText = null;
+    this.frontMatterClass = 'viki-markdown-metadata';
+    this.mermaidParseError = false;
+    this.mermaidIndex = 0;
+    this.mermaidClass = 'viki-mermaid-diagram';
+    this.flowchartIndex = 0;
+    this.flowchartClass = 'viki-flowchart-diagram';
+    this.wavedromIndex = 0;
+    this.wavedromClass = 'viki-wavedrom-diagram';
+    this.imageHelper = new _imageviewhelper.default();
+    this.plantUMLIndex = 0;
+    this.plantUMLClass = 'viki-plantuml-diagram';
+    this.plantUMLCodeClass = 'viki-plantuml-code';
+    this.inpageTocClass = 'viki-inpage-toc';
+    this.mdit = window.markdownit({
+      html: this.config.html,
+      breaks: this.config.breaks,
+      linkify: this.config.linkify,
+      typographer: this.config.typographer,
+      langPrefix: this.config.langPrefix,
+      highlight: function highlight(p_str, p_lang) {
+        var isSpecialCodeBlock = function isSpecialCodeBlock(p_lang) {
+          return p_lang === 'mathjax' || p_lang === 'mermaid' || p_lang === 'flowchart' || p_lang === 'flow' || p_lang === 'wavedrom' || p_lang === 'puml';
+        };
+
+        if (p_lang && !isSpecialCodeBlock(p_lang)) {
+          if (hljs.getLanguage(p_lang)) {
+            return hljs.highlight(p_lang, p_str, true).value;
+          } else {
+            return hljs.highlightAuto(p_str).value;
+          }
+        }
+
+        return '';
+      }
+    });
+    this.mdit.use(window.markdownitHeadingAnchor, {
+      anchorClass: 'viki-anchor',
+      addHeadingID: true,
+      addHeadingAnchor: true,
+      anchorIcon: '#',
+      slugify: function slugify(p_md, p_s) {
+        return 'toc_' + _this.tocCounter++;
+      },
+      headingHook: function headingHook(p_openToken, p_inlineToken, p_anchor) {
+        _this.toc.push({
+          level: parseInt(p_openToken.tag.substr(1)),
+          anchor: p_anchor,
+          title: _this.mdit.utils.escapeHtml(p_inlineToken.content)
+        });
+      }
+    }); // Enable file: scheme.
+
+    this.validateLinkOri = this.mdit.validateLink;
+
+    this.mdit.validateLink = function (p_url) {
+      var str = p_url.trim().toLowerCase();
+      return /^file:/.test(str) ? true : _this.validateLinkOri(p_url);
+    };
+
+    this.mdit.use(window.markdownitTaskLists);
+    this.mdit.use(window.markdownitSub);
+    this.mdit.use(window.markdownitSup);
+    this.mdit.use(window.markdownitFrontMatter, function (p_text) {
+      _this.frontMatterText = p_text;
+    });
+    this.mdit.use(window.markdownitEmoji);
+
+    this.mdit.renderer.rules.emoji = function (p_token, p_idx) {
+      return "<span class=\"emoji emoji_".concat(p_token[p_idx].markup, "\">").concat(p_token[p_idx].content, "</span>");
+    };
+
+    this.mdit.use(window.markdownitFootnote);
+    this.mdit.use(window["markdown-it-imsize.js"]);
+    this.mdit.use(texmath, {
+      delimiters: ['dollars', 'raw']
+    });
+    this.mdit.use(window.markdownitContainer, 'alert', {
+      validate: function validate(p_params) {
+        return p_params.trim().match(/^alert-\S+$/);
+      },
+      render: function render(p_tokens, p_idx) {
+        var type = p_tokens[p_idx].info.trim().match(/^(alert-\S+)$/);
+
+        if (p_tokens[p_idx].nesting === 1) {
+          // opening tag
+          var alertClass = type[1];
+          return '<div class="alert ' + alertClass + '" role="alert">';
+        } else {
+          // closing tag
+          return '</div>\n';
+        }
+      }
+    });
+    mermaid.mermaidAPI.initialize({
+      startOnLoad: false
+    });
+
+    mermaid.mermaidAPI.parseError = function (p_err, p_hash) {
+      console.log('mermaid parse err', p_err);
+      _this.mermaidParseError = true; // Clean the container element, or mermaidAPI won't render the graph with
+      // the same id.
+
+      $('#' + _this.mermaidClass + '-' + _this.mermaidIndex).parent().remove();
+    };
+  } // Render @p_md to HTML and write it to @p_containerNode.
+
+
+  _createClass(MarkdownIt, [{
+    key: "render",
+    value: function render(p_containerNode, p_md) {
+      this.tocCounter = 0;
+      this.toc = [];
+      this.frontMatterText = null;
+
+      if (!p_md) {
+        p_containerNode.empty();
+        return;
+      }
+
+      var html = this.mdit.render(p_md);
+      var needToc = -1 != p_md.search(/(\n|^)\[toc\]/i);
+
+      if (needToc) {
+        html = html.replace(/<p>\[TOC\]<\/p>/ig, '<div class="' + this.inpageTocClass + '"></div>');
+      }
+
+      p_containerNode.html(html);
+      this.handleToc(p_containerNode, needToc);
+
+      if (this.config.imageCaption) {
+        this.insertImageCaption(p_containerNode);
+      }
+
+      this.imageHelper.setupImageView(p_containerNode);
+      this.handleFrontMatter(p_containerNode);
+      this.renderMermaid(p_containerNode, this.config.langPrefix + 'mermaid');
+      this.renderFlowchart(p_containerNode, [this.config.langPrefix + 'flowchart', this.config.langPrefix + 'flow']);
+      this.renderWavedrom(p_containerNode, this.config.langPrefix + 'wavedrom');
+      this.renderPlantUML(p_containerNode, this.config.langPrefix + 'puml');
+      this.makeImageFluid(p_containerNode);
+      this.addClassToCodeBlock(p_containerNode);
+
+      if (this.config.codeBlockLineNumber) {
+        this.renderCodeBlockLineNumber(p_containerNode);
+      }
+
+      this.renderMathJax(p_containerNode);
+    }
+  }, {
+    key: "handleToc",
+    value: function handleToc(p_node, p_needToc) {
+      if (!p_needToc) {
+        return;
+      }
+
+      var utils = new _utils.default();
+      var tocTree = utils.tocToTree(this.toc);
+      var removeToc = this.toc.length == 0; // Add it to html.
+
+      var eles = p_node.find('.' + this.inpageTocClass);
+
+      if (removeToc) {
+        eles.remove();
+      } else {
+        eles.html(tocTree);
+        utils.rewriteAnchorInToc(eles);
+      }
+    } // Center the image block and insert the alt text as caption.
+
+  }, {
+    key: "insertImageCaption",
+    value: function insertImageCaption(p_node) {
+      var isImageBlock = function isImageBlock(p_img) {
+        var pn = p_img.parentNode;
+        return pn.children.length == 1 && pn.textContent == '';
+      };
+
+      var isImageWithBr = function isImageWithBr(p_img) {
+        var sibling = p_img.nextSibling;
+
+        while (sibling) {
+          if (sibling.nodeType == 8) {
+            // Comment node.
+            // Just continue.
+            sibling = sibling.nextSibling;
+            continue;
+          } else if (sibling.nodeType == 1) {
+            if (sibling.tagName == 'BR') {
+              break;
+            }
+          }
+
+          return false;
+        }
+
+        sibling = p_img.previousSibling;
+
+        while (sibling) {
+          if (sibling.nodeType == 8) {
+            // Comment node.
+            sibling = sibling.previousSibling;
+            continue;
+          } else if (sibling.nodeType == 1) {
+            // Element node.
+            if (sibling.tagName == 'BR') {
+              break;
+            }
+          } else if (sibling.nodeType == 3) {
+            // Text node.
+            if (sibling.nodeValue == '\n') {
+              var tmp = sibling.previousSibling;
+
+              if (tmp && tmp.tagName == 'BR') {
+                break;
+              }
+            }
+          }
+
+          return false;
+        }
+
+        return true;
+      };
+
+      var getImageType = function getImageType(p_img) {
+        var type = -1;
+
+        if (isImageBlock(p_img)) {
+          type = 0;
+        } else if (isImageWithBr(p_img)) {
+          type = 1;
+        }
+
+        return type;
+      };
+
+      var imgs = p_node.find('img');
+
+      for (var i = 0; i < imgs.length; ++i) {
+        var img = imgs[i];
+        var type = getImageType(img);
+
+        if (type == -1) {
+          continue;
+        } else if (type == 1) {
+          // Insert a div as the parent of the img.
+          var imgPack = document.createElement('div');
+          img.insertAdjacentElement('afterend', imgPack);
+          imgPack.appendChild(img);
+        } // Make the parent img-package.
+
+
+        img.parentNode.classList.add('viki-img-package'); // Make it center.
+
+        img.classList.add('viki-img-center');
+
+        if (img.alt == '') {
+          continue;
+        } // Add caption.
+
+
+        var captionSpan = document.createElement('span');
+        captionSpan.classList.add('viki-img-caption');
+        captionSpan.textContent = img.alt;
+        img.insertAdjacentElement('afterend', captionSpan);
+      }
+    } // Add a PRE containing frontMatterText if it is not empty.
+
+  }, {
+    key: "handleFrontMatter",
+    value: function handleFrontMatter(p_node) {
+      if (!this.frontMatterText || this.frontMatterText.length == 0) {
+        return;
+      }
+
+      var pre = $("<pre></pre>");
+      var code = $("<code class=".concat(this.frontMatterClass, "></code>"));
+      code.html(hljs.highlight('yaml', this.frontMatterText, true).value);
+      pre.append(code);
+      p_node.prepend(pre);
+    } // @p_class: the class name of the mermaid code block.
+
+  }, {
+    key: "renderMermaid",
+    value: function renderMermaid(p_node, p_class) {
+      var _this2 = this;
+
+      // Render @code as Mermaid graph.
+      // Returns true if succeeded.
+      var renderMermaidOne = function renderMermaidOne(code) {
+        // Mermaid code block.
+        _this2.mermaidParseError = false;
+        _this2.mermaidIndex++;
+        var graph = null;
+
+        try {
+          // Do not increment mermaidIdx here.
+          graph = mermaid.mermaidAPI.render(_this2.mermaidClass + '-' + _this2.mermaidIndex, code.textContent, function () {});
+        } catch (err) {
+          console.log("err:", err);
+          return false;
+        }
+
+        if (_this2.mermaidParseError || !graph) {
+          return false;
+        }
+
+        var graphDiv = document.createElement('div');
+        graphDiv.classList.add(_this2.mermaidClass);
+        graphDiv.innerHTML = graph;
+        var preNode = code.parentNode;
+        preNode.parentNode.replaceChild(graphDiv, preNode);
+        return true;
+      };
+
+      var codes = p_node.find('pre code');
+      this.mermaidIndex = 0;
+
+      for (var i = 0; i < codes.length; ++i) {
+        var code = codes[i];
+
+        if (code.classList.contains(p_class)) {
+          renderMermaidOne(code);
+        }
+      }
+    }
+  }, {
+    key: "renderFlowchart",
+    value: function renderFlowchart(p_node, p_classes) {
+      var _this3 = this;
+
+      // Render @code as Flowchart.js graph.
+      // Returns true if succeeded.
+      var renderFlowchartOne = function renderFlowchartOne(code) {
+        // Flowchart code block.
+        _this3.flowchartIndex++;
+        var graph = null;
+
+        try {
+          graph = flowchart.parse(code.textContent);
+        } catch (err) {
+          console.log("err", err);
+          return false;
+        }
+
+        if (!graph) {
+          return false;
+        }
+
+        var graphDiv = document.createElement('div');
+        graphDiv.id = _this3.flowchartClass + '-' + _this3.flowchartIndex;
+        graphDiv.classList.add(_this3.flowchartClass);
+        var preNode = code.parentNode;
+        var preParentNode = preNode.parentNode;
+        preParentNode.replaceChild(graphDiv, preNode); // Draw on it after adding it to page.
+
+        try {
+          graph.drawSVG(graphDiv.id);
+
+          _this3.imageHelper.setupSVGToView(graphDiv.children[0], true);
+        } catch (err) {
+          console.log("err", err);
+          preParentNode.replaceChild(preNode, graphDiv);
+          return false;
+        }
+
+        return true;
+      };
+
+      var codes = p_node.find('pre code');
+      this.flowchartIndex = 0;
+
+      for (var i = 0; i < codes.length; ++i) {
+        var code = codes[i];
+        var matched = false;
+
+        for (var j = 0; j < p_classes.length; ++j) {
+          if (code.classList.contains(p_classes[j])) {
+            matched = true;
+            break;
+          }
+        }
+
+        if (matched) {
+          renderFlowchartOne(code);
+        }
+      }
+    } // @p_class: the class name of the wavedrom code block.
+
+  }, {
+    key: "renderWavedrom",
+    value: function renderWavedrom(p_node, p_class) {
+      var _this4 = this;
+
+      // Render @code as Wavedrom graph.
+      // Returns true if succeeded.
+      var renderWavedromOne = function renderWavedromOne(code) {
+        // Create a script element.
+        var script = document.createElement('script');
+        script.setAttribute('type', 'WaveDrom');
+        script.textContent = code.textContent;
+        script.setAttribute('id', 'WaveDrom_JSON_' + _this4.wavedromIndex);
+        var preNode = code.parentNode;
+        preNode.parentNode.replaceChild(script, preNode); // Create a div element.
+
+        var div = document.createElement('div');
+        div.setAttribute('id', 'WaveDrom_Display_' + _this4.wavedromIndex);
+        div.classList.add(_this4.wavedromClass);
+        script.insertAdjacentElement('afterend', div);
+
+        try {
+          WaveDrom.RenderWaveForm(_this4.wavedromIndex, WaveDrom.eva(script.getAttribute('id')), 'WaveDrom_Display_');
+        } catch (err) {
+          console.log("err:", err);
+          _this4.wavedromIndex++;
+          return false;
+        }
+
+        script.parentNode.removeChild(script); // Must increase it here.
+
+        _this4.wavedromIndex++;
+        return true;
+      };
+
+      var codes = p_node.find('pre code');
+      this.wavedromIndex = 0;
+
+      for (var i = 0; i < codes.length; ++i) {
+        var code = codes[i];
+
+        if (code.classList.contains(p_class)) {
+          renderWavedromOne(code);
+        }
+      }
+    }
+  }, {
+    key: "renderPlantUML",
+    value: function renderPlantUML(p_node, p_class) {
+      var _this5 = this;
+
+      var handlePlantUMLResultExt = function handlePlantUMLResultExt(id, timeStamp, format, result, isSetupView) {
+        var code = document.getElementsByClassName(_this5.plantUMLCodeClass + '-' + id)[0];
+
+        if (code && result.length > 0) {
+          var obj = null;
+
+          if (format == 'svg') {
+            obj = document.createElement('div');
+            obj.classList.add(_this5.plantUMLClass);
+            obj.innerHTML = result;
+
+            if (isSetupView) {
+              _this5.imageHelper.setupSVGToView(obj.children[0], true);
+            }
+          } else {
+            obj = document.createElement('img');
+            obj.src = "data:image/" + format + ";base64, " + result;
+
+            if (isSetupView) {
+              _this5.imageHelper.setupIMGToView(obj);
+            }
+          }
+
+          var preNode = code.parentNode;
+          preNode.parentNode.replaceChild(obj, preNode);
+        }
+      }; // Render @code as PlantUML graph asynchronously.
+
+
+      var renderPlantUMLOneOnline = function renderPlantUMLOneOnline(helper, code, cb) {
+        code.classList.add(_this5.plantUMLCodeClass + '-' + _this5.plantUMLIndex);
+        var data = {
+          index: _this5.plantUMLIndex,
+          setupView: true
+        };
+        helper.renderPlantUMLOnline(_this5.config.plantUMLServer, _this5.config.plantUMLFormat, code.textContent, function (data, format, result) {
+          cb(data.index, 0, format, result, data.setupView);
+        }, data);
+        _this5.plantUMLIndex++;
+      };
+
+      var helper = new _plantumlhelper.default();
+      var codes = p_node.find('pre code');
+      this.plantUMLIndex = 0;
+
+      for (var i = 0; i < codes.length; ++i) {
+        var code = codes[i];
+
+        if (code.classList.contains(p_class)) {
+          renderPlantUMLOneOnline(helper, code, handlePlantUMLResultExt);
+        }
+      }
+    }
+  }, {
+    key: "addClassToCodeBlock",
+    value: function addClassToCodeBlock(p_node) {
+      var hljsClass = 'hljs';
+      var codes = p_node.find('pre code');
+
+      for (var i = 0; i < codes.length; ++i) {
+        var code = codes[i];
+        code.classList.add(hljsClass);
+
+        if (code.classList.contains("lang-mathjax") || code.classList.contains("language-mathjax")) {
+          // Add the class to pre.
+          var pare = code.parentElement;
+          pare.classList.add("lang-mathjax");
+          pare.classList.add("language-mathjax");
+          pare.classList.add("tex-to-render");
+        }
+      }
+    }
+  }, {
+    key: "renderCodeBlockLineNumber",
+    value: function renderCodeBlockLineNumber(p_node) {
+      var codes = p_node.find('pre code');
+
+      for (var i = 0; i < codes.length; ++i) {
+        var code = codes[i];
+        var pare = code.parentElement;
+
+        if (pare.classList.contains("lang-mathjax")) {
+          continue;
+        }
+
+        hljs.lineNumbersBlock(code);
+      } // Delete the last extra row.
+
+
+      var tables = p_node.find('code table');
+
+      for (var _i = 0; _i < tables.length; ++_i) {
+        var table = tables[_i];
+
+        if (table.classList.contains("hljs-ln")) {
+          var rowCount = table.rows.length;
+          table.deleteRow(rowCount - 1);
+        }
+      }
+    }
+  }, {
+    key: "renderMathJax",
+    value: function renderMathJax(p_node) {
+      var texToRender = p_node.find('.tex-to-render');
+      var nrTex = texToRender.length;
+
+      if (nrTex == 0) {
+        return;
+      }
+
+      var eles = [];
+
+      for (var i = 0; i < nrTex; ++i) {
+        eles.push(texToRender[i]);
+      }
+
+      try {
+        MathJax.Hub.Queue(function () {
+          if (MathJax.InputJax.TeX.resetEquationNumbers) {
+            MathJax.InputJax.TeX.resetEquationNumbers();
+          }
+        }, ["Typeset", MathJax.Hub, eles, postProcessMathJax]);
+      } catch (err) {
+        console.log("err", err);
+      }
+    }
+  }, {
+    key: "makeImageFluid",
+    value: function makeImageFluid(p_node) {
+      var imgs = p_node.find('img');
+
+      for (var i = 0; i < imgs.length; ++i) {
+        var img = imgs[i];
+
+        if (img.id === 'image-view') {
+          continue;
+        }
+
+        img.classList.add('img-fluid');
+      }
+    }
+  }]);
+
+  return MarkdownIt;
+}();
+
+var _default = MarkdownIt;
+exports.default = _default;
+
+},{"./imageviewhelper.js":6,"./logger.js":8,"./plantumlhelper.js":15,"./utils.js":17}],11:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _markdownit = _interopRequireDefault(require("./markdownit.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var MarkdownRenderer =
+/*#__PURE__*/
+function () {
+  function MarkdownRenderer(p_node) {
+    _classCallCheck(this, MarkdownRenderer);
+
+    this.containerNode = p_node;
+  }
+
+  _createClass(MarkdownRenderer, [{
+    key: "render",
+    value: function render(p_config, p_md) {
+      var mdit = new _markdownit.default(p_config);
+      mdit.render(this.containerNode, p_md);
+    }
+  }]);
+
+  return MarkdownRenderer;
+}();
+
+var _default = MarkdownRenderer;
+exports.default = _default;
+
+},{"./logger.js":8,"./markdownit.js":10}],12:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _utils = _interopRequireDefault(require("./utils.js"));
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var NavigationRenderer =
+/*#__PURE__*/
+function () {
+  function NavigationRenderer(p_node, p_contentWorker, p_config) {
+    _classCallCheck(this, NavigationRenderer);
+
+    this.containerNode = p_node;
+    this.fileTree = null; // Target to load after tree is ready.
+
+    this.target = ''; // Base of the navigation file.
+
+    this.naviBase = ''; // File name of the navigation file.
+
+    this.naviFile = '';
+    this.contentWorker = p_contentWorker; // showSuffix: whether show suffix.
+    // loadBeforeSearch: whether load all nodes before a search.
+    // fuzzySearch: whether do a fuzzy search.
+
+    this.config = p_config;
+  } // @p_openTarget: whether open target after tree is ready. If false, will
+  // only expand to the corresponding node.
+
+
+  _createClass(NavigationRenderer, [{
+    key: "render",
+    value: function render(p_hostPath, p_naviFile, p_target, p_openTarget) {
+      var _this = this;
+
+      this.containerNode.empty(); // The search form.
+
+      this.renderSearchForm();
+      var nav = $("<nav class=\"viki-links collapse show\" id=\"viki-docs-nav\"></nav>");
+      var tree = $("<div id=\"viki-file-tree\"></div>");
+      nav.append(tree);
+      this.containerNode.append(nav);
+
+      if (!p_naviFile) {
+        return;
+      }
+
+      this.target = p_target;
+      var utils = new _utils.default();
+      this.naviBase = utils.baseOfPath(p_naviFile);
+      this.naviFile = utils.fileNameOfPath(p_naviFile);
+      this.fileTree = tree;
+      var showSuffix = this.config.showSuffix;
+      var fuzzySearch = this.config.fuzzySearch;
+      tree.on('activate_node.jstree', function (p_e, p_data) {
+        var node = p_data.node;
+
+        if (node.original.v_type === 'file' && p_data.event) {
+          _this.contentWorker.renderFileInternal(node.original.v_path);
+        }
+      }).on('ready.jstree', function (p_e, p_data) {
+        if (_this.target) {
+          if (p_openTarget) {
+            _this.contentWorker.renderFileInternal(_this.target);
+          } // Expand to the target node.
+
+
+          _this.expandToNodeByPath(_this.target);
+        }
+      }).jstree({
+        "core": {
+          "themes": {
+            "dots": false
+          },
+          "multiple": false,
+          "data": {
+            "dataType": "json",
+            "url": function url(p_node) {
+              var path = '';
+
+              if (p_node.id === '#') {
+                path = _this.naviBase + _this.naviFile;
+              } else {
+                path = p_node.original.v_path + '/' + _this.naviFile;
+              }
+
+              return p_hostPath + path;
+            },
+            "data": function data(p_node) {
+              var nodePath = '';
+
+              if (p_node.id === '#') {
+                nodePath = _this.naviBase;
+
+                if (nodePath.endsWith('/')) {
+                  nodePath = nodePath.substring(0, nodePath.length - 1);
+                }
+              } else {
+                nodePath = p_node.original.v_path;
+              }
+
+              return {
+                'id': p_node.id,
+                'path': nodePath
+              };
+            },
+            "dataFilter": function dataFilter(p_data, p_type) {
+              var nodeFromNaviFile = function nodeFromNaviFile(p_opts, p_jobj) {
+                var basePath = p_opts.path.length > 0 ? p_opts.path + '/' : p_opts.path;
+                var utils = new _utils.default();
+                var children = []; // Subfolders.
+
+                for (var i = 0; i < p_jobj.sub_directories.length; ++i) {
+                  var folder = p_jobj.sub_directories[i];
+                  var folderItem = {
+                    text: folder.name,
+                    icon: 'viki-jstree-folder-icon',
+                    a_attr: {
+                      href: '#!' + basePath + folder.name,
+                      title: folder.name
+                    },
+                    // Make jstree to load its children dynamically when user open it.
+                    children: true,
+                    // Viki specific attrs.
+                    v_type: 'folder',
+                    v_name: folder.name,
+                    // Path of this item without ending /.
+                    v_path: basePath + encodeURIComponent(folder.name)
+                  };
+                  children.push(folderItem);
+                } // Files.
+
+
+                for (var _i = 0; _i < p_jobj.files.length; ++_i) {
+                  var file = p_jobj.files[_i];
+                  var showText = showSuffix ? file.name : utils.baseName(file.name);
+                  var fileItem = {
+                    text: showText,
+                    icon: 'viki-jstree-file-icon',
+                    a_attr: {
+                      href: '#!' + basePath + file.name,
+                      title: showText
+                    },
+                    // Viki specific attrs.
+                    v_type: 'file',
+                    v_name: file.name,
+                    v_path: basePath + encodeURIComponent(file.name)
+                  };
+                  children.push(fileItem);
+                }
+
+                return children;
+              }; // Extract the data passed to GET.
+
+
+              var paras = this.url.substring(this.url.indexOf('?') + 1).split('&');
+              var opts = {};
+
+              for (var i = 0; i < paras.length; ++i) {
+                var key_val = paras[i].split('=');
+                opts[decodeURIComponent(key_val[0])] = decodeURIComponent(key_val[1]);
+              }
+
+              var data = nodeFromNaviFile(opts, JSON.parse(p_data));
+              return JSON.stringify(data);
+            }
+          }
+        },
+        "plugins": ["search"],
+        "search": {
+          "fuzzy": fuzzySearch
+        }
+      });
+    }
+  }, {
+    key: "renderSearchForm",
+    value: function renderSearchForm(p_node) {
+      var form = $("<form class=\"viki-search d-flex align-items-center\" onsubmit=\"return false;\">\n            <span class=\"algolia-autocomplete\" style=\"position: relative; display: inline-block; direction: ltr;\">\n            <input type=\"search\" class=\"form-control ds-input\" id=\"search-input\" placeholder=\"Search...\" autocomplete=\"off\" spellcheck=\"false\" role=\"combobox\" aria-autocomplete=\"list\" aria-expanded=\"false\" aria-owns=\"algolia-autocomplete-listbox-0\" dir=\"auto\" style=\"position: relative; vertical-align: top;\">\n            <pre aria-hidden=\"true\" style=\"position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;\">\n            </pre>\n            <span class=\"ds-dropdown-menu\" role=\"listbox\" id=\"algolia-autocomplete-listbox-0\" style=\"position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;\">\n            <div class=\"ds-dataset-1\">\n            </div>\n            </span>\n            </span>\n            <button class=\"btn btn-link viki-search-docs-toggle d-md-none p-0 ml-3\" type=\"button\" data-toggle=\"collapse\" data-target=\"#viki-docs-nav\" aria-controls=\"viki-docs-nav\" aria-expanded=\"true\" aria-label=\"Toggle docs navigation\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 30 30\" width=\"30\" height=\"30\" focusable=\"false\"><title>Menu</title><path stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" d=\"M4 7h22M4 15h22M4 23h22\"></path></svg>\n            </button>\n        </form>");
+      var loadBeforeSearch = this.config.loadBeforeSearch;
+      var to = false;
+      var lastSearchText = '';
+      form.find('#search-input').keyup(function (p_e) {
+        if (to) {
+          clearTimeout(to);
+        }
+
+        if (p_e.keyCode === 27 || p_e.keyCode === 219 && p_e.ctrlKey) {
+          // Esc to clear the search.
+          $('#search-input').val('');
+          lastSearchText = '';
+          $('#viki-file-tree').jstree(true).clear_search();
+          return;
+        }
+
+        to = setTimeout(function () {
+          var text = $('#search-input').val();
+
+          if (text === lastSearchText) {
+            return;
+          }
+
+          lastSearchText = text;
+
+          if (text.length > 0) {
+            if (loadBeforeSearch) {
+              $('#viki-file-tree').jstree(true).load_all(null, function () {
+                _logger.default.log('search', text);
+
+                $('#viki-file-tree').jstree(true).search(text);
+              });
+            } else {
+              _logger.default.log('search', text);
+
+              $('#viki-file-tree').jstree(true).search(text);
+            }
+          } else {
+            $('#viki-file-tree').jstree(true).clear_search();
+          }
+        }, 500);
+      });
+      this.containerNode.append(form);
+    }
+  }, {
+    key: "expandToNode",
+    value: function expandToNode(p_startNode, p_pathNodes, p_idx) {
+      var _this2 = this;
+
+      var tree = this.fileTree.jstree(true);
+      var hitNode = null;
+
+      for (var i = 0; i < p_startNode.children.length; ++i) {
+        var child = p_startNode.children[i];
+        var childNode = tree.get_node(child);
+
+        if (childNode.original.v_name === p_pathNodes[p_idx]) {
+          hitNode = childNode;
+          break;
+        }
+      }
+
+      if (hitNode) {
+        if (p_idx === p_pathNodes.length - 1) {
+          // That's it.
+          tree.select_node(hitNode);
+        } else {
+          tree.open_node(hitNode, function (p_node) {
+            _this2.expandToNode(p_node, p_pathNodes, p_idx + 1);
+          }, false);
+        }
+      }
+    } // Expand to the node by @p_path.
+
+  }, {
+    key: "expandToNodeByPath",
+    value: function expandToNodeByPath(p_path) {
+      var tree = this.fileTree.jstree(true);
+      tree.deselect_all();
+      var utils = new _utils.default();
+      var basePath = utils.cleanPath(this.naviBase);
+      var path = utils.cleanPath(p_path);
+
+      if (!path.startsWith(basePath)) {
+        return;
+      }
+
+      path = path.substring(basePath.length + 1);
+
+      if (!path) {
+        return;
+      }
+
+      var pathNodes = path.split('/');
+      this.expandToNode(tree.get_node('#'), pathNodes, 0);
+    }
+  }]);
+
+  return NavigationRenderer;
+}();
+
+var _default = NavigationRenderer;
+exports.default = _default;
+
+},{"./logger.js":8,"./utils.js":17}],13:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.NaviWorker = exports.NaviItem = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _worker = _interopRequireDefault(require("./worker.js"));
+
+var _linkrewriter = _interopRequireDefault(require("./linkrewriter.js"));
+
+var _utils = _interopRequireDefault(require("./utils.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var NaviItem =
+/*#__PURE__*/
+function () {
+  function NaviItem() {
+    _classCallCheck(this, NaviItem);
+
+    // Text to display.
+    this.text = ""; // Target of this item.
+
+    this.target = ""; // Whether display toc for this item.
+
+    this.toc = true; // Whether display navigation tree for this item.
+
+    this.navi = false; // If @navi is true, this hold the start page of that navigation item.
+
+    this.naviIndex = ""; // Only 2 levels.
+    // If not empty, only the text filed of this item is valid.
+
+    this.children = [];
+  }
+
+  _createClass(NaviItem, [{
+    key: "readFromJson",
+    value: function readFromJson(p_jobj) {
+      this.text = p_jobj.text;
+      this.target = p_jobj.target;
+
+      if (p_jobj.toc != null) {
+        this.toc = p_jobj.toc;
+      }
+
+      if (p_jobj.navi != null) {
+        this.navi = p_jobj.navi;
+      }
+
+      if (this.navi && p_jobj.navi_index != null) {
+        this.naviIndex = p_jobj.navi_index;
+      }
+
+      if (!this.target) {
+        if (!p_jobj.children || p_jobj.children.length == 0) {
+          return false;
+        }
+
+        for (var i = 0; i < p_jobj.children.length; ++i) {
+          var child = new NaviItem();
+          child.text = p_jobj.children[i].text;
+          child.target = p_jobj.children[i].target;
+
+          if (!child.target) {
+            return false;
+          }
+
+          if (p_jobj.children[i].toc != null) {
+            child.toc = p_jobj.children[i].toc;
+          }
+
+          if (p_jobj.children[i].navi != null) {
+            child.navi = p_jobj.children[i].navi;
+          }
+
+          this.children.push(child);
+        }
+      }
+
+      return true;
+    }
+  }, {
+    key: "toLi",
+    value: function toLi(p_activeItem) {
+      var li;
+
+      if (this.children.length > 0) {
+        // A drop down item.
+        li = $("<li class=\"nav-item dropdown\"></li>"); // Toggle.
+
+        var a = $("<a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">".concat(this.text, "</a>"));
+        li.append(a); // Div.
+
+        var div = $("<div class=\"dropdown-menu\"></div>"); // Sub items.
+
+        for (var i = 0; i < this.children.length; ++i) {
+          var child = this.children[i];
+          var sub = $("<a class=\"dropdown-item\" href=\"".concat(child.target, "\">").concat(child.text, "</a>"));
+
+          if (p_activeItem === child) {
+            sub.addClass('active');
+            li.addClass('active');
+          }
+
+          div.append(sub);
+        }
+
+        li.append(div);
+      } else {
+        li = $("<li class=\"nav-item\">\n                <a class=\"nav-link\" href=\"".concat(this.target, "\">").concat(this.text, "</a>\n            </li>"));
+
+        if (p_activeItem === this) {
+          li.addClass('active');
+        }
+      }
+
+      return li;
+    }
+  }]);
+
+  return NaviItem;
+}();
+
+exports.NaviItem = NaviItem;
+
+var ActionItem =
+/*#__PURE__*/
+function () {
+  function ActionItem() {
+    var p_text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var p_icon = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+    var p_target = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+    _classCallCheck(this, ActionItem);
+
+    this.text = p_text;
+    this.icon = p_icon;
+    this.target = p_target;
+  }
+
+  _createClass(ActionItem, [{
+    key: "readFromJson",
+    value: function readFromJson(p_jobj) {
+      if (p_jobj.text != null) {
+        this.text = p_jobj.text;
+      }
+
+      if (p_jobj.icon != null) {
+        this.icon = p_jobj.icon;
+      }
+
+      if (p_jobj.target != null) {
+        this.target = p_jobj.target;
+      }
+
+      return true;
+    }
+  }, {
+    key: "toLi",
+    value: function toLi() {
+      var li = $("<li class=\"nav-item\"></li>");
+      var a = $("<a class=\"nav-link p-2\" href=\"".concat(this.target, "\" target=\"_blank\" rel=\"noopener\" aria-label=\"").concat(this.text, "\"></a>"));
+
+      if (this.icon) {
+        var img = $("<img class=\"navbar-nav-icon\" src=\"".concat(this.icon, "\" title=\"").concat(this.text, "\"/>"));
+        a.append(img);
+      } else {
+        a.text(this.text);
+      }
+
+      li.append(a);
+      return li;
+    }
+  }]);
+
+  return ActionItem;
+}();
+
+var NaviWorker =
+/*#__PURE__*/
+function (_Worker) {
+  _inherits(NaviWorker, _Worker);
+
+  function NaviWorker() {
+    _classCallCheck(this, NaviWorker);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(NaviWorker).call(this));
+  }
+
+  _createClass(NaviWorker, [{
+    key: "register",
+    value: function register(p_viki) {
+      _get(_getPrototypeOf(NaviWorker.prototype), "register", this).call(this, p_viki);
+
+      _logger.default.log("register NaviWorker");
+    }
+  }, {
+    key: "run",
+    value: function run() {
+      var _this = this;
+
+      $.get("navigation.json", function (p_data) {
+        // Navigations.
+        var items = [];
+
+        if (p_data.navigation) {
+          for (var i = 0; i < p_data.navigation.length; ++i) {
+            var it = new NaviItem();
+
+            if (!it.readFromJson(p_data.navigation[i])) {
+              continue;
+            }
+
+            items.push(it);
+          }
+        }
+
+        _this.viki.naviItems = items;
+
+        var activeItem = _this.routeTarget();
+
+        _this.renderNaviBar(activeItem); // Actions.
+
+
+        var actions = [];
+
+        if (p_data.actions) {
+          for (var _i = 0; _i < p_data.actions.length; ++_i) {
+            var ac = new ActionItem();
+
+            if (!ac.readFromJson(p_data.actions[_i])) {
+              continue;
+            }
+
+            actions.push(ac);
+          }
+        }
+
+        _this.renderActionBar(actions);
+
+        _this.viki.scheduleNext();
+      });
+    }
+  }, {
+    key: "renderNaviBar",
+    value: function renderNaviBar(p_activeItem) {
+      var navbar = $("<nav id=\"viki-navbar\", class=\"navbar navbar-expand-md navbar-dark flex-row viki-navbar\"></nav>"); // Brand.
+
+      var brandHtml = this.viki.config.brand;
+
+      if (this.viki.config.brandIcon) {
+        brandHtml = "<img class=\"d-block navbar-brand-icon\" width=\"36\" height=\"36\" src=\"".concat(this.viki.config.brandIcon, "\"/>");
+      }
+
+      var brand = $("<a class=\"navbar-brand\" href=\"#\">".concat(brandHtml, "</a>"));
+      navbar.append(brand); // Toggle button.
+
+      var button = $("<button class=\"navbar-toggler collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#viki-navbarCollapse\" aria-controls=\"viki-navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>");
+      navbar.append(button); // Navigaton items.
+
+      if (this.viki.naviItems.length > 0) {
+        var navDiv = $("<div class=\"navbar-collapse collapse\" id=\"viki-navbarCollapse\"></div>");
+        var navUl = $("<ul class=\"navbar-nav mr-auto\"></ul>");
+        var items = this.viki.naviItems;
+
+        for (var i = 0; i < items.length; ++i) {
+          var navLi = items[i].toLi(p_activeItem);
+          navUl.append(navLi);
+        }
+
+        navDiv.append(navUl);
+        navbar.append(navDiv);
+      }
+
+      var linkRewriter = new _linkrewriter.default();
+      linkRewriter.rewriteLinks(navbar, this.viki.info.target, '');
+      $('body').append(navbar);
+    } // Route current access target through navigation items.
+
+  }, {
+    key: "routeTarget",
+    value: function routeTarget() {
+      var items = this.viki.naviItems;
+      var target = decodeURIComponent(this.viki.info.target).toLowerCase();
+      var utils = new _utils.default();
+
+      var matchTarget = function matchTarget(p_item, p_target) {
+        if (utils.pathEqual(p_item.target, p_target)) {
+          return true;
+        }
+
+        return false;
+      };
+
+      var activeItem = null; // First match non-navi items.
+
+      var naviItems = [];
+
+      for (var i = 0; i < items.length && !activeItem; ++i) {
+        var item = items[i];
+
+        if (item.navi) {
+          naviItems.push(item);
+          continue;
+        }
+
+        if (item.children.length > 0) {
+          // Match the child item.
+          for (var j = 0; j < item.children.length; ++j) {
+            var child = item.children[j];
+
+            if (child.navi) {
+              naviItems.push(child);
+              continue;
+            }
+
+            if (matchTarget(child, target)) {
+              activeItem = child;
+              break;
+            }
+          }
+        } else if (matchTarget(item, target)) {
+          activeItem = item;
+          break;
+        }
+      } // Check navi items.
+
+
+      for (var _i2 = 0; _i2 < naviItems.length && !activeItem; ++_i2) {
+        var base = utils.baseOfPath(naviItems[_i2].target);
+
+        if (utils.isSubPath(base, target)) {
+          activeItem = naviItems[_i2];
+          break;
+        }
+      } // Update info according to hit target.
+
+
+      if (activeItem) {
+        var info = this.viki.info;
+        info.toc = activeItem.toc;
+
+        if (activeItem.navi) {
+          info.naviFile = activeItem.target;
+          info.naviIndex = info.baseUrl + activeItem.naviIndex;
+        }
+      }
+
+      return activeItem;
+    }
+  }, {
+    key: "renderActionBar",
+    value: function renderActionBar(p_actionItems) {
+      if (p_actionItems.length == 0) {
+        return;
+      }
+
+      var ul = $("<ul class=\"navbar-nav flex-row ml-md-auto d-none d-md-flex\"></ul>");
+
+      for (var i = 0; i < p_actionItems.length; ++i) {
+        var li = p_actionItems[i].toLi();
+        ul.append(li);
+      }
+
+      $("#viki-navbar").append(ul);
+    }
+  }]);
+
+  return NaviWorker;
+}(_worker.default);
+
+exports.NaviWorker = NaviWorker;
+
+},{"./linkrewriter.js":7,"./logger.js":8,"./utils.js":17,"./worker.js":20}],14:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _worker = _interopRequireDefault(require("./worker.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var PageWorker =
+/*#__PURE__*/
+function (_Worker) {
+  _inherits(PageWorker, _Worker);
+
+  function PageWorker() {
+    _classCallCheck(this, PageWorker);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PageWorker).call(this));
+  }
+
+  _createClass(PageWorker, [{
+    key: "register",
+    value: function register(p_viki) {
+      _get(_getPrototypeOf(PageWorker.prototype), "register", this).call(this, p_viki);
+
+      _logger.default.log("register PageWorker");
+    }
+  }, {
+    key: "run",
+    value: function run() {
+      // Title.
+      document.title = this.viki.config.title; // Favicon.
+
+      if (this.viki.config.favicon) {
+        $("#favicon").attr("href", this.viki.config.favicon);
+      } else {
+        $("#favicon").remove();
+      }
+
+      this.viki.scheduleNext();
+    }
+  }]);
+
+  return PageWorker;
+}(_worker.default);
+
+var _default = PageWorker;
+exports.default = _default;
+
+},{"./logger.js":8,"./worker.js":20}],15:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var PlantUMLHelper =
+/*#__PURE__*/
+function () {
+  function PlantUMLHelper() {
+    _classCallCheck(this, PlantUMLHelper);
+  }
+
+  _createClass(PlantUMLHelper, [{
+    key: "renderPlantUMLOnline",
+    value: function renderPlantUMLOnline(server, format, text, callback, data) {
+      var httpGet = function httpGet(url, type, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", url);
+        xmlHttp.responseType = type;
+
+        xmlHttp.onload = function () {
+          callback(xmlHttp.response);
+        };
+
+        xmlHttp.send(null);
+      };
+
+      var getPlantUMLOnlineURL = function getPlantUMLOnlineURL(server, format, text) {
+        var s = unescape(encodeURIComponent(text));
+        var arr = [];
+
+        for (var i = 0; i < s.length; i++) {
+          arr.push(s.charCodeAt(i));
+        }
+
+        var compressor = new Zopfli.RawDeflate(arr);
+        var compressed = compressor.compress();
+        var url = server + "/" + format + "/" + encode64_(compressed);
+        return url;
+      };
+
+      var url = getPlantUMLOnlineURL(server, format, text);
+
+      if (format == 'png') {
+        httpGet(url, 'blob', function (resp) {
+          var blob = resp;
+          var reader = new FileReader();
+
+          reader.onload = function () {
+            var dataUrl = reader.result;
+            var png = dataUrl.substring(dataUrl.indexOf(',') + 1);
+            callback(data, format, png);
+          };
+
+          reader.readAsDataURL(blob);
+        });
+      } else if (format == 'svg') {
+        httpGet(url, 'text', function (resp) {
+          callback(data, format, resp);
+        });
+      }
+    }
+  }]);
+
+  return PlantUMLHelper;
+}();
+
+var _default = PlantUMLHelper;
+exports.default = _default;
+
+},{}],16:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _utils = _interopRequireDefault(require("./utils.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var TocRenderer =
+/*#__PURE__*/
+function () {
+  function TocRenderer(p_node) {
+    _classCallCheck(this, TocRenderer);
+
+    this.containerNode = p_node;
+    this.toc = [];
+  } // Render the toc of @p_contentNode into this.containerNode.
+
+
+  _createClass(TocRenderer, [{
+    key: "render",
+    value: function render(p_contentNode) {
+      this.containerNode.empty();
+      this.toc = [];
+      var utils = new _utils.default(); // Fetch the outline.
+
+      var headers = p_contentNode.find('h1, h2, h3, h4, h5, h6');
+
+      for (var i = 0; i < headers.length; ++i) {
+        var header = headers[i];
+        this.toc.push({
+          level: parseInt(header.tagName.substr(1)),
+          anchor: header.id,
+          title: utils.escapeHtml(header.textContent)
+        });
+      }
+
+      if (this.toc.length === 0) {
+        return;
+      }
+
+      var tocTree = utils.tocToTree(this.toc);
+      this.containerNode.html(tocTree);
+      utils.rewriteAnchorInToc(this.containerNode);
+    }
+  }]);
+
+  return TocRenderer;
+}();
+
+var _default = TocRenderer;
+exports.default = _default;
+
+},{"./logger.js":8,"./utils.js":17}],17:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Utils =
+/*#__PURE__*/
+function () {
+  function Utils() {
+    _classCallCheck(this, Utils);
+  }
+
+  _createClass(Utils, [{
+    key: "tocToTree",
+    value: function tocToTree(p_toc) {
+      // Return the topest level of @toc, starting from 1.
+      var baseLevelOfToc = function baseLevelOfToc(p_toc) {
+        var level = -1;
+
+        for (var i in p_toc) {
+          if (level == -1) {
+            level = p_toc[i].level;
+          } else if (level > p_toc[i].level) {
+            level = p_toc[i].level;
+          }
+        }
+
+        if (level == -1) {
+          level = 1;
+        }
+
+        return level;
+      }; // Handle wrong title levels, such as '#' followed by '###'.
+
+
+      var toPerfectToc = function toPerfectToc(p_toc, p_baseLevel) {
+        var curLevel = p_baseLevel - 1;
+        var perfToc = [];
+
+        for (var i in p_toc) {
+          var _item = p_toc[i]; // Insert empty header.
+
+          while (_item.level > curLevel + 1) {
+            curLevel += 1;
+            var tmp = {
+              level: curLevel,
+              anchor: '',
+              title: '[EMPTY]'
+            };
+            perfToc.push(tmp);
+          }
+
+          perfToc.push(_item);
+          curLevel = _item.level;
+        }
+
+        return perfToc;
+      };
+
+      var itemToHtml = function itemToHtml(p_item) {
+        return '<a href="#' + p_item.anchor + '" title="' + p_item.title + '">' + p_item.title + '</a>';
+      };
+
+      var baseLevel = baseLevelOfToc(p_toc);
+      var perfectToc = toPerfectToc(p_toc, baseLevel);
+      var front = '<li>';
+      var ending = ['</li>'];
+      var curLevel = baseLevel;
+
+      for (var i in perfectToc) {
+        var item = perfectToc[i];
+
+        if (item.level == curLevel) {
+          front += '</li>';
+          front += '<li>';
+          front += itemToHtml(item);
+        } else if (item.level > curLevel) {
+          // assert(item.level - curLevel == 1)
+          front += '<ul>';
+          ending.push('</ul>');
+          front += '<li>';
+          front += itemToHtml(item);
+          ending.push('</li>');
+          curLevel = item.level;
+        } else {
+          while (item.level < curLevel) {
+            var ele = ending.pop();
+            front += ele;
+
+            if (ele == '</ul>') {
+              curLevel--;
+            }
+          }
+
+          front += '</li>';
+          front += '<li>';
+          front += itemToHtml(item);
+        }
+      }
+
+      while (ending.length > 0) {
+        front += ending.pop();
+      }
+
+      front = front.replace("<li></li>", "");
+      front = '<ul>' + front + '</ul>';
+      return front;
+    }
+  }, {
+    key: "rewriteAnchorInToc",
+    value: function rewriteAnchorInToc(p_tocNode) {
+      var _this = this;
+
+      p_tocNode.find('a').click(function (p_e) {
+        p_e.preventDefault();
+        var href = p_e.target.getAttribute('href');
+        var idx = href.lastIndexOf('#');
+
+        if (idx != -1) {
+          var anchor = href.substring(idx);
+
+          if (anchor) {
+            var header = $(anchor);
+
+            if (header.length > 0) {
+              header[0].scrollIntoView(); // Change the hash.
+
+              _this.updateHashSilently(href);
+            }
+          }
+        }
+      });
+    }
+  }, {
+    key: "isRelativeUrl",
+    value: function isRelativeUrl(p_url) {
+      return p_url.indexOf('://') === -1;
+    }
+  }, {
+    key: "isRelativePath",
+    value: function isRelativePath(p_path) {
+      if (typeof p_path == "undefined" || p_path.startsWith('/')) {
+        return false;
+      }
+
+      return true;
+    }
+  }, {
+    key: "cleanPath",
+    value: function cleanPath(p_path) {
+      if (p_path.indexOf('/') === -1) {
+        return p_path;
+      }
+
+      var absolute = p_path.startsWith('/'); // Split it.
+
+      var newParts = [];
+      var parts = p_path.split('/');
+
+      for (var i = 0; i < parts.length; ++i) {
+        if (!parts[i] || parts[i] === '.') {
+          continue;
+        }
+
+        if (parts[i] === '..') {
+          if (newParts.length > 0) {
+            newParts.pop();
+            continue;
+          }
+        }
+
+        newParts.push(parts[i]);
+      }
+
+      return (absolute ? '/' : '') + newParts.join('/');
+    } // For root path, will return an empty string.
+
+  }, {
+    key: "baseOfPath",
+    value: function baseOfPath(p_path) {
+      var idx = p_path.lastIndexOf('/');
+      return p_path.substring(0, idx + 1);
+    }
+  }, {
+    key: "fileNameOfPath",
+    value: function fileNameOfPath(p_path) {
+      var idx = p_path.lastIndexOf('/');
+      return p_path.substring(idx + 1);
+    } // Escape @p_text to Html.
+
+  }, {
+    key: "escapeHtml",
+    value: function escapeHtml(p_text) {
+      var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return p_text.replace(/[&<>"']/g, function (m) {
+        return map[m];
+      });
+    } // Update the hash of the url without re-loading.
+
+  }, {
+    key: "updateHashSilently",
+    value: function updateHashSilently(p_hash) {
+      window.viki_silent_hash = true;
+      window.location.hash = p_hash;
+    } // Whether @p_a and @p_b is equal.
+
+  }, {
+    key: "pathEqual",
+    value: function pathEqual(p_a, p_b) {
+      var a = this.cleanPath(p_a.toLowerCase());
+      var b = this.cleanPath(p_b.toLowerCase());
+      return a === b;
+    } // Whether @p_b is sub path of @p_a.
+
+  }, {
+    key: "isSubPath",
+    value: function isSubPath(p_a, p_b) {
+      if (p_a === '') {
+        return true;
+      } else if (!p_a) {
+        return false;
+      }
+
+      var a = this.cleanPath(p_a.toLowerCase());
+      var b = this.cleanPath(p_b.toLowerCase());
+      return b.startsWith(a);
+    } // The base name without suffix.
+
+  }, {
+    key: "baseName",
+    value: function baseName(p_file) {
+      var idx = p_file.lastIndexOf('.');
+
+      if (idx == -1) {
+        return p_file;
+      }
+
+      return p_file.substring(0, idx);
+    }
+  }, {
+    key: "suffix",
+    value: function suffix(p_file) {
+      var idx = p_file.lastIndexOf('.');
+
+      if (idx == -1) {
+        return '';
+      }
+
+      return p_file.substring(idx + 1);
+    }
+  }]);
+
+  return Utils;
+}();
+
+var _default = Utils;
+exports.default = _default;
+
+},{}],18:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _logger = _interopRequireDefault(require("./logger.js"));
+
+var _vikiinfo = _interopRequireDefault(require("./vikiinfo.js"));
+
+var _configworker = require("./configworker.js");
+
+var _pageworker = _interopRequireDefault(require("./pageworker.js"));
+
+var _naviworker = require("./naviworker.js");
+
+var _fetchtargetworker = _interopRequireDefault(require("./fetchtargetworker.js"));
+
+var _contentworker = _interopRequireDefault(require("./contentworker.js"));
+
+var _footerworker = _interopRequireDefault(require("./footerworker.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Viki =
+/*#__PURE__*/
+function () {
+  function Viki() {
+    _classCallCheck(this, Viki);
+
+    this.workers = [];
+    this.curWorkerIdx = -1;
+    this.config = new _configworker.Config();
+    this.naviItems = [];
+    this.info = new _vikiinfo.default();
+  }
+
+  _createClass(Viki, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
+
+      window.viki_silent_hash = false;
+
+      var registerWorker = function registerWorker(p_worker) {
+        p_worker.register(_this);
+
+        _this.workers.push(p_worker);
+      };
+
+      var configWorker = new _configworker.ConfigWorker();
+      registerWorker(configWorker);
+      var pageWorker = new _pageworker.default();
+      registerWorker(pageWorker);
+      var naviWorker = new _naviworker.NaviWorker();
+      registerWorker(naviWorker);
+      var fetchTargetWorker = new _fetchtargetworker.default();
+      registerWorker(fetchTargetWorker);
+      var contentWorker = new _contentworker.default();
+      registerWorker(contentWorker);
+      var footerWorker = new _footerworker.default();
+      registerWorker(footerWorker);
+      $(document).ready(function () {
+        if (!_this.initTargetFromHash()) {
+          return;
+        }
+
+        $(window).bind('hashchange', function () {
+          if (window.viki_silent_hash) {
+            window.viki_silent_hash = false;
+            return;
+          }
+
+          window.location.reload(false);
+        });
+
+        _logger.default.log("target", _this.info.target, "anchor", _this.info.anchor);
+
+        _this.curWorkerIdx = -1;
+
+        _this.scheduleNext();
+      });
+    }
+  }, {
+    key: "scheduleNext",
+    value: function scheduleNext() {
+      if (this.curWorkerIdx >= this.workers.length - 1) {
+        _logger.default.log("all workers finished");
+
+        this.curWorkerIdx = -1;
+      } else {
+        ++this.curWorkerIdx;
+
+        _logger.default.log("schedule worker", this.curWorkerIdx);
+
+        this.workers[this.curWorkerIdx].run();
+      }
+    }
+  }, {
+    key: "initTargetFromHash",
+    value: function initTargetFromHash() {
+      var isValidHash = function isValidHash(hash) {
+        var a = document.createElement('a');
+        a.href = hash;
+        return window.location.hostname === a.hostname;
+      };
+
+      var target = "index.md";
+      var hash = window.location.hash || ""; // Default hash completion.
+
+      if (hash === '') {
+        // Empty.
+        this.info.setTarget(target);
+        return true;
+      }
+
+      var newHash = '';
+
+      if (hash === "#" || hash === "#!") {
+        newHash = "#!" + target;
+      } else if (hash.startsWith("#!") && hash.endsWith('/')) {
+        newHash = hash + target;
+      }
+
+      if (newHash) {
+        window.location.hash = newHash;
+        window.location.reload(false);
+        return false;
+      }
+
+      if (hash.startsWith("#!")) {
+        target = hash.substring(2);
+      } else if (hash.startsWith("#")) {
+        target = hash.substring(1);
+      } // Validate if it could be located.
+
+
+      if (!isValidHash(target)) {
+        target = "index.md";
+      } // Do not decode URI here.
+      // Anchor.
+
+
+      var idx = target.indexOf('#');
+
+      if (idx != -1) {
+        this.info.setTarget(target.substring(0, idx), target.substring(idx + 1));
+      } else {
+        this.info.setTarget(target);
+      }
+
+      return true;
+    }
+  }]);
+
+  return Viki;
+}();
+
+var _default = Viki;
+exports.default = _default;
+
+},{"./configworker.js":1,"./contentworker.js":2,"./fetchtargetworker.js":4,"./footerworker.js":5,"./logger.js":8,"./naviworker.js":13,"./pageworker.js":14,"./vikiinfo.js":19}],19:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _utils = _interopRequireDefault(require("./utils.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var VikiInfo =
+/*#__PURE__*/
+function () {
+  function VikiInfo() {
+    _classCallCheck(this, VikiInfo);
+
+    // Target page specified by user (encoded).
+    this.target = ''; // Anchor within target page (encoded).
+
+    this.anchor = ''; // Base url.
+
+    this.baseUrl = ''; // Host + path.
+
+    this.hostPath = ''; // Whether enable toc.
+
+    this.toc = true; // Navigation file for this target.
+
+    this.naviFile = ''; // Index page of navigation file.
+    // Base URL prepended.
+
+    this.naviIndex = ''; // Data of the target file.
+
+    this.data = null;
+    this.naviContainerId = '';
+    this.contentContainerId = '';
+    this.tocContainerId = '';
+  }
+
+  _createClass(VikiInfo, [{
+    key: "setTarget",
+    value: function setTarget(p_target) {
+      var p_anchor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      this.hostPath = window.location.origin + window.location.pathname;
+      this.target = p_target;
+      this.anchor = p_anchor;
+      var utils = new _utils.default();
+      this.baseUrl = utils.baseOfPath(p_target);
+    }
+  }]);
+
+  return VikiInfo;
+}();
+
+var _default = VikiInfo;
+exports.default = _default;
+
+},{"./utils.js":17}],20:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Worker =
+/*#__PURE__*/
+function () {
+  function Worker() {
+    _classCallCheck(this, Worker);
+
+    this.viki = null;
+  }
+
+  _createClass(Worker, [{
+    key: "register",
+    value: function register(p_viki) {
+      this.viki = p_viki;
+    }
+  }, {
+    key: "run",
+    value: function run() {}
+  }]);
+
+  return Worker;
+}();
+
+var _default = Worker;
+exports.default = _default;
+
+},{}]},{},[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]);
