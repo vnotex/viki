@@ -5,7 +5,7 @@ import PlantUMLHelper from "./plantumlhelper.js";
 
 // Will be called after MathJax rendering finished.
 // Make <pre><code>math</code></pre> to <p>math</p>
-var postProcessMathJax = function() {
+window.PostProcessMathJax = function() {
     let all = MathJax.Hub.getAllJax();
     for (let i = 0; i < all.length; ++i) {
         let node = all[i].SourceElement().parentNode;
@@ -18,7 +18,7 @@ var postProcessMathJax = function() {
     }
 };
 
-var MathJaxReady = function() {
+window.MathJaxReady = function() {
     let texToRender = $('.tex-to-render');
     let nrTex = texToRender.length;
     if (nrTex == 0) {
@@ -36,7 +36,7 @@ var MathJaxReady = function() {
                                   MathJax.InputJax.TeX.resetEquationNumbers();
                               }
                           },
-                          ["Typeset", MathJax.Hub, eles, postProcessMathJax]);
+                          ["Typeset", MathJax.Hub, eles, PostProcessMathJax]);
     } catch (err) {
         console.log("err", err);
     }
@@ -613,7 +613,7 @@ class MarkdownIt {
                                       MathJax.InputJax.TeX.resetEquationNumbers();
                                   }
                               },
-                              ["Typeset", MathJax.Hub, eles, postProcessMathJax]);
+                              ["Typeset", MathJax.Hub, eles, PostProcessMathJax]);
         } catch (err) {
             console.log("err", err);
         }

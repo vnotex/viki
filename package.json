@@ -1,6 +1,6 @@
 {
   "name": "viki",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "A simple Wiki page in Markdown from notebook of VNote.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,9 +25,9 @@
     "@babel/preset-env": "^7.1.5",
     "babel-cli": "^6.26.0",
     "babelify": "^10.0.0",
-    "grunt": "^1.0.3",
-    "grunt-cli": "~1.2.0",
+    "grunt": "^1.0.4",
     "grunt-browserify": "^5.3.0",
+    "grunt-cli": "~1.2.0",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
@@ -35,5 +35,8 @@
     "grunt-contrib-uglify": "^4.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "load-grunt-tasks": "^4.0.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
   }
 }

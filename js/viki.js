@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import logger from "./logger.js";
 import VikiInfo from "./vikiinfo.js";
 import { Config, ConfigWorker } from "./configworker.js";

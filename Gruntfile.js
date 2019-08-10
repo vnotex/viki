@@ -86,6 +86,15 @@ module.exports = function(grunt) {
                 options: {
                     transform: [['babelify', { presets: ['@babel/preset-env']}]],
                 }
+            },
+            libs: {
+                files: {
+                    // destination for transpiled js : source js
+                    'tmp/libs/markdown-it/markdown-it-texmath.js': 'tmp/libs/markdown-it/markdown-it-texmath.js'
+                },
+                options: {
+                    transform: [['babelify', { presets: ['@babel/preset-env']}]],
+                }
             }
         },
 
@@ -124,7 +133,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
 
     // the default task can be run just by typing "grunt" on the command line
-    grunt.registerTask('default', ['jshint', 'copy:pre', 'browserify', 'concat:dist', 'copy:post', 'clean:tmp']);
-    grunt.registerTask('release', ['jshint', 'copy:pre', 'browserify', 'uglify', 'concat:release', 'copy:post', 'clean:tmp']);
+    grunt.registerTask('default', ['jshint', 'copy:pre', 'browserify:dist', 'concat:dist', 'copy:post', 'clean:tmp']);
+    grunt.registerTask('release', ['jshint', 'copy:pre', 'browserify:dist', 'uglify', 'concat:release', 'copy:post', 'clean:tmp']);
     grunt.registerTask('watcher', ['watch']);
 };
