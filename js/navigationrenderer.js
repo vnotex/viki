@@ -275,6 +275,7 @@ class NavigationRenderer {
             return;
         }
 
+        path = decodeURIComponent(path);
         let pathNodes = path.split('/');
         this.expandToNode(tree.get_node('#'), pathNodes, 0);
     }
