@@ -82,7 +82,8 @@ class Viki {
         let isValidHash = function(hash) {
             var a = document.createElement('a');
             a.href = hash;
-            return window.location.hostname === a.hostname;
+            // In IE, a.hostname maybe empty if not specified in href.
+            return !a.hostname || window.location.hostname === a.hostname;
         };
 
         let target = "index.md";
