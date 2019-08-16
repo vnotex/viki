@@ -9,7 +9,7 @@ Below are some examples.
 
 ::: alert-info
 
-You may want to add a `.nojekyll`file at the root of your project to bypass Jekyll on GitHub Pages. Otherwise, files or directories that start with underscores will be filtered away. See more on [GitHub Blogs](https://blog.github.com/2009-12-29-bypassing-jekyll-on-github-pages/).
+You may want to add a `.nojekyll` file at the root of your project to bypass Jekyll on GitHub Pages. Otherwise, files or directories that start with underscores will be filtered away. See more on [GitHub Blogs](https://blog.github.com/2009-12-29-bypassing-jekyll-on-github-pages/).
 
 :::
 
