@@ -35,7 +35,8 @@ class ContentWorker extends Worker {
                 fuzzySearch: this.viki.config.fuzzySearch
             });
 
-            if (info.naviIndex && info.naviFile === info.target) {
+            if (info.naviIndex &&
+                info.naviFile === decodeURIComponent(info.target)) {
                 navier.render(info.hostPath, info.naviFile, info.naviIndex, true);
             } else {
                 // Otherwise, no need to let navier load target.

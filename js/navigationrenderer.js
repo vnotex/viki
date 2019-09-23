@@ -266,6 +266,7 @@ class NavigationRenderer {
         let utils  = new Utils();
         let basePath = utils.cleanPath(this.naviBase);
         let path = utils.cleanPath(p_path);
+        path = decodeURIComponent(path);
         if (!path.startsWith(basePath)) {
             return;
         }
@@ -275,7 +276,6 @@ class NavigationRenderer {
             return;
         }
 
-        path = decodeURIComponent(path);
         let pathNodes = path.split('/');
         this.expandToNode(tree.get_node('#'), pathNodes, 0);
     }
