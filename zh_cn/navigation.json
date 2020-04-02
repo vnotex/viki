@@ -2,16 +2,16 @@
     "navigation":
     [
         {
-            "text": "Home",
+            "text": "首页",
             "target": "index.md",
             "toc": false
         },
         {
-            "text": "Get Started",
+            "text": "简单开始",
             "target": "get_started.md"
         },
         {
-            "text": "Downloads",
+            "text": "下载",
             "target": "downloads.md",
             "toc": false
         },
@@ -20,14 +20,24 @@
             "target": "markdown.md"
         },
         {
-            "text": "Documentation",
+            "text": "文档",
             "target": "docs/_vnote.json",
             "navi": true,
-            "navi_index": "Users/Welcome.md"
+            "navi_index": "用户/欢迎使用.md"
         },
         {
-            "text": "Examples",
+            "text": "例子",
             "target": "examples.md"
+        },
+        {
+            "text": "语言",
+            "children":
+            [
+                {
+                    "text": "English",
+                    "target": "../en_us/"
+                }
+            ]
         }
     ],
     "actions":
