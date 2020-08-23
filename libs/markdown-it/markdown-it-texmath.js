@@ -214,15 +214,15 @@ texmath.rules = {
   },
   dollars: {
     inline: [{
-      name: 'math_inline',
-      rex: /\$(\S[^$\r\n]*?[^\s\\]{1}?)\$/g,
+      name: 'math_inline_double',
+      rex: /\${2}((?:\S)|(?:\S.*?\S))\${2}/gy,
       tmpl: '<x-eq class="tex-to-render">$1</x-eq>',
-      tag: '$',
+      tag: '$$',
       pre: texmath.$_pre,
       post: texmath.$_post
     }, {
-      name: 'math_single',
-      rex: /\$([^$\s\\]{1}?)\$/g,
+      name: 'math_inline',
+      rex: /\$((?:\S)|(?:\S.*?\S))\$/gy,
       tmpl: '<x-eq class="tex-to-render">$1</x-eq>',
       tag: '$',
       pre: texmath.$_pre,
@@ -230,12 +230,12 @@ texmath.rules = {
     }],
     block: [{
       name: 'math_block_eqno',
-      rex: /\${2}((?:[^$]|\$(?!\$))*?)\${2}\s*?\(([^)$\r\n]+?)\)\s*$/gm,
+      rex: /\${2}([^$]+?)\${2}\s*?\(([^)\s]+?)\)/gmy,
       tmpl: '<x-eqs><x-eqn class="tex-to-render">$1</x-eqn><span>($2)</span></x-eqs>',
       tag: '$$'
     }, {
       name: 'math_block',
-      rex: /\${2}((?:[^$]|\$(?!\$))*?)\${2}\s*$/gm,
+      rex: /\${2}([^$]+?)\${2}/gmy,
       tmpl: '<x-eqn class="tex-to-render">$1</x-eqn>',
       tag: '$$'
     }]
