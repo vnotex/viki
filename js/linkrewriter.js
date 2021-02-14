@@ -37,10 +37,11 @@ class LinkRewriter {
                 newHref = p_base + href;
             }
 
-            // Only let markdown file and _vnote.json go through our router.
+            // Only let markdown file / _vnote.json / vx.json go through our router.
             let suffix = utils.suffix(newHref);
             if (/^(?:md|markdown)$/i.test(suffix) ||
-                /^(.*\/)?_vnote\.json$/i.test(newHref)) {
+                /^(.*\/)?_vnote\.json$/i.test(newHref) ||
+                /^(.*\/)?vx\.json$/i.test(newHref)) {
                 p_a.href = '#!' + utils.cleanPath(newHref);
             } else {
                 p_a.href = utils.cleanPath(newHref);
