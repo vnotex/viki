@@ -107,8 +107,9 @@ class NavigationRenderer {
 
                             let children = [];
                             // Subfolders.
-                            for (let i = 0; i < p_jobj.sub_directories.length; ++i) {
-                                let folder = p_jobj.sub_directories[i];
+                            let folders = p_jobj.sub_directories ? p_jobj.sub_directories : p_jobj.folders;
+                            for (let i = 0; i < folders.length; ++i) {
+                                let folder = folders[i];
 
                                 let folderItem = {
                                     text: folder.name,
