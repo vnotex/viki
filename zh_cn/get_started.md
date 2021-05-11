@@ -28,7 +28,7 @@
 :::
 
 ## 获取Viki
-从[GitHub Releases](https://github.com/tamlok/viki/releases)上下载Viki的相关文件。 你需要的文件都位于`dist/`目录下面。
+从[GitHub Releases](https://github.com/vnotex/viki/releases)上下载Viki的相关文件。 你需要的文件都位于`dist/`目录下面。
 
 ![Viki Files](_v_images/20181118110442141_26270.png)
 
@@ -40,7 +40,7 @@
 
 一般来说，可以省略地址中的`index.html`，例如`http://localhost:8080/`就可以访问`index.md`。
 
-`css/`和`js/`存放的是Viki的资源文件。`navigation.json`用于设置网站的导航栏。`viki.json`用于配置Viki。具体请参考[文档](docs/_vnote.json) 。
+`css/`和`js/`存放的是Viki的资源文件。`navigation.json`用于设置网站的导航栏。`viki.json`用于配置Viki。具体请参考[文档](docs/vx.json) 。
 
 ## 添加更多文件到Viki中
 现在，你可以添加更多`*.md`文件到你的网站中。如果需要在导航栏展示一个页面，你需要将其添加到`navigation.json`中。

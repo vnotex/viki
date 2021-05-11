@@ -1,16 +1,16 @@
 # Viki and VNote
-Viki could recognize the `_vnote.json` index file of VNote's notebook. There are two ways to combine Viki and VNote.
+Viki could recognize the `vx.json` index file of VNote's notebook. There are two ways to combine Viki and VNote.
 
 - Copy one of VNote's notebook or folder to your site;
 - Create a notebook inside your site.
 
 ::: alert-info
 
-You could just copy files within `dist/` to the root of your notebook. By default, the `navigation.json` will point to `_vnote.json` in current directory.
+You could just copy files within `dist/` to the root of your notebook. By default, the `navigation.json` will point to `vx.json` in current directory.
 
 :::
 
-You need to edit `navigation.json` to add one item pointing to the `_vnote.json` file:
+You need to edit `navigation.json` to add one item pointing to the `vx.json` file:
 
 ```json
 {
@@ -18,7 +18,7 @@ You need to edit `navigation.json` to add one item pointing to the `_vnote.json`
     [
         {
             "text": "Notebook",
-            "target": "vnotebok/_vnote.json",
+            "target": "vnotebok/vx.json",
             "navi": true,
             "navi_index": "vnotebook/docs/welcome.md"
         }

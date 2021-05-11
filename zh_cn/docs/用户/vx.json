@@ -3,46 +3,44 @@
     "files": [
         {
             "attachment_folder": "",
-            "attachments": [
-            ],
             "created_time": "2018-11-17T06:04:20Z",
-            "modified_time": "2018-11-17T06:11:23Z",
-            "name": "Welcome.md",
+            "id": "0",
+            "modified_time": "2018-11-17T06:04:20Z",
+            "name": "欢迎使用.md",
             "tags": [
             ]
         },
         {
             "attachment_folder": "",
-            "attachments": [
-            ],
             "created_time": "2018-11-18T03:25:09Z",
-            "modified_time": "2018-11-18T03:43:09Z",
-            "name": "Configuration.md",
+            "id": "0",
+            "modified_time": "2018-11-18T03:25:09Z",
+            "name": "配置.md",
             "tags": [
             ]
         },
         {
             "attachment_folder": "",
-            "attachments": [
-            ],
             "created_time": "2018-11-18T03:25:19Z",
-            "modified_time": "2018-11-18T03:52:31Z",
-            "name": "Viki and VNote.md",
+            "id": "0",
+            "modified_time": "2018-11-18T03:25:19Z",
+            "name": "Viki和VNote.md",
             "tags": [
             ]
         },
         {
             "attachment_folder": "",
-            "attachments": [
-            ],
             "created_time": "2018-11-18T03:31:27Z",
-            "modified_time": "2018-11-18T03:32:42Z",
-            "name": "Customization.md",
+            "id": "0",
+            "modified_time": "2018-11-18T03:31:27Z",
+            "name": "自定义.md",
             "tags": [
             ]
         }
     ],
-    "sub_directories": [
+    "folders": [
     ],
+    "id": "0",
+    "modified_time": "2021-05-11T12:48:29Z",
     "version": "1"
 }

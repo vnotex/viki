@@ -2,7 +2,7 @@
     "brand": "viki",
     "brand_icon": "css/viki_white.svg",
     "title": "Viki - A simple Wiki page in Markdown from notebook of VNote",
-    "favicon": "https://github.com/tamlok/viki/raw/master/resources/viki.ico",
+    "favicon": "https://github.com/vnotex/viki/raw/master/resources/viki.ico",
     "footer": "",
     "show_suffix": false,
     "load_before_search": true,

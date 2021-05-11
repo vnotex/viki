@@ -1,14 +1,14 @@
 # Viki
-一个简单的使用Markdown语法的维基页面，能展示[VNote](https://tamlok.github.io/vnote)中的笔记本。
+一个简单的使用Markdown语法的维基页面，能展示[VNote](https://vnotex.github.io/vnote)中的笔记本。
 
 ::: alert-info
-当前浏览页面由Viki生成并免费托管在[GitHub Pages](https://github.com/tamlok/viki/tree/gh-pages)上。
+当前浏览页面由Viki生成并免费托管在[GitHub Pages](https://github.com/vnotex/viki/tree/gh-pages)上。
 
-Viki是自由开源的。Viki的源码托管在[GitHub Project](https://github.com/tamlok/viki)上。
+Viki是自由开源的。Viki的源码托管在[GitHub Project](https://github.com/vnotex/viki)上。
 :::
 
 ::: alert-info
-[VNote](https://tamlok.github.io/vnote)是一个更懂程序员和Markdown的笔记应用。
+[VNote](https://vnotex.github.io/vnote)是一个更懂程序员和Markdown的笔记应用。
 :::
 
 ## 功能

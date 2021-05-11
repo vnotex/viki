@@ -21,7 +21,7 @@
         },
         {
             "text": "Documentation",
-            "target": "docs/_vnote.json",
+            "target": "docs/vx.json",
             "navi": true,
             "navi_index": "Users/Welcome.md"
         },
@@ -45,7 +45,7 @@
         {
             "text": "GitHub",
             "icon": "css/github.svg",
-            "target": "https://github.com/tamlok/viki"
+            "target": "https://github.com/vnotex/viki"
         }
     ]
 }

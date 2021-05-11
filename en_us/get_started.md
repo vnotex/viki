@@ -28,7 +28,7 @@ There are two simple choices:
 :::
 
 ## Get Viki
-Download files of Viki from [GitHub Releases](https://github.com/tamlok/viki/releases). What you need are files within the `dist/` folder.
+Download files of Viki from [GitHub Releases](https://github.com/vnotex/viki/releases). What you need are files within the `dist/` folder.
 
 ![Viki Files](_v_images/20181118110442141_26270.png)
 
@@ -40,7 +40,7 @@ If you want to visit another page, just append `#!` and the relative path of tha
 
 Generally you could omit the `index.html` in the URL, such as `http://localhost:8080/` will show you content of `index.md`.
 
-`css/` and `js/` hold necessary resources of Viki. `navigation.json` is the file to setup the navigation bar of your site. `viki.json` is the configuration file of Viki. For more details, please visit [Documentation](docs/_vnote.json).
+`css/` and `js/` hold necessary resources of Viki. `navigation.json` is the file to setup the navigation bar of your site. `viki.json` is the configuration file of Viki. For more details, please visit [Documentation](docs/vx.json).
 
 ## Add more files to your site
 Now you are ready to construct the cotnent of your site by adding more `*.md` files. You may need to add an entry to the `navigation.json` file if you want to show a page in the navigation bar.

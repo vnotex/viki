@@ -34,7 +34,7 @@ A typical `navigation.json` may look like this:
         },
         {
             "text": "Item targeting VNote's notebook",
-            "target": "docs/_vnote.json",
+            "target": "docs/vx.json",
             "navi": true,
             "navi_index": "docs/page_to_show_when_this_item_is_activated.md"
         },
