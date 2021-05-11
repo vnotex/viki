@@ -110,6 +110,10 @@ class NavigationRenderer {
                             let folders = p_jobj.sub_directories ? p_jobj.sub_directories : p_jobj.folders;
                             for (let i = 0; i < folders.length; ++i) {
                                 let folder = folders[i];
+                                if (folder.name === 'vx_recycle_bin') {
+                                    // Skip the recycle bin.
+                                    continue;
+                                }
 
                                 let folderItem = {
                                     text: folder.name,

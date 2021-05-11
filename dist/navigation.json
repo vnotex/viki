@@ -8,7 +8,7 @@
         },
         {
             "text": "Notebook",
-            "target": "_vnote.json",
+            "target": "vx.json",
             "navi": true
         }
     ],
