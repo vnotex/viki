@@ -23,7 +23,8 @@
             "text": "Documentation",
             "target": "docs/vx.json",
             "navi": true,
-            "navi_index": "Users/Welcome.md"
+            "navi_index": "Users/Welcome.md",
+            "navi_expand_level": 1
         },
         {
             "text": "Examples",
