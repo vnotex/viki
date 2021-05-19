@@ -32,7 +32,8 @@ class ContentWorker extends Worker {
             let navier = new NavigationRenderer(container, this, {
                 showSuffix: this.viki.config.showSuffix,
                 loadBeforeSearch: this.viki.config.loadBeforeSearch,
-                fuzzySearch: this.viki.config.fuzzySearch
+                fuzzySearch: this.viki.config.fuzzySearch,
+                expandLevel: info.naviExpandLevel
             });
 
             if (info.naviIndex &&

@@ -6,7 +6,7 @@ class Config {
         this.brand = "Viki";
         this.brandIcon = "";
         this.title = "Viki - A simple Wiki page in Markdown from notebook of VNote";
-        this.favicon = "https://github.com/tamlok/viki/raw/master/resources/viki.ico";
+        this.favicon = "https://github.com/vnotex/viki/raw/master/resources/viki.ico";
         this.footer = "";
         // Whether show suffix in navigation panel.
         this.showSuffix = false;

@@ -24,6 +24,9 @@ class VikiInfo {
         // Base URL prepended.
         this.naviIndex = '';
 
+        // Auto expand level of the navigation tree on start.
+        this.naviExpandLevel = 1;
+
         // Data of the target file.
         this.data = null;
 

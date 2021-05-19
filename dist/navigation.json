@@ -8,8 +8,9 @@
         },
         {
             "text": "Notebook",
-            "target": "vx.json",
-            "navi": true
+            "target": "abc/vx.json",
+            "navi": true,
+            "navi_expand_level": 1
         }
     ],
     "actions":
@@ -17,7 +18,7 @@
         {
             "text": "Viki",
             "icon": "css/viki_white.svg",
-            "target": "https://tamlok.github.io/viki/"
+            "target": "https://vnotex.github.io/viki/"
         }
     ]
 }

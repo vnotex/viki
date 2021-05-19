@@ -20,6 +20,9 @@ class NaviItem {
         // If @navi is true, this hold the start page of that navigation item.
         this.naviIndex = "";
 
+        // The auto expand level of the navi tree on start.
+        this.naviExpandLevel = 1;
+
         // Only 2 levels.
         // If not empty, only the text filed of this item is valid.
         this.children = [];
@@ -39,6 +42,10 @@ class NaviItem {
 
         if (this.navi && p_jobj.navi_index != null) {
             this.naviIndex = p_jobj.navi_index;
+        }
+
+        if (this.navi && p_jobj.navi_expand_level != null) {
+            this.naviExpandLevel = p_jobj.navi_expand_level;
         }
 
         if (!this.target) {
@@ -296,6 +303,7 @@ class NaviWorker extends Worker {
             if (activeItem.navi) {
                 info.naviFile = activeItem.target;
                 info.naviIndex = info.baseUrl + activeItem.naviIndex;
+                info.naviExpandLevel = activeItem.naviExpandLevel;
             }
         }
 

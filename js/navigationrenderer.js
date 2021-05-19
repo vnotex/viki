@@ -21,6 +21,7 @@ class NavigationRenderer {
         // showSuffix: whether show suffix.
         // loadBeforeSearch: whether load all nodes before a search.
         // fuzzySearch: whether do a fuzzy search.
+        // expandLevel: auto expanded level on start.
         this.config = p_config;
     }
 
@@ -51,6 +52,7 @@ class NavigationRenderer {
 
         let showSuffix = this.config.showSuffix;
         let fuzzySearch = this.config.fuzzySearch;
+        let expandLevel = this.config.expandLevel;
 
         tree.on('activate_node.jstree', (p_e, p_data) => {
             let node = p_data.node;
@@ -65,6 +67,14 @@ class NavigationRenderer {
 
                 // Expand to the target node.
                 this.expandToNodeByPath(this.target);
+            }
+        }).on('load_node.jstree', (p_e, p_data) => {
+            let level = p_data.node.parents.length;
+            if (level < expandLevel) {
+                // Open its children.
+                for (let i = 0; i < p_data.node.children.length; ++i) {
+                    this.fileTree.jstree(true).open_node(p_data.node.children[i]);
+                }
             }
         }).jstree({
             "core": {
